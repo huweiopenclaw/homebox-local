@@ -1,0 +1,33 @@
+{
+  "name": "homebox-local-miniprogram",
+  "version": "1.0.0",
+  "description": "HomeBox Local - 微信小程序版智能家庭收纳助手",
+  "private": true,
+  "scripts": {
+    "dev:weapp": "taro build --type weapp --watch",
+    "build:weapp": "taro build --type weapp",
+    "dev:h5": "taro build --type h5 --watch",
+    "build:h5": "taro build --type h5"
+  },
+  "dependencies": {
+    "@tarojs/components": "^3.6.26",
+    "@tarojs/helper": "^3.6.26",
+    "@tarojs/plugin-framework-react": "^3.6.26",
+    "@tarojs/plugin-platform-weapp": "^3.6.26",
+    "@tarojs/react": "^3.6.26",
+    "@tarojs/runtime": "^3.6.26",
+    "@tarojs/shared": "^3.6.26",
+    "@tarojs/taro": "^3.6.26",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@tarojs/cli": "^3.6.26",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "sass": "^1.69.0",
+    "typescript": "^5.3.0"
+  }
+}
