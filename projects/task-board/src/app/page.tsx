@@ -336,19 +336,19 @@ export default function MissionControl() {
     return days;
   };
 
-  if (!isLoaded) return <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white text-xl">加载中...</div>;
-
-  // 获取所有项目列表
+  // 获取所有项目列表 - 必须在条件返回之前
   const allProjects = useMemo(() => {
     const projects = new Set(tasks.map(t => t.project).filter(Boolean));
     return ["全部", ...Array.from(projects)] as string[];
   }, [tasks]);
 
-  // 根据项目筛选任务
+  // 根据项目筛选任务 - 必须在条件返回之前
   const filteredTasks = useMemo(() => {
     if (projectFilter === "全部") return tasks;
     return tasks.filter(t => t.project === projectFilter);
   }, [tasks, projectFilter]);
+
+  if (!isLoaded) return <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white text-xl">加载中...</div>;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6">
