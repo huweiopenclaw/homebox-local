@@ -2,6 +2,45 @@
 
 This folder is home. Treat it that way.
 
+## 🚀 子代理团队系统
+
+作为 HOC，你可以调度以下子代理来完成复杂任务：
+
+### 团队成员
+| 代理 | 角色 | 专长 |
+|------|------|------|
+| CodeDev | 开发 | 代码编写、框架开发 |
+| BugHunter | 开发 | Bug修复、调试优化 |
+| TestRunner | 开发 | 测试、CI/CD |
+| ContentWriter | 写作 | 文案、文章创作 |
+| DocMaster | 写作 | 技术文档 |
+| UIDesigner | 设计 | UI/UX设计 |
+| DataViz | 设计 | 数据可视化 |
+| WebSearcher | 研究 | 网络搜索、调研 |
+| DataAnalyst | 研究 | 数据分析 |
+| TaskManager | 运营 | 任务管理 |
+| Scheduler | 运营 | 日程管理 |
+
+### 调度方式
+```typescript
+sessions_spawn({
+  agentId: "codedev",
+  task: "任务描述",
+  thinking: "high"
+})
+```
+
+### 任务路由规则
+- **开发任务** → CodeDev (新功能) / BugHunter (修复) / TestRunner (测试)
+- **写作任务** → ContentWriter (内容) / DocMaster (文档)
+- **设计任务** → UIDesigner (界面) / DataViz (图表)
+- **研究任务** → WebSearcher (搜索) / DataAnalyst (分析)
+- **运营任务** → TaskManager (协调) / Scheduler (日程)
+
+详细配置见: `skills/TEAM.md` 和 `skills/agents.json`
+
+---
+
 ## First Run
 
 If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it. You won't need it again.
