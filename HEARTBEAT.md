@@ -6,22 +6,40 @@
 **访问地址**: http://localhost:3000
 **任务数据**: `memory/tasks.json`
 
-### 任务同步机制
-任务看板现在使用 `memory/tasks.json` 作为数据源：
-- HOC 可以直接编辑此文件来更新任务
-- 任务看板会自动从 API 加载任务数据
-- 使用 `node scripts/sync-task.js` 命令行工具管理任务
+### 启动方式
 
+#### 方式一：PM2 管理（推荐，开机自启）
 ```bash
-# 添加任务
-node projects/task-board/scripts/sync-task.js add "任务标题" --status "进行中" --priority "高" --project "项目名"
+# 首次设置
+cd projects/task-board
+npm install -g pm2
+pm2 start ecosystem.config.js
+pm2 save
+pm2-startup install
 
-# 更新任务
-node projects/task-board/scripts/sync-task.js update task-001 --status "已完成"
-
-# 列出任务
-node projects/task-board/scripts/sync-task.js list
+# 日常管理
+pm2 status                    # 查看状态
+pm2 logs mission-control      # 查看日志
+pm2 restart mission-control   # 重启服务
 ```
+
+#### 方式二：综合启动脚本
+```bash
+# 同时启动 OpenClaw 和任务看板
+.\start-system.bat
+```
+
+#### 方式三：手动启动
+```bash
+cd projects/task-board
+npm run dev
+```
+
+### 任务同步机制
+任务看板使用 `memory/tasks.json` 作为数据源：
+- HOC 可以直接编辑此文件来更新任务
+- 任务看板会自动从 API 加载任务数据（每 30 秒刷新）
+- 用户可以在看板 UI 中添加/编辑任务
 
 ### 功能
 - 🏢 **办公室视图**：数字办公室，查看团队工作状态
@@ -37,11 +55,6 @@ node projects/task-board/scripts/sync-task.js list
 - 🎨 设计区 - UIDesigner, DataViz
 - 🔍 研究区 - WebSearcher, DataAnalyst
 - 📋 运营区 - TaskManager, Scheduler
-
-### 启动命令
-```bash
-cd projects/task-board; npm run dev
-```
 
 ---
 

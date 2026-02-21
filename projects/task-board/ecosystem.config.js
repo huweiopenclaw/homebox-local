@@ -1,8 +1,8 @@
 module.exports = {
   apps: [{
     name: 'mission-control',
-    script: 'node_modules/next/dist/bin/next',
-    args: 'dev',
+    script: 'C:\\nvm4w\\nodejs\\npm.cmd',
+    args: 'run dev',
     cwd: 'C:\\Users\\1990h\\.openclaw\\workspace\\projects\\task-board',
     watch: false,
     autorestart: true,
