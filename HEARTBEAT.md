@@ -6,30 +6,17 @@
 **访问地址**: http://localhost:3000
 **任务数据**: `memory/tasks.json`
 
-### 启动方式
-
-#### 方式一：PM2 管理（推荐，开机自启）
-```bash
-# 首次设置
-cd projects/task-board
-npm install -g pm2
-pm2 start ecosystem.config.js
-pm2 save
-pm2-startup install
-
-# 日常管理
-pm2 status                    # 查看状态
-pm2 logs mission-control      # 查看日志
-pm2 restart mission-control   # 重启服务
+### 自动启动检查
+Heartbeat 时会检查任务看板是否运行，未运行则自动启动：
+```powershell
+# 检查端口 3000
+netstat -ano | Select-String ":3000"
+# 未运行则启动
+cd C:\Users\1990h\.openclaw\workspace\projects\task-board
+Start-Process npm -ArgumentList "run dev" -WindowStyle Minimized
 ```
 
-#### 方式二：综合启动脚本
-```bash
-# 同时启动 OpenClaw 和任务看板
-.\start-system.bat
-```
-
-#### 方式三：手动启动
+### 手动启动
 ```bash
 cd projects/task-board
 npm run dev
