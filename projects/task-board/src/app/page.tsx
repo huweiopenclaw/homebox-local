@@ -61,13 +61,46 @@ interface TeamAgent {
 const TASKS_KEY = "mission-control-tasks";
 const MEMORIES_KEY = "mission-control-memories";
 
+// API 调用
+const API_URL = "/api/tasks";
+
+const loadTasksFromAPI = async (): Promise<Task[]> => {
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+    return data.tasks || [];
+  } catch (error) {
+    console.error("Failed to load tasks from API:", error);
+    return [];
+  }
+};
+
+const saveTasksToAPI = async (tasks: Task[]): Promise<boolean> => {
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "sync", tasks })
+    });
+    return true;
+  } catch (error) {
+    console.error("Failed to save tasks to API:", error);
+    return false;
+  }
+};
+
 const loadTasks = (): Task[] => {
   if (typeof window === "undefined") return [];
   const stored = localStorage.getItem(TASKS_KEY);
   return stored ? JSON.parse(stored) : [];
 };
 
-const saveTasks = (tasks: Task[]) => localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
+const saveTasks = (tasks: Task[]) => {
+  localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
+  // 同时保存到 API
+  saveTasksToAPI(tasks);
+};
+
 const loadMemories = (): Memory[] => {
   if (typeof window === "undefined") return [];
   const stored = localStorage.getItem(MEMORIES_KEY);
@@ -216,10 +249,24 @@ export default function MissionControl() {
   const [memoryFormData, setMemoryFormData] = useState({ title: "", content: "", category: "其他" as MemoryCategory, tags: "" });
 
   useEffect(() => {
-    const t = loadTasks(); const m = loadMemories();
-    setTasks(t.length === 0 ? initialTasks : t); setMemories(m.length === 0 ? initialMemories : m);
-    if (t.length === 0) saveTasks(initialTasks); if (m.length === 0) saveMemories(initialMemories);
-    setIsLoaded(true);
+    // 从 API 加载任务
+    loadTasksFromAPI().then(apiTasks => {
+      if (apiTasks.length > 0) {
+        setTasks(apiTasks);
+        // 同步到 localStorage
+        localStorage.setItem(TASKS_KEY, JSON.stringify(apiTasks));
+      } else {
+        // API 无数据，从 localStorage 加载
+        const t = loadTasks();
+        setTasks(t.length === 0 ? initialTasks : t);
+        if (t.length === 0) saveTasks(initialTasks);
+      }
+      setIsLoaded(true);
+    });
+    
+    const m = loadMemories();
+    setMemories(m.length === 0 ? initialMemories : m);
+    if (m.length === 0) saveMemories(initialMemories);
   }, []);
 
   useEffect(() => { if (isLoaded) saveTasks(tasks); }, [tasks, isLoaded]);

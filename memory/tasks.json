@@ -1,0 +1,60 @@
+{
+  "tasks": [
+    {
+      "id": "task-001",
+      "title": "设计 HomeBox Local 项目",
+      "description": "为 Android 和微信小程序设计 HomeBox Local 本地版收纳助手",
+      "status": "已完成",
+      "assignee": "HOC",
+      "priority": "高",
+      "taskType": "普通",
+      "project": "homebox-local",
+      "createdAt": 1739971200000,
+      "updatedAt": 1740056400000,
+      "completedAt": 1740056400000
+    },
+    {
+      "id": "task-002",
+      "title": "编写 PRD 文档",
+      "description": "为 HomeBox Local 编写完整的产品需求文档",
+      "status": "已完成",
+      "assignee": "HOC",
+      "priority": "高",
+      "taskType": "普通",
+      "project": "homebox-local",
+      "createdAt": 1739971200000,
+      "updatedAt": 1740054600000,
+      "completedAt": 1740054600000
+    },
+    {
+      "id": "task-003",
+      "title": "编写技术设计文档",
+      "description": "设计 Android 原生版和微信小程序版的技术架构",
+      "status": "已完成",
+      "assignee": "HOC",
+      "priority": "高",
+      "taskType": "普通",
+      "project": "homebox-local",
+      "createdAt": 1740054600000,
+      "updatedAt": 1740058200000,
+      "completedAt": 1740058200000
+    },
+    {
+      "id": "task-004",
+      "title": "创建 GitHub 仓库",
+      "description": "创建 homebox-local 仓库并推送代码",
+      "status": "已完成",
+      "assignee": "HOC",
+      "priority": "中",
+      "taskType": "普通",
+      "project": "homebox-local",
+      "createdAt": 1740051000000,
+      "updatedAt": 1740052800000,
+      "completedAt": 1740052800000
+    }
+  ],
+  "metadata": {
+    "lastUpdated": 1740058200000,
+    "version": 1
+  }
+}
