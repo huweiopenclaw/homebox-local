@@ -2,14 +2,18 @@ import { NextResponse } from 'next/server'
 import { readFileSync, writeFileSync, existsSync } from 'fs'
 import { join } from 'path'
 
-const TASKS_FILE = join(process.cwd(), '..', '..', '..', 'memory', 'tasks.json')
+// 绝对路径，确保无论 cwd 是什么都能找到文件
+const TASKS_FILE = 'C:\\Users\\1990h\\.openclaw\\workspace\\memory\\tasks.json'
 
 export async function GET() {
   try {
+    console.log('Reading tasks from:', TASKS_FILE)
     if (!existsSync(TASKS_FILE)) {
+      console.log('File does not exist')
       return NextResponse.json({ tasks: [], metadata: { lastUpdated: Date.now(), version: 1 } })
     }
     const data = readFileSync(TASKS_FILE, 'utf-8')
+    console.log('Tasks loaded:', JSON.parse(data).tasks?.length || 0, 'items')
     return NextResponse.json(JSON.parse(data))
   } catch (error) {
     console.error('Error reading tasks:', error)
