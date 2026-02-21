@@ -95,37 +95,38 @@
       "id": "task-008",
       "title": "开发 Android 版 - 数据层",
       "description": "实现 Room 数据库、DAO、Repository",
+      "status": "已完成",
+      "assignee": "CodeDev",
+      "priority": "高",
+      "taskType": "普通",
+      "project": "homebox-local-android",
+      "createdAt": 1740065000000,
+      "updatedAt": 1740072000000,
+      "completedAt": 1740072000000
+    },
+    {
+      "id": "task-009",
+      "title": "开发 Android 版 - UI 层",
+      "description": "实现 Jetpack Compose UI 组件和页面",
       "status": "进行中",
       "assignee": "HOC",
       "priority": "高",
       "taskType": "普通",
       "project": "homebox-local-android",
       "createdAt": 1740065000000,
-      "updatedAt": 1740065000000
-    },
-    {
-      "id": "task-009",
-      "title": "开发 Android 版 - UI 层",
-      "description": "实现 Jetpack Compose UI 组件和页面",
-      "status": "待办",
-      "assignee": "HOC",
-      "priority": "高",
-      "taskType": "普通",
-      "project": "homebox-local-android",
-      "createdAt": 1740065000000,
-      "updatedAt": 1740065000000
+      "updatedAt": 1740072000000
     },
     {
       "id": "task-010",
       "title": "开发微信小程序版 - 数据层",
       "description": "实现本地存储服务、状态管理",
       "status": "进行中",
-      "assignee": "HOC",
+      "assignee": "CodeDev",
       "priority": "高",
       "taskType": "普通",
       "project": "homebox-local-miniprogram",
       "createdAt": 1740065000000,
-      "updatedAt": 1740065000000
+      "updatedAt": 1740069000000
     },
     {
       "id": "task-011",
@@ -141,7 +142,7 @@
     }
   ],
   "metadata": {
-    "lastUpdated": 1771694602686,
+    "lastUpdated": 1740072000000,
     "version": 1
   }
 }
