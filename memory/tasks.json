@@ -51,10 +51,46 @@
       "createdAt": 1740051000000,
       "updatedAt": 1740052800000,
       "completedAt": 1740052800000
+    },
+    {
+      "id": "task-005",
+      "title": "实现任务看板双向同步",
+      "description": "支持 HOC 对话添加任务和任务看板 UI 添加任务，双向同步",
+      "status": "进行中",
+      "assignee": "HOC",
+      "priority": "高",
+      "taskType": "普通",
+      "project": "task-board",
+      "createdAt": 1740060000000,
+      "updatedAt": 1740060000000
+    },
+    {
+      "id": "task-006",
+      "title": "开发 HomeBox Local Android 版",
+      "description": "使用 Kotlin + Jetpack Compose 开发 Android 原生版本",
+      "status": "待办",
+      "assignee": "HOC",
+      "priority": "高",
+      "taskType": "普通",
+      "project": "homebox-local",
+      "createdAt": 1740060000000,
+      "updatedAt": 1740060000000
+    },
+    {
+      "id": "task-007",
+      "title": "开发 HomeBox Local 微信小程序版",
+      "description": "使用 Taro + TypeScript 开发微信小程序版本",
+      "status": "待办",
+      "assignee": "HOC",
+      "priority": "高",
+      "taskType": "普通",
+      "project": "homebox-local",
+      "createdAt": 1740060000000,
+      "updatedAt": 1740060000000
     }
   ],
   "metadata": {
-    "lastUpdated": 1740058200000,
+    "lastUpdated": 1740060000000,
     "version": 1
   }
 }

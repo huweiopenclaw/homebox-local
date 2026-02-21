@@ -17,12 +17,15 @@ interface Task {
   assignee: Assignee;
   priority: Priority;
   taskType: TaskType;
+  project?: string;
+  tags?: string[];
   scheduledDate?: string;
   scheduledTime?: string;
   repeatType: RepeatType;
   cronExpression?: string;
   createdAt: number;
   updatedAt: number;
+  completedAt?: number;
 }
 
 type MemoryCategory = "人物" | "项目" | "偏好" | "决策" | "知识" | "日常" | "其他";
@@ -235,6 +238,9 @@ export default function MissionControl() {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<Memory | null>(null);
   const [selectedAgent, setSelectedAgent] = useState<TeamAgent | null>(null);
+  const [projectFilter, setProjectFilter] = useState<string | "全部">("全部");
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [lastSyncTime, setLastSyncTime] = useState<Date | null>(null);
   
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -244,9 +250,24 @@ export default function MissionControl() {
   const [formData, setFormData] = useState({
     title: "", description: "", status: "待办" as TaskStatus, assignee: "HOC" as Assignee,
     priority: "中" as Priority, taskType: "普通" as TaskType, scheduledDate: getTodayString(),
-    scheduledTime: "", repeatType: "不重复" as RepeatType, cronExpression: "",
+    scheduledTime: "", repeatType: "不重复" as RepeatType, cronExpression: "", project: "",
   });
   const [memoryFormData, setMemoryFormData] = useState({ title: "", content: "", category: "其他" as MemoryCategory, tags: "" });
+
+  // 刷新任务列表
+  const refreshTasks = async () => {
+    setIsRefreshing(true);
+    try {
+      const apiTasks = await loadTasksFromAPI();
+      if (apiTasks.length > 0) {
+        setTasks(apiTasks);
+        localStorage.setItem(TASKS_KEY, JSON.stringify(apiTasks));
+      }
+      setLastSyncTime(new Date());
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
 
   useEffect(() => {
     // 从 API 加载任务
@@ -261,6 +282,7 @@ export default function MissionControl() {
         setTasks(t.length === 0 ? initialTasks : t);
         if (t.length === 0) saveTasks(initialTasks);
       }
+      setLastSyncTime(new Date());
       setIsLoaded(true);
     });
     
@@ -268,6 +290,13 @@ export default function MissionControl() {
     setMemories(m.length === 0 ? initialMemories : m);
     if (m.length === 0) saveMemories(initialMemories);
   }, []);
+  
+  // 自动刷新：每 30 秒从 API 同步任务
+  useEffect(() => {
+    if (!isLoaded) return;
+    const interval = setInterval(refreshTasks, 30000);
+    return () => clearInterval(interval);
+  }, [isLoaded]);
 
   useEffect(() => { if (isLoaded) saveTasks(tasks); }, [tasks, isLoaded]);
   useEffect(() => { if (isLoaded) saveMemories(memories); }, [memories, isLoaded]);
@@ -284,7 +313,7 @@ export default function MissionControl() {
     if (editingTask) setTasks(prev => prev.map(t => t.id === editingTask.id ? { ...t, ...formData, updatedAt: Date.now() } : t));
     else setTasks(prev => [{ id: Date.now().toString(), ...formData, createdAt: Date.now(), updatedAt: Date.now() }, ...prev]);
     setIsModalOpen(false);
-    setFormData({ title: "", description: "", status: "待办", assignee: "HOC", priority: "中", taskType: "普通", scheduledDate: getTodayString(), scheduledTime: "", repeatType: "不重复", cronExpression: "" });
+    setFormData({ title: "", description: "", status: "待办", assignee: "HOC", priority: "中", taskType: "普通", scheduledDate: getTodayString(), scheduledTime: "", repeatType: "不重复", cronExpression: "", project: "" });
     setEditingTask(null);
   };
 
@@ -309,6 +338,18 @@ export default function MissionControl() {
 
   if (!isLoaded) return <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white text-xl">加载中...</div>;
 
+  // 获取所有项目列表
+  const allProjects = useMemo(() => {
+    const projects = new Set(tasks.map(t => t.project).filter(Boolean));
+    return ["全部", ...Array.from(projects)] as string[];
+  }, [tasks]);
+
+  // 根据项目筛选任务
+  const filteredTasks = useMemo(() => {
+    if (projectFilter === "全部") return tasks;
+    return tasks.filter(t => t.project === projectFilter);
+  }, [tasks, projectFilter]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6">
       <div className="max-w-7xl mx-auto">
@@ -316,9 +357,33 @@ export default function MissionControl() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-3xl font-bold text-white mb-2">🚀 Mission Control</h1>
-            <p className="text-slate-400">{tasks.length} 任务 · {memories.length} 记忆 · {teamMembers.length} 成员</p>
+            <p className="text-slate-400">
+              {filteredTasks.length} 任务 · {memories.length} 记忆 · {teamMembers.length} 成员
+              {lastSyncTime && <span className="ml-3 text-xs">最后同步: {lastSyncTime.toLocaleTimeString()}</span>}
+            </p>
           </div>
           <div className="flex items-center gap-3">
+            {/* 刷新按钮 */}
+            <button 
+              onClick={refreshTasks}
+              disabled={isRefreshing}
+              className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-lg flex items-center gap-2 disabled:opacity-50"
+              title="刷新任务"
+            >
+              <span className={isRefreshing ? "animate-spin" : ""}>🔄</span>
+            </button>
+            
+            {/* 项目筛选 */}
+            {viewMode === "看板" && allProjects.length > 1 && (
+              <select
+                value={projectFilter}
+                onChange={e => setProjectFilter(e.target.value)}
+                className="bg-slate-700 text-white rounded-lg px-3 py-2 border border-slate-600"
+              >
+                {allProjects.map(p => <option key={p} value={p}>{p === "全部" ? "所有项目" : p}</option>)}
+              </select>
+            )}
+            
             <div className="flex bg-slate-700 rounded-lg p-1">
               {(["办公室", "看板", "日历", "记忆", "团队"] as ViewMode[]).map(m => (
                 <button key={m} onClick={() => setViewMode(m)}
@@ -464,14 +529,16 @@ export default function MissionControl() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {["待办", "进行中", "已完成", "已取消"].map(status => (
               <div key={status} className="bg-slate-800/50 rounded-lg p-4">
-                <h3 className={`${statusColors[status as TaskStatus]} px-3 py-2 rounded font-semibold mb-3`}>{status} ({tasks.filter(t => t.status === status).length})</h3>
+                <h3 className={`${statusColors[status as TaskStatus]} px-3 py-2 rounded font-semibold mb-3`}>{status} ({filteredTasks.filter(t => t.status === status).length})</h3>
                 <div className="space-y-2">
-                  {tasks.filter(t => t.status === status).map(t => (
-                    <div key={t.id} onClick={() => { setEditingTask(t); setFormData({...t, scheduledDate: t.scheduledDate || getTodayString(), scheduledTime: t.scheduledTime || "", cronExpression: t.cronExpression || ""}); setIsModalOpen(true); }}
+                  {filteredTasks.filter(t => t.status === status).map(t => (
+                    <div key={t.id} onClick={() => { setEditingTask(t); setFormData({...t, scheduledDate: t.scheduledDate || getTodayString(), scheduledTime: t.scheduledTime || "", cronExpression: t.cronExpression || "", project: t.project || ""}); setIsModalOpen(true); }}
                       className="bg-slate-700/80 rounded-lg p-3 cursor-pointer hover:bg-slate-700">
                       <div className="text-white text-sm">{t.title}</div>
-                      <div className="flex gap-1 mt-2">
+                      <div className="flex gap-1 mt-2 flex-wrap">
                         <span className={`${taskTypeColors[t.taskType]} px-1.5 py-0.5 rounded text-xs`}>{t.taskType}</span>
+                        {t.project && <span className="bg-indigo-500/30 text-indigo-300 px-1.5 py-0.5 rounded text-xs">{t.project}</span>}
+                        <span className={`${priorityColors[t.priority]} px-1.5 py-0.5 rounded text-xs`}>{t.priority}</span>
                       </div>
                     </div>
                   ))}
@@ -555,13 +622,20 @@ export default function MissionControl() {
             <h2 className="text-xl font-bold text-white mb-4">{editingTask ? "编辑任务" : "新建任务"}</h2>
             <form onSubmit={handleTaskSubmit} className="space-y-4">
               <input type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} placeholder="任务标题" className="w-full bg-slate-700 text-white rounded-lg px-4 py-2 border border-slate-600" required />
+              <textarea value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} placeholder="任务描述（可选）" rows={2} className="w-full bg-slate-700 text-white rounded-lg px-4 py-2 border border-slate-600" />
               <div className="grid grid-cols-2 gap-4">
                 <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value as TaskStatus})} className="bg-slate-700 text-white rounded-lg px-3 py-2">
                   <option value="待办">待办</option><option value="进行中">进行中</option><option value="已完成">已完成</option><option value="已取消">已取消</option>
                 </select>
+                <select value={formData.priority} onChange={e => setFormData({...formData, priority: e.target.value as Priority})} className="bg-slate-700 text-white rounded-lg px-3 py-2">
+                  <option value="低">低优先级</option><option value="中">中优先级</option><option value="高">高优先级</option><option value="紧急">紧急</option>
+                </select>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
                 <select value={formData.assignee} onChange={e => setFormData({...formData, assignee: e.target.value as Assignee})} className="bg-slate-700 text-white rounded-lg px-3 py-2">
                   <option value="HOC">HOC</option><option value="主人">主人</option>
                 </select>
+                <input type="text" value={formData.project} onChange={e => setFormData({...formData, project: e.target.value})} placeholder="项目名称" className="bg-slate-700 text-white rounded-lg px-3 py-2 border border-slate-600" />
               </div>
               <div className="flex gap-3">
                 <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 bg-slate-600 text-white py-2 rounded-lg">取消</button>
