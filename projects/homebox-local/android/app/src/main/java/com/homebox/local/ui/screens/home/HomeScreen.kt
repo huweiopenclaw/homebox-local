@@ -29,6 +29,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 @Composable
 fun HomeScreen(
     onNavigateToBoxes: () -> Unit,
+    onNavigateToItems: () -> Unit,
     onNavigateToSearch: () -> Unit,
     onNavigateToChat: () -> Unit,
     onNavigateToSettings: () -> Unit,
@@ -87,16 +88,18 @@ fun HomeScreen(
             // 快捷操作
             QuickActions(
                 onAddBox = onNavigateToBoxes,
+                onItems = onNavigateToItems,
                 onChat = onNavigateToChat
             )
             
             Spacer(modifier = Modifier.height(20.dp))
             
-            // 统计卡片
+            // 统计卡片（点击物品数字进入物品列表）
             StatsCard(
                 boxCount = uiState.boxCount,
                 itemCount = uiState.itemCount,
-                locationCount = uiState.locationCount
+                locationCount = uiState.locationCount,
+                onItemsClick = onNavigateToItems
             )
             
             Spacer(modifier = Modifier.height(24.dp))
@@ -164,17 +167,24 @@ private fun SearchBar(
 @Composable
 private fun QuickActions(
     onAddBox: () -> Unit,
+    onItems: () -> Unit,
     onChat: () -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         QuickActionButton(
             modifier = Modifier.weight(1f),
             icon = Icons.Default.Inventory2,
             text = "记录箱子",
             onClick = onAddBox
+        )
+        QuickActionButton(
+            modifier = Modifier.weight(1f),
+            icon = Icons.Default.List,
+            text = "物品列表",
+            onClick = onItems
         )
         QuickActionButton(
             modifier = Modifier.weight(1f),
@@ -225,7 +235,8 @@ private fun QuickActionButton(
 private fun StatsCard(
     boxCount: Int,
     itemCount: Int,
-    locationCount: Int
+    locationCount: Int,
+    onItemsClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -247,11 +258,11 @@ private fun StatsCard(
                 .padding(16.dp),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            StatItem(count = boxCount, label = "箱子")
+            StatItem(count = boxCount, label = "箱子", onClick = {})
             VerticalDivider()
-            StatItem(count = itemCount, label = "物品")
+            StatItem(count = itemCount, label = "物品", onClick = onItemsClick)
             VerticalDivider()
-            StatItem(count = locationCount, label = "位置")
+            StatItem(count = locationCount, label = "位置", onClick = {})
         }
     }
 }
@@ -259,10 +270,15 @@ private fun StatsCard(
 @Composable
 private fun StatItem(
     count: Int,
-    label: String
+    label: String,
+    onClick: () -> Unit
 ) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .clip(RoundedCornerShape(8.dp))
+            .clickable(onClick = onClick)
+            .padding(8.dp)
     ) {
         Text(
             text = count.toString(),
