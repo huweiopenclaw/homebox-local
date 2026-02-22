@@ -4,6 +4,8 @@ export default defineAppConfig({
     'pages/box/list/index',
     'pages/box/detail/index',
     'pages/box/add/index',
+    'pages/items/index',
+    'pages/items/detail/index',
     'pages/search/index',
     'pages/chat/index',
     'pages/settings/index',
