@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/category/category",
+    "pages/detail/detail",
+    "pages/profile/profile",
+    "pages/settings/settings",
+    "pages/add-item/add-item",
+    "pages/location/location",
+    "pages/search/search",
+    "pages/ai-search/ai-search",
+    "pages/edit-item/edit-item",
+    "pages/ai-scan/ai-scan",
+    "pages/ai-settings/ai-settings",
+    "pages/backup/backup",
+    "pages/batch-edit/batch-edit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "HomeBox",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF6B35",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

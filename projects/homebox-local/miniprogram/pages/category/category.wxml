@@ -1,0 +1,26 @@
+<!--pages/category/category.wxml-->
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:else class="category-grid">
+    <view 
+      wx:for="{{categories}}" 
+      wx:key="id" 
+      class="category-card"
+      data-name="{{item.name}}"
+      data-id="{{item.id}}"
+      bindtap="onCategoryTap">
+      <view class="category-icon">{{item.icon}}</view>
+      <view class="category-name">{{item.name}}</view>
+      <view class="category-count">{{item.count}} 件</view>
+    </view>
+    
+    <!-- 添加分类按钮 -->
+    <view class="category-card add-card" bindtap="onAddCategory">
+      <view class="add-icon">+</view>
+      <view class="category-name">添加分类</view>
+    </view>
+  </view>
+</view>

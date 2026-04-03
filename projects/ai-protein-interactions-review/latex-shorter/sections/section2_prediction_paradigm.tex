@@ -1,0 +1,116 @@
+% Section 2: The Prediction Paradigm: Methods and Limitations
+% Word count target: ~1500 words
+
+\section{The Prediction Paradigm: Methods and Limitations}
+\label{sec:prediction}
+
+Before the emergence of generative design approaches, the field of computational protein-protein interaction (PPI) research was dominated by what we term the \textit{prediction paradigm}---the goal of inferring whether, where, and how strongly proteins interact based on their sequences or structures. This paradigm has produced remarkable successes but also faces fundamental limitations that motivated the shift toward design-oriented approaches.
+
+\subsection{Task Taxonomy and Methodological Overview}
+\label{subsec:tasks}
+
+PPI prediction encompasses a heterogeneous family of tasks that differ in their inputs, outputs, and computational strategies (Table~\ref{tab:ppi_tasks}). The most fundamental task is \textit{binary classification}: given two protein sequences, predict whether they physically interact. This task underlies large-scale interactome mapping efforts and has been the primary benchmark for method development.
+
+\begin{table}[h]
+\centering
+\caption{Taxonomy of PPI prediction tasks}
+\label{tab:ppi_tasks}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Task} & \textbf{Input} & \textbf{Output} & \textbf{Representative Methods} \\
+\midrule
+Binary classification & Sequence pairs & Interaction (yes/no) & PIPR~\cite{chen2019pipr}, D-SCRIPT~\cite{sledzieski2021dscript} \\
+Network inference & Protein set & Interaction network & STRING~\cite{szklarczyk2021string}, GNN-PPI~\cite{lv2021gnnppi} \\
+Binding site prediction & Single protein & Interface residues & MaSIF~\cite{gainza2020masif}, GraphPPIS~\cite{cao2022graphppis} \\
+Affinity prediction & Complex + mutation & $\Delta\Delta G$ & FoldX~\cite{guerois2005foldx}, SKEMPI~\cite{jankauskaite2019skempi2} \\
+Complex structure & Sequence pairs & 3D coordinates & AF-Multimer~\cite{evans2022alphafoldmultimer}, DiffDock-PP~\cite{ketata2023diffdockpp} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+Beyond binary classification, \textit{binding site prediction} aims to identify which residues mediate the interaction---critical information for drug design and mutagenesis studies~\cite{ortegon2020binding}. \textit{Affinity prediction} quantifies binding strength changes upon mutation, essential for understanding disease variants and optimizing therapeutic proteins. \textit{Complex structure prediction}---the most recent breakthrough---generates the full three-dimensional arrangement of interacting proteins.
+
+\subsection{Sequence-Based Prediction Methods}
+\label{subsec:sequence}
+
+Sequence-based methods have evolved through three distinct generations, each representing a fundamental shift in how protein information is represented and processed.
+
+\subsubsection{The Hand-Crafted Feature Era (2001--2015)}
+
+Early methods relied on manually designed features extracted from amino acid sequences. Bock and Gough~\cite{bock2001predicting} pioneered this approach by using support vector machines (SVMs) with physicochemical properties, achieving the first systematic machine learning prediction of PPIs from primary structure. Shen et al.~\cite{shen2007predicting} introduced the \textit{conjoint triad} method, which grouped amino acids into seven classes based on dipoles and side-chain volumes, representing protein pairs as 343-dimensional vectors. This method achieved approximately 84\% accuracy on human PPIs and became widely adopted.
+
+Guo et al.~\cite{guo2008using} advanced this line of work by introducing the \textit{auto-covariance} (AC) descriptor, which captures interactions between residues at varying sequence distances---overcoming the limitation of conjoint triad's nearest-neighbor assumption. Their SVM-based approach achieved 88\% accuracy on yeast PPIs. Ben-Hur and Noble~\cite{benhur2005kernel} developed pairwise kernel methods that enabled SVMs to operate directly on protein pairs without explicit feature concatenation.
+
+A parallel tradition leveraged evolutionary information through position-specific scoring matrices (PSSMs). You et al.~\cite{you2017pssm} combined PSSM-derived features with discriminative vector machines, demonstrating that evolutionary conservation patterns carry strong interaction signals.
+
+\subsubsection{The Deep Learning Era (2016--2020)}
+
+The introduction of deep learning fundamentally changed PPI prediction by enabling automatic feature learning. DeepPPI~\cite{chen2017deepppi} was among the first to apply deep neural networks to this task, using separate networks for each protein followed by a fusion layer. Their approach achieved over 97\% AUC on benchmark datasets, significantly outperforming SVM-based methods.
+
+DPPI~\cite{hashemifar2018dppi} introduced a Siamese convolutional architecture with random projection modules that efficiently explore motif combinations between protein pairs. This design enabled training on over 100,000 PPIs while maintaining computational efficiency. PIPR~\cite{chen2019pipr} combined residual networks with recurrent convolutions in a Siamese framework, unifying binary classification, interaction type prediction, and binding affinity estimation in a single architecture.
+
+\subsubsection{The Pre-trained Model Era (2021--Present)}
+
+The most recent advancement comes from protein language models (PLMs). D-SCRIPT~\cite{sledzieski2021dscript} leveraged pre-trained representations from ESM~\cite{rives2021esm1b} to infer inter-protein contact maps as an intermediate structural output, improving cross-species generalizability since structure is more conserved than sequence. Topsy-Turvy~\cite{singh2022topsyturvy} integrated sequence-based ``bottom-up'' predictions with network topology ``top-down'' information using multi-scale deep learning.
+
+Graph neural networks (GNNs) have emerged as a powerful approach for PPI prediction, leveraging both network topology and protein features. GNN-PPI~\cite{lv2021gnnppi} demonstrated that learning unknown correlations in protein-protein interactions with deep graph neural networks achieves superior performance on network completion tasks. HIGH-PPI~\cite{tang2021high} introduced a high-order graph neural network that captures complex interaction patterns beyond pairwise relationships. DeepRank-GNN~\cite{bryant2022deeprank} introduced a framework to learn patterns in protein-protein interfaces directly from structural graphs.
+
+More recent methods have developed specialized architectures. TAGPPI~\cite{xie2022tagppi} incorporated predicted structural information into sequence-based predictions. TUnA~\cite{gehring2024tuna} introduced uncertainty quantification to transformer-based PPI prediction. The recent PLM-interact~\cite{zhao2025plminteract} and MINT~\cite{ullanat2025mint} models extend PLMs specifically for interaction modeling, learning the ``language of protein interactions'' from large-scale interaction datasets such as BioPlex~\cite{huttlin2021bioplex} and IntAct~\cite{orchard2014intact}.
+
+\subsection{Structure-Based Prediction Methods}
+\label{subsec:structure}
+
+Structure-based methods leverage three-dimensional information, either from experimental structures or computational predictions.
+
+\subsubsection{Traditional Docking Approaches}
+
+Classical protein-protein docking addresses the inverse problem: given two protein structures, predict their bound complex. HADDOCK~\cite{dominguez2003haddock} introduced information-driven docking by incorporating biochemical or biophysical constraints. ZDOCK~\cite{pierce2014zdock} uses fast Fourier transforms for efficient shape complementarity scoring. ClusPro~\cite{kozakov2017cluspro} provides automated docking through clustering of low-energy conformations. HDOCK~\cite{yan2020hdock} combines template-based and free docking strategies for protein-protein and protein-nucleic acid complexes. GalaxyTongDock~\cite{baek2023galaxytongdock} enables symmetric and asymmetric ab initio docking with improved energy parameters. HDOCK~\cite{yan2020hdock} integrates template-based and free docking with a hybrid scoring function, while GalaxyTongDock~\cite{baek2023galaxytongdock} supports both symmetric and asymmetric docking with improved energy parameters.
+
+These methods assume rigid or semi-flexible structures and typically generate multiple candidate poses that must be ranked. Their accuracy depends heavily on the quality of input structures and the availability of constraint information.
+
+\subsubsection{Interface Prediction from Structure}
+
+Surface-based deep learning methods predict binding interfaces directly from molecular surfaces. MaSIF~\cite{gainza2020masif} applied geometric deep learning to protein surfaces, learning fingerprints that encode interaction propensities. GraphPPIS~\cite{cao2022graphppis} used graph convolutional networks on protein structure graphs. dMaSIF~\cite{sverrisson2021dmasif} replaced expensive mesh generation with point-cloud operators, achieving 10--100$\times$ speedups.
+
+PeSTo~\cite{gao2023pestoppi} introduced a parameter-free geometric transformer that processes atomic coordinates without requiring sequence profiles, enabling efficient prediction across the growing ``foldome'' of predicted structures.
+
+\subsubsection{End-to-End Complex Prediction}
+
+The most dramatic recent advance is end-to-end prediction of complex structures from sequences alone. AlphaFold-Multimer~\cite{evans2022alphafoldmultimer} extended AlphaFold2's architecture~\cite{jumper2021alphafold} to multi-chain prediction, achieving breakthrough accuracy on many protein complexes. AlphaFold 3~\cite{abramson2024alphafold3} further generalized to arbitrary molecular assemblies including proteins, nucleic acids, and small molecules using a diffusion-based architecture.
+
+DiffDock-PP~\cite{ketata2023diffdockpp} demonstrated the applicability of diffusion models to protein-protein docking, treating pose generation as a generative process rather than optimization.
+
+\subsection{Fundamental Limitations of the Prediction Paradigm}
+\label{subsec:limitations}
+
+Despite remarkable progress, the prediction paradigm faces four fundamental limitations that motivated the emergence of design-oriented approaches.
+
+\subsubsection{Data Dependence}
+
+Prediction models are fundamentally data-dependent: they learn statistical patterns from known interactions and struggle to extrapolate to novel interaction types~\cite{kewalramani2023state}. Training data is heavily biased toward model organisms (human, yeast, mouse), limiting applicability to understudied proteins. Negative sample construction introduces systematic bias---randomly paired proteins may not represent true non-interactors~\cite{smialowski2010negatome}.
+
+The Negatome database~\cite{blohm2014negatome2} addressed this by curating experimentally verified non-interacting pairs, but coverage remains limited. Prediction accuracy degrades significantly for proteins dissimilar from training examples, as demonstrated by the C1/C2/C3 difficulty classification framework~\cite{park2015ppi}.
+
+\subsubsection{The Evaluation Crisis}
+
+A critical 2024 study by Bernett et al.~\cite{bernett2024bias} revealed that many reported high accuracies result from data leakage---train-test overlap at the sequence similarity level. When rigorous cross-validation protocols prevent such leakage, model performance drops substantially. This finding suggests that many ``successful'' methods primarily learn to recognize sequence similarity to known interactors rather than genuine interaction features.
+
+Benchmark datasets themselves suffer from incompleteness and bias. STRING~\cite{szklarczyk2021string} integrates multiple evidence sources with confidence scoring, but physical versus functional interactions are conflated. SKEMPI~\cite{jankauskaite2019skempi2} provides standardized affinity measurements but covers only a small fraction of known interactions. Benchmarking studies of AlphaFold~\cite{bryant2022benchmarking} have revealed important determinants of prediction accuracy for protein complexes.
+
+\subsubsection{Passive Discovery Mode}
+
+Prediction methods answer ``\textit{will} these proteins interact?'' rather than ``\textit{how can we make} them interact?'' For drug discovery and protein engineering, researchers need constructive capabilities: given a target protein, design a binder with desired properties~\cite{trepte2024ai}. The prediction paradigm provides no direct pathway from prediction to intervention.
+
+This limitation is particularly acute for therapeutic applications. If a disease-associated PPI lacks a natural interactor that can serve as a drug, prediction methods offer no solution~\cite{feng2022frameworks}. Recent comprehensive reviews have highlighted this gap: while PPI prediction methods achieve increasingly accurate classification, they cannot directly guide the design of novel binding proteins with specified affinities and specificities~\cite{kewalramani2023state}. What is needed is the ability to \textit{create} new interactions de novo---precisely the capability that generative design approaches aim to provide.
+
+\subsubsection{Static Assumptions}
+
+Most PPI prediction methods treat interactions as static entities---a pair of proteins either interacts or does not. This assumption ignores the dynamic nature of the interactome~\cite{mcgary2010dynamic}. Interactions can be tissue-specific, condition-dependent, or transient. Time-resolved interaction networks remain largely inaccessible to current computational approaches.
+
+AlphaFold-based methods~\cite{abramson2024alphafold3, evans2022alphafoldmultimer} predict static complex structures but do not capture conformational dynamics or binding kinetics. The integration of dynamical information from molecular dynamics or NMR ensembles into deep learning frameworks remains an open challenge.
+
+\vspace{1em}
+\noindent
+These limitations collectively define the boundary of the prediction paradigm and motivate the paradigm shift toward generative design---the subject of Section~\ref{sec:design}.

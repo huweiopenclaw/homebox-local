@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- 
+        Network Security Configuration
+        Best practices for secure network communications
+    -->
+    
+    <!-- Base configuration for all connections -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <!-- Trust system CAs -->
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+    
+    <!-- Debug-only configuration (allows local testing) -->
+    <!-- Uncomment for local development -->
+    <!--
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+    -->
+    
+    <!-- Domain-specific configuration -->
+    <!-- Example: Allow specific domains with custom certificates -->
+    <!--
+    <domain-config>
+        <domain includeSubdomains="true">api.homebox.local</domain>
+        <domain includeSubdomains="true">cdn.homebox.local</domain>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+        <pin-set>
+            <pin digest="SHA-256">base64_encoded_pin_here=</pin>
+            <pin digest="SHA-256">backup_pin_here=</pin>
+        </pin-set>
+    </domain-config>
+    -->
+    
+    <!-- Local development (debug builds only) -->
+    <!-- Allows cleartext traffic to localhost for debugging -->
+    <!--
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">192.168.1.0</domain>
+    </domain-config>
+    -->
+    
+</network-security-config>

@@ -1,0 +1,287 @@
+/* pages/ai-search/ai-search.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* 对话区域 */
+.chat-area {
+  flex: 1;
+  padding: 20rpx;
+  padding-bottom: 200rpx;
+  overflow-y: auto;
+}
+
+/* 欢迎区域 */
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 40rpx;
+}
+
+.welcome-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.welcome-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.welcome-desc {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 40rpx;
+}
+
+.suggestions {
+  width: 100%;
+}
+
+.suggestions-title {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.suggestion-item {
+  background: white;
+  padding: 24rpx 30rpx;
+  border-radius: 24rpx;
+  margin-bottom: 16rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.suggestion-item:active {
+  background: #f9f9f9;
+}
+
+/* 消息样式 */
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24rpx;
+}
+
+.message.user {
+  align-items: flex-end;
+}
+
+.message.ai, .message.system, .message.error {
+  align-items: flex-start;
+}
+
+.message-time {
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.message-bubble {
+  max-width: 80%;
+  padding: 24rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.message.user .message-bubble {
+  background: #FF6B35;
+  color: white;
+  border-bottom-right-radius: 4rpx;
+}
+
+.message.ai .message-bubble {
+  background: white;
+  color: #333;
+  border-bottom-left-radius: 4rpx;
+}
+
+.message.system .message-bubble {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.message.error .message-bubble {
+  background: #fff5f5;
+}
+
+.error-text {
+  color: #ff4d4f;
+}
+
+.loading-bubble {
+  padding: 20rpx 40rpx;
+}
+
+.loading-dots text {
+  animation: blink 1s infinite;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.loading-dots text:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dots text:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* AI 回复样式 */
+.ai-response {
+  width: 100%;
+}
+
+.response-summary {
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.response-items {
+  margin-top: 16rpx;
+}
+
+.result-item {
+  background: #fafafa;
+  padding: 16rpx 20rpx;
+  border-radius: 12rpx;
+  margin-bottom: 12rpx;
+  border-left: 4rpx solid #FF6B35;
+}
+
+.result-item:active {
+  background: #f5f5f5;
+}
+
+.result-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.result-location {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.result-relevance {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+.response-stats {
+  text-align: center;
+  padding: 20rpx;
+  background: #f9f9f9;
+  border-radius: 12rpx;
+  margin-top: 16rpx;
+}
+
+.stats-count {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #FF6B35;
+}
+
+.stats-details {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 8rpx;
+}
+
+.response-answer {
+  line-height: 1.8;
+}
+
+.response-empty {
+  color: #999;
+  text-align: center;
+  padding: 20rpx;
+}
+
+/* 输入区域 */
+.input-area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 20rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.ai-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20rpx;
+  padding: 20rpx;
+  color: #999;
+}
+
+.settings-btn {
+  background: #FF6B35;
+  color: white;
+  font-size: 26rpx;
+  padding: 12rpx 24rpx;
+  border-radius: 20rpx;
+}
+
+.input-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.chat-input {
+  flex: 1;
+  height: 80rpx;
+  padding: 0 24rpx;
+  background: #f5f5f5;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.send-btn {
+  width: 140rpx;
+  height: 80rpx;
+  background: #FF6B35;
+  color: white;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.send-btn[disabled] {
+  background: #ccc;
+}
+
+.input-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 12rpx;
+}
+
+.action-btn {
+  font-size: 24rpx;
+  color: #999;
+}

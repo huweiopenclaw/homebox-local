@@ -1,0 +1,315 @@
+/* pages/batch-edit/batch-edit.wxss */
+.container {
+  padding: 20rpx;
+  padding-bottom: 160rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+/* 顶部栏 */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: white;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.left {
+  display: flex;
+  align-items: baseline;
+  gap: 16rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.count {
+  font-size: 26rpx;
+  color: #FF6B35;
+}
+
+.mode-btn {
+  font-size: 28rpx;
+  color: #FF6B35;
+  padding: 12rpx 24rpx;
+  border: 1rpx solid #FF6B35;
+  border-radius: 30rpx;
+}
+
+.mode-btn.active {
+  background: #FF6B35;
+  color: white;
+}
+
+/* 全选栏 */
+.select-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: white;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.select-all {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.checkbox {
+  font-size: 36rpx;
+}
+
+.select-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.total-count {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 物品列表 */
+.items-list {
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+}
+
+.loading, .empty {
+  text-align: center;
+  padding: 60rpx;
+  color: #999;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.item-card:last-child {
+  border-bottom: none;
+}
+
+.item-card.selected {
+  background: #fff9f5;
+  margin: 0 -20rpx;
+  padding: 24rpx 20rpx;
+}
+
+.item-checkbox {
+  margin-right: 20rpx;
+  font-size: 36rpx;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.item-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.item-quantity {
+  font-size: 26rpx;
+  color: #FF6B35;
+}
+
+.item-meta {
+  display: flex;
+  gap: 16rpx;
+}
+
+.item-category {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.item-location {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx;
+  background: white;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.action-btn {
+  width: 100%;
+  padding: 24rpx;
+  background: #FF6B35;
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 12rpx;
+  border: none;
+}
+
+/* 操作菜单 */
+.action-sheet-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.action-sheet {
+  width: 100%;
+  background: white;
+  border-radius: 24rpx 24rpx 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.sheet-title {
+  text-align: center;
+  padding: 30rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.sheet-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 40rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.sheet-item:active {
+  background: #f9f9f9;
+}
+
+.sheet-item.danger .sheet-text {
+  color: #ff4444;
+}
+
+.sheet-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+
+.sheet-text {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.sheet-cancel {
+  text-align: center;
+  padding: 30rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+
+/* 选择器 */
+.picker-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.picker-content {
+  width: 100%;
+  background: white;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 30rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.picker-title {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.picker-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.picker-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.picker-value {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow {
+  color: #ccc;
+  font-size: 32rpx;
+  margin-left: 10rpx;
+}
+
+.picker-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 30rpx;
+}
+
+.picker-btn {
+  flex: 1;
+  padding: 24rpx;
+  font-size: 30rpx;
+  border-radius: 12rpx;
+  border: none;
+}
+
+.picker-btn.cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.picker-btn.confirm {
+  background: #FF6B35;
+  color: white;
+}

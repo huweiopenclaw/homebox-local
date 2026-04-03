@@ -1,0 +1,70 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc,decorations.pathreplacing}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{adjustbox}  % For auto-scaling tables
+
+% Bibliography style
+\bibliographystyle{unsrtnat}
+
+% Title information
+\title{\textbf{From Prediction to Design: A Paradigm Shift in AI-Driven Protein-Protein Interaction Research}}
+\author{
+\textbf{Author Names}$^{1,*}$\\
+\\
+$^1$Affiliation\\
+$^*$Corresponding author
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+Protein-protein interactions (PPIs) form the molecular foundation of cellular life processes. Over the past two decades, computational methods for PPI analysis have primarily focused on \textit{prediction}---given protein information, inferring interaction properties. However, a fundamental paradigm shift is now underway: from ``predicting what will happen'' to ``designing what we want.'' This transformation is driven by breakthroughs in protein language models, diffusion models, and equivariant neural networks. In this review, we systematically analyze this paradigm shift, examining the technical foundations that enable it, the core tasks in the design era, and the challenges that lie ahead. We argue that this transition marks a fundamental change in how AI interfaces with biological discovery---moving from passive observation to active creation---with profound implications for drug discovery, synthetic biology, and our understanding of the protein universe.
+\end{abstract}
+
+\noindent\textbf{Keywords:} protein-protein interactions, deep learning, generative models, protein design, AlphaFold, diffusion models, protein language models
+
+\vspace{1em}
+
+% Table of Contents (for draft)
+\tableofcontents
+\newpage
+
+% Main content sections
+\input{sections/section1_introduction}
+\input{sections/section2_prediction_paradigm}
+\input{sections/section3_design_paradigm}
+\input{sections/section4_design_tasks}
+\input{sections/section5_enabling_technologies}
+\input{sections/section6_challenges}
+\input{sections/section7_applications}
+\input{sections/section8_future}
+\input{sections/section9_conclusion}
+
+% Bibliography
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,123 @@
+{
+  "agents": {
+    "codedev": {
+      "name": "CodeDev",
+      "role": "开发",
+      "skill": "skills/codedev/SKILL.md",
+      "model": "default",
+      "thinking": "high",
+      "tools": ["read", "write", "edit", "exec", "web_search", "web_fetch"],
+      "description": "高级开发工程师，专注于代码开发"
+    },
+    "bughunter": {
+      "name": "BugHunter",
+      "role": "开发",
+      "skill": "skills/bughunter/SKILL.md",
+      "model": "default",
+      "thinking": "high",
+      "tools": ["read", "edit", "exec", "web_search"],
+      "description": "调试专家，负责Bug修复"
+    },
+    "testrunner": {
+      "name": "TestRunner",
+      "role": "开发",
+      "skill": "skills/testrunner/SKILL.md",
+      "model": "default",
+      "thinking": "medium",
+      "tools": ["read", "write", "edit", "exec"],
+      "description": "测试工程师，负责测试和CI/CD"
+    },
+    "contentwriter": {
+      "name": "ContentWriter",
+      "role": "写作",
+      "skill": "skills/contentwriter/SKILL.md",
+      "model": "default",
+      "thinking": "medium",
+      "tools": ["read", "write", "edit", "web_search", "web_fetch"],
+      "description": "内容创作专家"
+    },
+    "docmaster": {
+      "name": "DocMaster",
+      "role": "写作",
+      "skill": "skills/docmaster/SKILL.md",
+      "model": "default",
+      "thinking": "medium",
+      "tools": ["read", "write", "edit", "exec"],
+      "description": "技术文档专家"
+    },
+    "uidesigner": {
+      "name": "UIDesigner",
+      "role": "设计",
+      "skill": "skills/uidesigner/SKILL.md",
+      "model": "default",
+      "thinking": "high",
+      "tools": ["read", "write", "edit", "exec", "web_search"],
+      "description": "UI/UX 设计师"
+    },
+    "dataviz": {
+      "name": "DataViz",
+      "role": "设计",
+      "skill": "skills/dataviz/SKILL.md",
+      "model": "default",
+      "thinking": "medium",
+      "tools": ["read", "write", "edit", "exec", "web_search"],
+      "description": "数据可视化专家"
+    },
+    "websearcher": {
+      "name": "WebSearcher",
+      "role": "研究",
+      "skill": "skills/websearcher/SKILL.md",
+      "model": "default",
+      "thinking": "medium",
+      "tools": ["web_search", "web_fetch", "read", "write"],
+      "description": "网络搜索专家"
+    },
+    "dataanalyst": {
+      "name": "DataAnalyst",
+      "role": "研究",
+      "skill": "skills/dataanalyst/SKILL.md",
+      "model": "default",
+      "thinking": "high",
+      "tools": ["read", "write", "exec", "web_search"],
+      "description": "数据分析师"
+    },
+    "taskmanager": {
+      "name": "TaskManager",
+      "role": "运营",
+      "skill": "skills/taskmanager/SKILL.md",
+      "model": "default",
+      "thinking": "medium",
+      "tools": ["read", "write", "sessions_list", "sessions_send"],
+      "description": "任务管理专家"
+    },
+    "scheduler": {
+      "name": "Scheduler",
+      "role": "运营",
+      "skill": "skills/scheduler/SKILL.md",
+      "model": "default",
+      "thinking": "low",
+      "tools": ["cron", "read", "write", "message"],
+      "description": "日程管理专家"
+    }
+  },
+  "routing": {
+    "开发": ["codedev", "bughunter", "testrunner"],
+    "写作": ["contentwriter", "docmaster"],
+    "设计": ["uidesigner", "dataviz"],
+    "研究": ["websearcher", "dataanalyst"],
+    "运营": ["taskmanager", "scheduler"]
+  },
+  "keywords": {
+    "codedev": ["开发", "实现", "编写代码", "创建功能", "重构", "API", "前端", "后端"],
+    "bughunter": ["bug", "错误", "修复", "调试", "问题", "崩溃", "异常"],
+    "testrunner": ["测试", "test", "单元测试", "集成测试", "CI", "CD"],
+    "contentwriter": ["文章", "文案", "博客", "内容", "营销", "SEO"],
+    "docmaster": ["文档", "README", "API文档", "说明", "手册"],
+    "uidesigner": ["UI", "界面", "设计", "样式", "CSS", "用户体验"],
+    "dataviz": ["图表", "可视化", "dashboard", "仪表板", "数据展示"],
+    "websearcher": ["搜索", "查找", "调研", "了解", "收集"],
+    "dataanalyst": ["分析", "数据", "统计", "报表", "洞察"],
+    "taskmanager": ["分配", "协调", "管理", "跟踪", "进度"],
+    "scheduler": ["提醒", "日程", "定时", "计划", "日历"]
+  }
+}

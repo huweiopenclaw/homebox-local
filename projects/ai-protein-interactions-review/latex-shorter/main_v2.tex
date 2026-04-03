@@ -1,0 +1,70 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc,decorations.pathreplacing}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{adjustbox}
+
+% Bibliography style
+\bibliographystyle{unsrtnat}
+
+% Title information
+\title{\textbf{From Prediction to Design: A Paradigm Shift in AI-Driven Protein-Protein Interaction Research}}
+\author{
+\textbf{Author Names}$^{1,*}$\\
+\\
+$^1$Affiliation\\
+$^*$Corresponding author
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+Protein-protein interactions (PPIs) form the molecular foundation of cellular life. Over the past two decades, computational methods for PPI analysis have primarily focused on \textit{prediction}---inferring interaction properties from protein information. However, a fundamental paradigm shift is underway: from ``predicting what will happen'' to ``designing what we want.'' This transformation is driven by breakthroughs in protein language models, diffusion models, and equivariant neural networks. In this review, we argue that this transition constitutes a genuine paradigm shift in the Kuhnian sense, enabling investigation of sequence-structure space that evolution never explored. We systematically analyze the technical foundations, core design tasks, and challenges ahead. We address critical issues including evaluation bias, the hallucination problem, and dual-use considerations. We conclude with grand challenges for the field: mapping designability boundaries, designing dynamic interactions, and developing interpretable methods for clinical translation. This paradigm shift marks a fundamental change in how AI interfaces with biological discovery---from passive observation to active creation.
+\end{abstract}
+
+\noindent\textbf{Keywords:} protein-protein interactions, deep learning, generative models, protein design, AlphaFold, diffusion models, protein language models, paradigm shift
+
+\vspace{1em}
+
+% Table of Contents (for draft)
+\tableofcontents
+\newpage
+
+% Main content sections (revised structure)
+\input{sections_v2/figures}
+\input{sections_v2/section1_introduction}
+\input{sections_v2/section2_paradigm_transition}
+\input{sections_v2/section3_design_tasks}
+\input{sections_v2/section4_technologies}
+\input{sections_v2/section5_challenges}
+\input{sections_v2/section6_applications}
+\input{sections_v2/section7_future}
+\input{sections_v2/section8_conclusion}
+
+% Bibliography
+\bibliography{references}
+
+\end{document}

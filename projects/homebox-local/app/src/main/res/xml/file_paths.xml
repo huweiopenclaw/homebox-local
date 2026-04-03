@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!--
+        FileProvider Paths Configuration
+        Define accessible file paths for sharing
+    -->
+    
+    <!-- External storage root -->
+    <external-path
+        name="external_files"
+        path="." />
+    
+    <!-- External storage for specific directories -->
+    <external-path
+        name="external_pictures"
+        path="Pictures/" />
+    
+    <external-path
+        name="external_downloads"
+        path="Download/" />
+    
+    <!-- App-specific external storage -->
+    <external-files-path
+        name="external_app_files"
+        path="." />
+    
+    <external-files-path
+        name="external_app_cache"
+        path="cache/" />
+    
+    <external-files-path
+        name="external_app_documents"
+        path="Documents/" />
+    
+    <!-- Internal app cache -->
+    <cache-path
+        name="cache"
+        path="." />
+    
+    <!-- Internal app files -->
+    <files-path
+        name="files"
+        path="." />
+    
+    <!-- Internal app-specific paths -->
+    <files-path
+        name="images"
+        path="images/" />
+    
+    <files-path
+        name="downloads"
+        path="downloads/" />
+    
+    <files-path
+        name="temp"
+        path="temp/" />
+    
+    <!-- Camera photos (if using camera) -->
+    <external-files-path
+        name="camera_photos"
+        path="Pictures/Camera/" />
+    
+    <!-- Shared files -->
+    <external-files-path
+        name="shared"
+        path="shared/" />
+    
+</paths>

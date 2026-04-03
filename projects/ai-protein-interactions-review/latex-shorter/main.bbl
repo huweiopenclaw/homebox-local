@@ -1,0 +1,775 @@
+\begin{thebibliography}{105}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Szklarczyk et~al.(2019)Szklarczyk, Gable, Nastou, Lyon, Kirsch,
+  Pyysalo, Doncheva, Legeay, Fang, Bork, et~al.]{szklarczyk2021string}
+Damian Szklarczyk, Annika~L Gable, Katerina~C Nastou, David Lyon, Rebecca
+  Kirsch, Sampo Pyysalo, Nadezhda~T Doncheva, Marc Legeay, Tao Fang, Peer Bork,
+  et~al.
+\newblock {STRING v11}: protein--protein association networks with increased
+  coverage, supporting functional discovery in genome-wide experimental
+  datasets.
+\newblock \emph{Nucleic Acids Research}, 47\penalty0 (D1):\penalty0 D607--D613,
+  2019.
+
+\bibitem[Sahni et~al.(2015)Sahni, Yi, Taipale, Bass, et~al.]{sahni2015edgotype}
+Nilesh Sahni, Shuli Yi, Mikko Taipale, Joshua I~F Bass, et~al.
+\newblock Edgotype: a fundamental measure of the perturbability of
+  protein-protein interactions.
+\newblock \emph{Cell}, 161\penalty0 (3):\penalty0 647--660, 2015.
+
+\bibitem[Chen et~al.(2019{\natexlab{a}})Chen, Li, Liu, Xu, and
+  Tang]{chen2019pipr}
+Muhao Chen, Shutao Li, Tian Liu, Dong Xu, and Jie Tang.
+\newblock Multifaceted protein--protein interaction prediction based on siamese
+  residual {RCNN}.
+\newblock \emph{Bioinformatics}, 35\penalty0 (14):\penalty0 i305--i314,
+  2019{\natexlab{a}}.
+
+\bibitem[Sledzieski et~al.(2021)Sledzieski, Singh, Cowen, and
+  Berger]{sledzieski2021dscript}
+Samuel Sledzieski, Rohit Singh, Lenore Cowen, and Bonnie Berger.
+\newblock {D-SCRIPT} translates genome to phenome with sequence-based,
+  structure-aware, genome-scale predictions of protein--protein interactions.
+\newblock \emph{Cell Systems}, 12\penalty0 (10):\penalty0 963--975, 2021.
+
+\bibitem[Evans et~al.(2022)Evans, O'Neill, Pritzel, Antropova, Senior, Green,
+  {\v{Z}}{\'\i}dek, Bates, Blackwell, Yim, et~al.]{evans2022alphafoldmultimer}
+Richard Evans, Michael O'Neill, Alexander Pritzel, Natasha Antropova, Andrew
+  Senior, Tim Green, Augustin {\v{Z}}{\'\i}dek, Russ Bates, Sam Blackwell,
+  Jason Yim, et~al.
+\newblock Protein complex prediction with {AlphaFold-Multimer}.
+\newblock \emph{Nature Methods}, 19\penalty0 (1):\penalty0 39--46, 2022.
+\newblock \doi{10.1038/s41592-022-01488-1}.
+
+\bibitem[Abramson et~al.(2024)Abramson, Adler, Dunger, Evans, Green, Pritzel,
+  Ronneberger, Willmore, Ballard, Bambrick, et~al.]{abramson2024alphafold3}
+Josh Abramson, Jonas Adler, Jack Dunger, Richard Evans, Tim Green, Alexander
+  Pritzel, Olaf Ronneberger, Lindsay Willmore, Andrew~J Ballard, Joshua
+  Bambrick, et~al.
+\newblock Accurate structure prediction of biomolecular interactions with
+  {AlphaFold 3}.
+\newblock \emph{Nature}, 630:\penalty0 493--500, 2024.
+\newblock \doi{10.1038/s41586-024-07487-w}.
+
+\bibitem[Kuhn(1962)]{kuhn1962structure}
+Thomas~S Kuhn.
+\newblock \emph{The Structure of Scientific Revolutions}.
+\newblock University of Chicago Press, Chicago, 1962.
+
+\bibitem[Wouters et~al.(2020)Wouters, McKee, and Luyten]{wouters2020cost}
+Olivier~J Wouters, Martin McKee, and Jeroen Luyten.
+\newblock Estimated research and development investment needed to bring a new
+  medicine to market, 2009-2018.
+\newblock \emph{JAMA}, 323\penalty0 (9):\penalty0 844--853, 2020.
+
+\bibitem[Watson et~al.(2023)Watson, Juergens, Bennett, Tighe, Yim, Eisenberg,
+  Sankar, Bender, Halabiya, Wei, et~al.]{watson2023rfdiffusion}
+Joseph~L Watson, David Juergens, Nathaniel~R Bennett, Brian~J Tighe, Jason~L
+  Yim, Hannah~E Eisenberg, Aditya Sankar, Benjamin~J Bender, Samuel Halabiya,
+  Kathy Wei, et~al.
+\newblock De novo design of protein structure and function with {RFdiffusion}.
+\newblock \emph{Nature}, 620:\penalty0 1089--1100, 2023.
+\newblock \doi{10.1038/s41586-023-06415-8}.
+
+\bibitem[Rives et~al.(2021)Rives, Meier, Sercu, Goyal, Lin, Liu, Guo, Ott,
+  Zitnick, Ma, and Fergus]{rives2021esm1b}
+Alexander Rives, Joshua Meier, Tom Sercu, Siddharth Goyal, Zeming Lin, Jason
+  Liu, Demi Guo, Myle Ott, C~Lawrence Zitnick, Jerry Ma, and Rob Fergus.
+\newblock Biological structure and function emerge from scaling unsupervised
+  learning to 250 million protein sequences.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 118\penalty0
+  (15):\penalty0 e2016239118, 2021.
+\newblock \doi{10.1073/pnas.2016239118}.
+
+\bibitem[Lin et~al.(2023)Lin, Akin, Rao, Hie, Zhu, Lu, Smetanin, Verkuil,
+  Kabeli, Shmueli, et~al.]{lin2023esm2}
+Zeming Lin, Halil Akin, Roshan Rao, Brian Hie, Zhongkai Zhu, Wenting Lu, Nikita
+  Smetanin, Robert Verkuil, Ori Kabeli, Yaniv Shmueli, et~al.
+\newblock Evolutionary-scale prediction of atomic-level protein structure with
+  a language model.
+\newblock \emph{Science}, 379\penalty0 (6637):\penalty0 1123--1130, 2023.
+\newblock \doi{10.1126/science.ade2574}.
+
+\bibitem[Ingraham et~al.(2023)Ingraham, Baranov, Costello,
+  et~al.]{ingraham2023chroma}
+John~B Ingraham, Max Baranov, Zak Costello, et~al.
+\newblock Illuminating protein space with a programmable generative model.
+\newblock \emph{Nature}, 623:\penalty0 740--749, 2023.
+\newblock \doi{10.1038/s41586-023-06728-8}.
+
+\bibitem[Jing et~al.(2021)Jing, Eismann, Soni, and Dror]{jing2021gvp}
+Bowen Jing, Stephan Eismann, Pratham~N Soni, and Ron~O Dror.
+\newblock Learning from protein structure with geometric vector perceptrons.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+
+\bibitem[Fuchs et~al.(2020)Fuchs, Worrall, Fischer, and
+  Welling]{fuchs2020se3transformer}
+Fabian~B Fuchs, Daniel~E Worrall, Volker Fischer, and Max Welling.
+\newblock {SE(3)-Transformers}: 3d roto-translation equivariant attention
+  networks.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pages 1970--1981, 2020.
+
+\bibitem[Tsishyn and Rooman(2024)]{bernett2024bias}
+Matsvei Tsishyn and Marianne Rooman.
+\newblock Quantification of biases in predictions of protein-protein binding
+  affinity changes upon mutations.
+\newblock \emph{Briefings in Bioinformatics}, 25\penalty0 (1):\penalty0
+  bbad491, 2024.
+
+\bibitem[Kewalramani and Emili(2023)]{kewalramani2023state}
+Neal Kewalramani and Andrew Emili.
+\newblock State-of-the-art computational methods to predict protein--protein
+  interactions with high accuracy and coverage.
+\newblock \emph{Proteomics}, 23\penalty0 (7-8):\penalty0 e2200292, 2023.
+\newblock \doi{10.1002/pmic.202200292}.
+
+\bibitem[Lv et~al.(2021)Lv, Wu, Zhang, and Cui]{lv2021gnnppi}
+Shibing Lv, Jing Wu, Jia Zhang, and Zhihua Cui.
+\newblock Graph neural network for inter-novel-protein interaction prediction.
+\newblock In \emph{International Joint Conference on Artificial Intelligence},
+  pages 3571--3577, 2021.
+
+\bibitem[Gainza et~al.(2020)Gainza, Sverrisson, Monti, Rodol{\`a}, Boscaini,
+  Bronstein, and Correia]{gainza2020masif}
+Pablo Gainza, Freyr Sverrisson, Federico Monti, Emanuele Rodol{\`a}, Davide
+  Boscaini, Michael~M Bronstein, and Bruno~E Correia.
+\newblock Deciphering interaction fingerprints from protein molecular surfaces
+  using geometric deep learning.
+\newblock \emph{Nature Methods}, 17\penalty0 (2):\penalty0 184--192, 2020.
+
+\bibitem[Cao et~al.(2022)Cao, Pan, Yang, Huang, and Shen]{cao2022graphppis}
+Ziyun Cao, Xue Pan, Yuedong Yang, Yiheng Huang, and Hong-Bin Shen.
+\newblock Structure-aware protein--protein interaction site prediction using
+  deep graph convolutional network.
+\newblock \emph{Bioinformatics}, 38\penalty0 (1):\penalty0 125--132, 2022.
+
+\bibitem[Guerois et~al.(2003)Guerois, Nielsen, and Serrano]{guerois2005foldx}
+Raphael Guerois, Jens~Erik Nielsen, and Luis Serrano.
+\newblock Predicting changes in the stability of proteins and protein
+  complexes: a fast and accurate way using a molecular mechanics force field.
+\newblock \emph{Journal of Molecular Biology}, 320\penalty0 (2):\penalty0
+  369--387, 2003.
+
+\bibitem[Jankauskaite et~al.(2019)Jankauskaite, Jim{\'e}nez-Garc{\'\i}a,
+  Dapk{\=u}nas, Fern{\'a}ndez-Recio, and Moal]{jankauskaite2019skempi2}
+Justina Jankauskaite, Brian Jim{\'e}nez-Garc{\'\i}a, Justas Dapk{\=u}nas, Juan
+  Fern{\'a}ndez-Recio, and Iain~H Moal.
+\newblock {SKEMPI 2.0}: An updated benchmark of changes in protein--protein
+  binding energy, kinetics and thermodynamics upon mutation.
+\newblock \emph{Bioinformatics}, 35\penalty0 (3):\penalty0 462--469, 2019.
+
+\bibitem[Ketata et~al.(2023)Ketata, Laue, Mousavian,
+  et~al.]{ketata2023diffdockpp}
+Mohamed Ketata, Hannes Laue, Arsalan Mousavian, et~al.
+\newblock Diffdock-pp: Diffusion models for protein-protein docking.
+\newblock In \emph{ICLR Workshop on Computational Biology}, 2023.
+
+\bibitem[García-Ortegón et~al.(2022)García-Ortegón, Simm, Tripp,
+  Hernández-Lobato, Bender, et~al.]{ortegon2020binding}
+Miguel García-Ortegón, Gregor N.~C. Simm, Austin~J. Tripp, José~Miguel
+  Hernández-Lobato, Andreas Bender, et~al.
+\newblock {DOCKSTRING}: Easy molecular docking yields better benchmarks for
+  ligand design.
+\newblock \emph{Journal of Chemical Information and Modeling}, 62\penalty0
+  (15):\penalty0 3486--3503, 2022.
+\newblock \doi{10.1021/acs.jcim.1c01334}.
+
+\bibitem[Bock and Gough(2001)]{bock2001predicting}
+J~Ross Bock and David~A Gough.
+\newblock Predicting protein--protein interactions from primary structure.
+\newblock \emph{Bioinformatics}, 17\penalty0 (5):\penalty0 455--460, 2001.
+
+\bibitem[Shen et~al.(2007)Shen, Zhang, Luo, Zhu, Yu, Chen, Li, and
+  Jiang]{shen2007predicting}
+Jianwen Shen, Jie Zhang, Xiaomin Luo, Weiliang Zhu, Qiang Yu, Kexian Chen,
+  Yuzong Li, and Hualiang Jiang.
+\newblock Predicting protein--protein interactions based only on sequences
+  information.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 104\penalty0
+  (11):\penalty0 4337--4341, 2007.
+
+\bibitem[Guo et~al.(2008)Guo, Yu, Wen, and Li]{guo2008using}
+Yuzhen Guo, Lezheng Yu, Zhining Wen, and Menglong Li.
+\newblock Using support vector machine combined with auto covariance to predict
+  protein--protein interactions from protein sequences.
+\newblock \emph{Nucleic Acids Research}, 36\penalty0 (9):\penalty0 3025--3030,
+  2008.
+
+\bibitem[Ben-Hur and Noble(2005)]{benhur2005kernel}
+Asa Ben-Hur and William~Stafford Noble.
+\newblock Kernel methods for predicting protein--protein interactions.
+\newblock \emph{Bioinformatics}, 21\penalty0 (Suppl\_1):\penalty0 i38--i46,
+  2005.
+\newblock \doi{10.1093/bioinformatics/bti1016}.
+
+\bibitem[You et~al.(2017)You, Chan, and Hu]{you2017pssm}
+Zhu-Hong You, Keith~CC Chan, and Pengwei Hu.
+\newblock Accurate prediction of protein--protein interactions by integrating
+  potential evolutionary information embedded in {PSSM} profile and
+  discriminative vector machine classifier.
+\newblock \emph{Oncotarget}, 8\penalty0 (19):\penalty0 30536--30549, 2017.
+\newblock \doi{10.18632/oncotarget.15564}.
+
+\bibitem[Chen et~al.(2017)]{chen2017deepppi}
+Muhao Chen et~al.
+\newblock Prediction of protein-protein interactions by using graph neural
+  networks.
+\newblock \emph{Bioinformatics}, 35:\penalty0 i397--i406, 2017.
+
+\bibitem[Hashemifar et~al.(2018)Hashemifar, Neyshabur, Khan, and
+  Xu]{hashemifar2018dppi}
+Somaye Hashemifar, Behnam Neyshabur, Ahmad~Salehi Khan, and Jinbo Xu.
+\newblock Predicting protein--protein interactions through sequence-based deep
+  learning.
+\newblock \emph{Bioinformatics}, 34\penalty0 (17):\penalty0 i802--i810, 2018.
+
+\bibitem[Singh et~al.(2022)Singh, Sledzieski, Bryson, Cowen, and
+  Berger]{singh2022topsyturvy}
+Rohit Singh, Samuel Sledzieski, Bradley Bryson, Lenore Cowen, and Bonnie
+  Berger.
+\newblock Topsy-turvy: integrating a global view into sequence-based {PPI}
+  prediction.
+\newblock \emph{Bioinformatics}, 38\penalty0 (Supplement\_1):\penalty0
+  i264--i272, 2022.
+\newblock \doi{10.1093/bioinformatics/btac258}.
+
+\bibitem[Tang et~al.(2021)]{tang2021high}
+X~Tang et~al.
+\newblock {HIGH-PPI}: a high-order graph neural network for protein-protein
+  interaction prediction.
+\newblock \emph{Bioinformatics}, 37:\penalty0 3852--3860, 2021.
+
+\bibitem[Bryant et~al.(2022{\natexlab{a}})Bryant, Pozzati, Zhu,
+  et~al.]{bryant2022deeprank}
+Peter Bryant, Gabriele Pozzati, Wensi Zhu, et~al.
+\newblock {DeepRank-GNN}: A graph neural network framework to learn patterns in
+  protein-protein interfaces.
+\newblock \emph{Bioinformatics Advances}, 2\penalty0 (1):\penalty0 vbac014,
+  2022{\natexlab{a}}.
+
+\bibitem[Xie et~al.(2022)Xie, Li, Xiao, Wang, and Lu]{xie2022tagppi}
+Yujia Xie, Junkai Li, Yunan Xiao, Jing Wang, and Bingqiang Lu.
+\newblock {TAGPPI}: Sequence-based protein--protein interaction prediction
+  incorporating predicted structure information.
+\newblock \emph{Briefings in Bioinformatics}, 23\penalty0 (5):\penalty0
+  bbac303, 2022.
+\newblock \doi{10.1093/bib/bbac303}.
+
+\bibitem[Gehring et~al.(2024)]{gehring2024tuna}
+Julian Gehring et~al.
+\newblock {TUnA}: An uncertainty-aware transformer model for sequence-based
+  protein--protein interaction prediction.
+\newblock \emph{Briefings in Bioinformatics}, 25\penalty0 (5):\penalty0
+  bbae359, 2024.
+\newblock \doi{10.1093/bib/bbae359}.
+
+\bibitem[Zhao et~al.(2025)]{zhao2025plminteract}
+Weisong Zhao et~al.
+\newblock {PLM-interact}: Extending protein language models to predict
+  protein-protein interactions.
+\newblock \emph{Nature Communications}, 16, 2025.
+\newblock \doi{10.1038/s41467-025-64512-w}.
+
+\bibitem[Ullanat et~al.(2025)]{ullanat2025mint}
+Varun Ullanat et~al.
+\newblock {MINT}: Learning the language of protein-protein interactions.
+\newblock \emph{Nature Communications}, 16, 2025.
+\newblock \doi{10.1038/s41467-025-67971-3}.
+
+\bibitem[Huttlin et~al.(2021)Huttlin, Bruckner, et~al.]{huttlin2021bioplex}
+Edward~L Huttlin, Robert~J Bruckner, et~al.
+\newblock The {BioPlex} network: A systematic exploration of the human
+  interactome.
+\newblock \emph{Cell}, 184\penalty0 (11):\penalty0 3029--3041, 2021.
+\newblock \doi{10.1016/j.cell.2021.04.011}.
+
+\bibitem[Orchard et~al.(2014)Orchard, Ammari, et~al.]{orchard2014intact}
+Sandra Orchard, Maisa Ammari, et~al.
+\newblock The {IntAct} molecular interaction database in 2014.
+\newblock \emph{Nucleic Acids Research}, 42\penalty0 (D1):\penalty0 D358--D363,
+  2014.
+\newblock \doi{10.1093/nar/gkt1116}.
+
+\bibitem[Dominguez et~al.(2003)Dominguez, Boelens, and
+  Bonvin]{dominguez2003haddock}
+Cyril Dominguez, Rolf Boelens, and Alexandre~MJJ Bonvin.
+\newblock {HADDOCK}: a protein--protein docking approach based on biochemical
+  or biophysical information.
+\newblock \emph{Journal of the American Chemical Society}, 125\penalty0
+  (7):\penalty0 1731--1737, 2003.
+
+\bibitem[Pierce et~al.(2014)Pierce, Wiehe, Hwang, Kim, Vreven, and
+  Weng]{pierce2014zdock}
+Brian~G Pierce, Kevin Wiehe, Hahnbeom Hwang, Bong-Hyun Kim, Thom Vreven, and
+  Zhiping Weng.
+\newblock {ZDOCK} server: interactive docking prediction of protein--protein
+  complexes and symmetric multimers.
+\newblock \emph{Bioinformatics}, 30\penalty0 (12):\penalty0 1771--1773, 2014.
+
+\bibitem[Kozakov et~al.(2017)Kozakov, Hall, Xia, Porter, Padhorny, Yueh,
+  Beglov, and Vajda]{kozakov2017cluspro}
+Dima Kozakov, David~R Hall, Bing Xia, Kathleen~A Porter, Dzmitry Padhorny,
+  Christopher Yueh, Dima Beglov, and Sandor Vajda.
+\newblock The {ClusPro} web server for protein--protein docking.
+\newblock \emph{Nature Protocols}, 12\penalty0 (2):\penalty0 255--278, 2017.
+
+\bibitem[Yan et~al.(2017)Yan, Zhang, Zhou, Li, and Huang]{yan2020hdock}
+Yumeng Yan, Dazhi Zhang, Peng Zhou, Botong Li, and Sheng-You Huang.
+\newblock {HDOCK}: a web server for protein-protein and protein-dna/rna docking
+  based on a hybrid strategy.
+\newblock \emph{Nucleic Acids Research}, 45\penalty0 (W1):\penalty0 W365--W373,
+  2017.
+
+\bibitem[Baek et~al.(2017)Baek, Park, Heo, Park, and
+  Seok]{baek2023galaxytongdock}
+Minkyung Baek, Taeyong Park, Lim Heo, Chaeseok Park, and Chaok Seok.
+\newblock Galaxytongdock: Symmetric and asymmetric ab initio protein-protein
+  docking web server with improved energy parameters.
+\newblock \emph{Journal of Computational Chemistry}, 38:\penalty0 221--229,
+  2017.
+
+\bibitem[Sverrisson et~al.(2021)Sverrisson, Feydy, Correia, and
+  Bronstein]{sverrisson2021dmasif}
+Freyr Sverrisson, Jean Feydy, Bruno~E Correia, and Michael~M Bronstein.
+\newblock Fast end-to-end learning on protein surfaces.
+\newblock In \emph{IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition}, pages 15272--15281, 2021.
+
+\bibitem[Rodr{\'\i}guez et~al.(2023)]{gao2023pestoppi}
+Fabio J~Cort{\'e}s Rodr{\'\i}guez et~al.
+\newblock {PeSTo}: Parameter-free geometric deep learning for accurate
+  prediction of protein binding interfaces.
+\newblock \emph{Nature Communications}, 14\penalty0 (1):\penalty0 4050, 2023.
+\newblock \doi{10.1038/s41467-023-37701-8}.
+
+\bibitem[Jumper et~al.(2021)Jumper, Evans, Pritzel, Green, Figurnov,
+  Ronneberger, Tunyasuvunakool, Bates, {\v{Z}}{\'\i}dek, Potapenko, Bridgland,
+  et~al.]{jumper2021alphafold}
+John Jumper, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov,
+  Olaf Ronneberger, Kathryn Tunyasuvunakool, Russ Bates, Augustin
+  {\v{Z}}{\'\i}dek, Anna Potapenko, Alex Bridgland, et~al.
+\newblock Highly accurate protein structure prediction with {AlphaFold}.
+\newblock \emph{Nature}, 596\penalty0 (7873):\penalty0 583--589, 2021.
+\newblock \doi{10.1038/s41586-021-03819-2}.
+
+\bibitem[Smialowski et~al.(2010)Smialowski, Pagel, Wong, Brauner, Dunger, Fobo,
+  Frishman, Montrone, Theis, et~al.]{smialowski2010negatome}
+Philipp Smialowski, Philipp Pagel, Phillip Wong, Benjamin Brauner, Ireen
+  Dunger, Gisela Fobo, Dmitrij Frishman, Corinna Montrone, Florian~J Theis,
+  et~al.
+\newblock The {Negatome} database: a reference set of non-interacting protein
+  pairs.
+\newblock \emph{Nucleic Acids Research}, 38\penalty0 (suppl\_1):\penalty0
+  D540--D544, 2010.
+\newblock \doi{10.1093/nar/gkp1026}.
+
+\bibitem[Blohm et~al.(2014)Blohm, Frishman, Smialowski,
+  et~al.]{blohm2014negatome2}
+Philipp Blohm, Dmitrij Frishman, Philipp Smialowski, et~al.
+\newblock {Negatome 2.0}: a database of non-interacting proteins derived by
+  literature mining, manual annotation and protein structure analysis.
+\newblock \emph{Nucleic Acids Research}, 42\penalty0 (D1):\penalty0 D396--D400,
+  2014.
+\newblock \doi{10.1093/nar/gkt1079}.
+
+\bibitem[Park and Marcotte(2015)]{park2015ppi}
+Yungki Park and Edward~M Marcotte.
+\newblock Predicting protein--protein interactions from sequences using
+  evolutionary profiles and profile-kernel {SVMs}.
+\newblock \emph{Bioinformatics}, 31\penalty0 (12):\penalty0 1945--1950, 2015.
+\newblock \doi{10.1093/bioinformatics/btv130}.
+
+\bibitem[Bryant et~al.(2022{\natexlab{b}})Bryant, Pozzati, and
+  Elofsson]{bryant2022benchmarking}
+Patrick Bryant, Gabriele Pozzati, and Arne Elofsson.
+\newblock Benchmarking {AlphaFold} for protein complex modeling reveals
+  determinants of prediction accuracy.
+\newblock \emph{Nature Methods}, 19:\penalty0 947--954, 2022{\natexlab{b}}.
+
+\bibitem[Trepte et~al.(2024)]{trepte2024ai}
+Philipp Trepte et~al.
+\newblock Ai-guided pipeline for protein--protein interaction drug discovery
+  identifies a {SARS-CoV-2} inhibitor.
+\newblock \emph{Molecular Systems Biology}, 20\penalty0 (4):\penalty0 44320,
+  2024.
+\newblock \doi{10.1038/s44320-024-00019-8}.
+
+\bibitem[Feng et~al.(2022)Feng, Zhang, and Hu]{feng2022frameworks}
+Cong Feng, Zhen Zhang, and Xiaotian Hu.
+\newblock Deep learning frameworks for protein--protein interaction prediction.
+\newblock \emph{Computational and Structural Biotechnology Journal},
+  20:\penalty0 3628--3641, 2022.
+\newblock \doi{10.1016/j.csbj.2022.06.025}.
+
+\bibitem[McGary et~al.(2010)McGary, Lee, and Marcotte]{mcgary2010dynamic}
+Kevin~L McGary, Insuk Lee, and Edward~M Marcotte.
+\newblock Building the dynamic interactome.
+\newblock \emph{Nature Biotechnology}, 28\penalty0 (3):\penalty0 253--255,
+  2010.
+\newblock \doi{10.1038/nbt0310-253}.
+
+\bibitem[Baek et~al.(2021)Baek, DiMaio, Anishchenko, Dauparas, Ovchinnikov,
+  Lee, Wang, Cong, Kinch, Schaeffer, et~al.]{baek2021rosettafold}
+Minkyung Baek, Frank DiMaio, Ivan Anishchenko, Justas Dauparas, Sergey
+  Ovchinnikov, Gyu~Rie Lee, Jue Wang, Qian Cong, Lisa~N Kinch, R~Dustin
+  Schaeffer, et~al.
+\newblock Accurate prediction of protein structures and interactions using a
+  three-track neural network.
+\newblock \emph{Science}, 373\penalty0 (6557):\penalty0 871--876, 2021.
+\newblock \doi{10.1126/science.abj8754}.
+
+\bibitem[Baek and Baker(2023)]{baek2023rosettafold2}
+Minkyung Baek and David Baker.
+\newblock Protein structure and function prediction using {RoseTTAFold2} and
+  {RoseTTAFold-All-Atom}.
+\newblock \emph{bioRxiv}, 2023.
+
+\bibitem[Yim et~al.(2023)Yim, Trippe, De~Bortoli, Mathieu, Baranchuk, Russo,
+  et~al.]{yim2023se3diffusion}
+Jason Yim, Brian Trippe, Valentin De~Bortoli, Emile Mathieu, Arnaud Baranchuk,
+  Ruben Russo, Maksymets, et~al.
+\newblock {SE(3)} diffusion model with application to protein backbone
+  generation.
+\newblock \emph{arXiv preprint arXiv:2302.02277}, 2023.
+
+\bibitem[Bose et~al.(2023)]{bose2023foldflow}
+Avishek~Joey Bose et~al.
+\newblock Foldflow: Fast protein backbone generation with {SE(3)} flow
+  matching.
+\newblock \emph{arXiv preprint arXiv:2310.05297}, 2023.
+
+\bibitem[Elnaggar et~al.(2021)Elnaggar, Heinzinger, Dallago, Rehawi, Wang,
+  Jones, Gibbs, Feher, Angerer, Steinegger, et~al.]{elnaggar2021prottrans}
+Ahmed Elnaggar, Michael Heinzinger, Christian Dallago, Ghalia Rehawi, Yu~Wang,
+  Llion Jones, Tom Gibbs, Tamas Feher, Christoph Angerer, Martin Steinegger,
+  et~al.
+\newblock {ProtTrans}: Toward understanding the language of life through
+  self-supervised learning.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 44\penalty0 (10):\penalty0 7112--7127, 2021.
+\newblock \doi{10.1109/TPAMI.2021.3095381}.
+
+\bibitem[Su et~al.(2024)Su, Han, Zhou, Zhang, Huang, Lu, Zhang, and
+  Yuan]{su2024saprot}
+Jin Su, Chenchen Han, Yuyang Zhou, Chenlu Zhang, Yizhou Huang, Tianyu Lu, Jie
+  Zhang, and Fajie Yuan.
+\newblock {SaProt}: Protein language modeling with structure-aware vocabulary.
+\newblock \emph{ICLR 2024}, 2024.
+\newblock \doi{10.48550/arXiv.2310.18350}.
+
+\bibitem[Tubiana et~al.(2022{\natexlab{a}})Tubiana, Schneidman-Duhovny, and
+  Wolfson]{tubiana2022scannet}
+Jerome Tubiana, Dina Schneidman-Duhovny, and Haim~J Wolfson.
+\newblock {ScanNet}: an interpretable geometric deep learning model for
+  structure-based protein binding site prediction.
+\newblock \emph{Nature Methods}, 19:\penalty0 730--739, 2022{\natexlab{a}}.
+
+\bibitem[Krapp et~al.(2023)]{krapp2023pesto}
+Lucien~Bernardo Krapp et~al.
+\newblock {PeSTo}: parameter-free geometric deep learning for accurate
+  prediction of protein binding interfaces.
+\newblock \emph{Nature Communications}, 14:\penalty0 2175, 2023.
+
+\bibitem[Zhang et~al.(2023)]{zhang2023geoplm}
+Zuobai Zhang et~al.
+\newblock Protein representation learning by geometric structure pretraining.
+\newblock \emph{arXiv preprint arXiv:2203.06125}, 2023.
+
+\bibitem[Dauparas et~al.(2022)Dauparas, Anishchenko, Bennett, Bai, Ragotte,
+  Milles, Wicky, Courbet, de~Haas, Bethel, et~al.]{dauparas2022proteinmpnn}
+Justas Dauparas, Ivan Anishchenko, Nathaniel Bennett, Han Bai, Robert~J
+  Ragotte, Lukas~F Milles, Basile~IM Wicky, Alexis Courbet, Rob~J de~Haas,
+  Neville Bethel, et~al.
+\newblock Robust deep learning--based protein sequence design using
+  {ProteinMPNN}.
+\newblock \emph{Science}, 378\penalty0 (6615):\penalty0 49--56, 2022.
+\newblock \doi{10.1126/science.add2187}.
+
+\bibitem[Hsu et~al.(2022)Hsu, Verkuil, Liu, Lin, Hie, Sercu, Lerer, and
+  Rives]{hsu2022esmif1}
+Cynthia Hsu, Robert Verkuil, Jason Liu, Zeming Lin, Brian Hie, Tom Sercu, Adam
+  Lerer, and Alexander Rives.
+\newblock Learning inverse folding from millions of predicted structures.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  8946--8970. PMLR, 2022.
+
+\bibitem[Zambaldi et~al.(2024)Zambaldi, La, Yim, Juergens,
+  et~al.]{zambaldi2024alphaproteo}
+Vinicius Zambaldi, David La, Jason Yim, David Juergens, et~al.
+\newblock De novo design of high-affinity protein binders with {AlphaProteo}.
+\newblock \emph{arXiv preprint arXiv:2409.08022}, 2024.
+
+\bibitem[Zeng et~al.(2020)Zeng, Wang, Li, Zhang, Li, Zhou, Hua, Cai, Peng, and
+  Zhang]{zeng2020binding}
+Haoyang Zeng, Rui Wang, Fuyi Li, Yang Zhang, Minghui Li, Jian Zhou, Yungang
+  Hua, Zhenyu Cai, Wei Peng, and Yang Zhang.
+\newblock Deep learning for predicting biomolecular binding sites.
+\newblock \emph{Nature Communications}, 11\penalty0 (1):\penalty0 5985, 2020.
+
+\bibitem[Krishna et~al.(2024)Krishna, Wang, Ahern, Sturmfels,
+  et~al.]{krishna2024rfaa}
+Rohith Krishna, Jonathan Wang, Woody Ahern, Patrick Sturmfels, et~al.
+\newblock Generalized biomolecular modeling and design with {RoseTTAFold
+  All-Atom}.
+\newblock \emph{Science}, 2024.
+\newblock \doi{10.1126/science.adl2528}.
+
+\bibitem[Bennett et~al.(2025)]{bennett2025low}
+A~Bennett et~al.
+\newblock Rfdiffusion exhibits low success rate in de novo design of binders
+  for diverse targets.
+\newblock \emph{bioRxiv}, 2025.
+\newblock \doi{10.1101/2025.02.07.636769}.
+
+\bibitem[Rao et~al.(2026)]{rao2026adversarial}
+R~Rao et~al.
+\newblock Adversarial sequence mutations in alphafold and esmfold reveal
+  nonphysical structural invariance, confidence failures, and concerns for
+  protein design.
+\newblock \emph{bioRxiv}, 2026.
+\newblock \doi{10.64898/2026.02.25.708002}.
+
+\bibitem[Chu et~al.(2025)]{chu2025prediction}
+A~E Chu et~al.
+\newblock Evaluating zero-shot prediction of monomeric protein design success
+  by alphafold, esmfold, and proteinmpnn.
+\newblock \emph{Protein Science}, 34:\penalty0 e7007, 2025.
+
+\bibitem[Anishchenko et~al.(2021)Anishchenko, Pellock, Chidyausiku,
+  et~al.]{anishchenko2021hallucination}
+Ivan Anishchenko, Samuel~J Pellock, Tamuka~M Chidyausiku, et~al.
+\newblock De novo protein design by deep network hallucination.
+\newblock \emph{Nature}, 600\penalty0 (7890):\penalty0 547--552, 2021.
+
+\bibitem[Kleywegt et~al.(2023)]{kleywegt2023validation}
+Gerard~J. Kleywegt et~al.
+\newblock Protein data bank: A comprehensive review of 3d structure validation
+  and quality assessment.
+\newblock \emph{Structure}, 31\penalty0 (8):\penalty0 889--903, 2023.
+\newblock \doi{10.1016/j.str.2023.05.009}.
+
+\bibitem[Ruffolo et~al.(2022)Ruffolo, Guerra, Mahajan, Sulam, and
+  Gray]{ruffolo2022deepab}
+Jeffrey~A Ruffolo, Jeffrey~Mahlon Guerra, Sulaman~P Mahajan, Jeremias Sulam,
+  and Jeffrey~J Gray.
+\newblock Antibody structure prediction using interpretable deep learning.
+\newblock \emph{Patterns}, 3\penalty0 (1):\penalty0 100406, 2022.
+\newblock \doi{10.1016/j.patter.2021.100406}.
+
+\bibitem[Alford et~al.(2017)]{alford2017rosettaantibody}
+Rebecca~F Alford et~al.
+\newblock The {Rosetta} antibody server: High-resolution modeling and design of
+  antibody complementarity-determining regions.
+\newblock \emph{Proteins: Structure, Function, and Bioinformatics}, 85\penalty0
+  (8):\penalty0 1498--1516, 2017.
+\newblock \doi{10.1002/prot.25272}.
+
+\bibitem[Ruffolo et~al.(2023)Ruffolo, Mahajan, Sulam, and
+  Gray]{ruffolo2023igfold}
+Jeffrey~A Ruffolo, Sulaman~P Mahajan, Jeremias Sulam, and Jeffrey~J Gray.
+\newblock Fast, accurate antibody structure prediction from deep learning on
+  massive set of natural antibodies.
+\newblock \emph{Nature Communications}, 14\penalty0 (1):\penalty0 2530, 2023.
+\newblock \doi{10.1038/s41467-023-38063-x}.
+
+\bibitem[Abanades et~al.(2023)Abanades, Wong, Dinesh, George, Georges,
+  Budzowski, and Deane]{abanades2023immunebuilder}
+Georges Abanades, Wing~Ki Wong, Darshee~B Dinesh, Kieran George, Gabriel
+  Georges, Michal Budzowski, and Charlotte~M Deane.
+\newblock {ImmuneBuilder}: Deep-learning models for predicting the structures
+  of immune proteins.
+\newblock \emph{Communications Chemistry}, 6\penalty0 (1):\penalty0 190, 2023.
+\newblock \doi{10.1038/s42004-023-00881-9}.
+
+\bibitem[Henry et~al.(2024)]{henry2024abodybuilder3}
+Brendan Henry et~al.
+\newblock {ABodyBuilder3}: Improved and scalable antibody structure
+  predictions.
+\newblock \emph{arXiv preprint arXiv:2405.20863}, 2024.
+
+\bibitem[Li et~al.(2022{\natexlab{a}})]{li2022abagintpre}
+Tong Li et~al.
+\newblock {AbAgIntPre}: an interpretable deep learning method for predicting
+  antibody-antigen interaction.
+\newblock \emph{Bioinformatics}, 38:\penalty0 2473--2480, 2022{\natexlab{a}}.
+
+\bibitem[Zhang et~al.(2024)]{zhang2024nanobody}
+Y~Zhang et~al.
+\newblock Nanobody-antigen interaction prediction using prompt-based protein
+  language models.
+\newblock \emph{Bioinformatics Advances}, 4:\penalty0 vbae123, 2024.
+
+\bibitem[Raybould et~al.(2019)]{raybould2019developability}
+Matthew I~J Raybould et~al.
+\newblock Five computational developability guidelines for therapeutic antibody
+  profiling.
+\newblock \emph{Trends in Biotechnology}, 37\penalty0 (6):\penalty0 597--607,
+  2019.
+\newblock \doi{10.1016/j.tibtech.2018.12.010}.
+
+\bibitem[Barlow et~al.(2018)Barlow, {\v{S}}o{\v{s}}i{\'c}, Thompson, Suresh,
+  Lucas, Kuhlman, and Konerding]{barlow2018flexddg}
+Kelly~A Barlow, Sreten {\v{S}}o{\v{s}}i{\'c}, Scott Thompson, Prasad Suresh,
+  James~E Lucas, Brian Kuhlman, and David~E Konerding.
+\newblock Flex {ddG}: Rosetta ensemble-based estimation of changes in
+  protein--protein binding affinity upon mutation.
+\newblock \emph{The Journal of Physical Chemistry B}, 122\penalty0
+  (21):\penalty0 5389--5399, 2018.
+\newblock \doi{10.1021/acs.jpcb.7b11367}.
+
+\bibitem[Rodrigues et~al.(2019)Rodrigues, Myung, Silk, Pires, and
+  Ascher]{rodrigues2019mcsm}
+Carlos~HM Rodrigues, Yoochan Myung, Matthew Silk, Douglas~EV Pires, and David~B
+  Ascher.
+\newblock {mCSM-PPI2}: Predicting the effects of mutations on protein--protein
+  interactions.
+\newblock \emph{Nucleic Acids Research}, 47\penalty0 (W1):\penalty0 W338--W344,
+  2019.
+\newblock \doi{10.1093/nar/gkz383}.
+
+\bibitem[Liu et~al.(2021)Liu, Yang, Chen, Wang, Song, Li, Li, Chen, and
+  Zhai]{liu2021geoppi}
+Yinqi Liu, Fan Yang, Xian Chen, Wen Wang, Lei Song, Xia Li, Jian Li, Jian Chen,
+  and Chenwei Zhai.
+\newblock Deep geometric representations for modeling effects of mutations on
+  protein--protein binding affinity.
+\newblock \emph{PLOS Computational Biology}, 17\penalty0 (12):\penalty0
+  e1009284, 2021.
+\newblock \doi{10.1371/journal.pcbi.1009284}.
+
+\bibitem[Liu et~al.(2024)]{liu2024ssifaffinity}
+Shuyang Liu et~al.
+\newblock {SSIF-Affinity}: Multimodal deep learning of
+  sequence-structure-interaction features for protein-protein binding affinity
+  prediction.
+\newblock \emph{Bioinformatics}, 2024.
+
+\bibitem[Li et~al.(2022{\natexlab{b}})Li, Yang, Huang, Sun, and
+  Skolnick]{li2022ssipe}
+Buyong Li, Yiling Yang, Yuxing Huang, Jiahui Sun, and Jeffrey Skolnick.
+\newblock {SSIPe}: accurately estimating protein-protein binding affinity
+  changes upon mutations.
+\newblock \emph{Nature Communications}, 13:\penalty0 7772, 2022{\natexlab{b}}.
+
+\bibitem[Dehouck et~al.(2013)Dehouck, Kwasigroch, Rooman, and
+  Gilis]{dehouck2013beatmusic}
+Yves Dehouck, Jean~Marc Kwasigroch, Marianne Rooman, and Dimitri Gilis.
+\newblock {BeAtMuSiC}: Prediction of changes in protein--protein binding
+  affinity on mutations.
+\newblock \emph{Nucleic Acids Research}, 41\penalty0 (W1):\penalty0 W333--W339,
+  2013.
+\newblock \doi{10.1093/nar/gkt450}.
+
+\bibitem[Luo et~al.(2024)]{luo2024ddaffinity}
+Yan Luo et~al.
+\newblock {DDAffinity}: Predicting the changes in binding affinity of multiple
+  point mutations using protein 3d structure.
+\newblock \emph{Bioinformatics}, 40\penalty0 (8):\penalty0 btae232, 2024.
+\newblock \doi{10.1093/bioinformatics/btae232}.
+
+\bibitem[Qiu et~al.(2024)]{qiu2024ipe}
+Jianwen Qiu et~al.
+\newblock Deep geometric representations for modeling effects of mutations on
+  protein-protein binding.
+\newblock \emph{Nature Communications}, 15:\penalty0 2453, 2024.
+
+\bibitem[Bennett et~al.(2024)]{bennett2024symmetric}
+Nathaniel~R Bennett et~al.
+\newblock De novo design of symmetric protein complexes.
+\newblock \emph{Nature}, 2024.
+
+\bibitem[Ho et~al.(2020)Ho, Jain, and Abbeel]{ho2020denoising}
+Jonathan Ho, Ajay Jain, and Pieter Abbeel.
+\newblock Denoising diffusion probabilistic models.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  33:\penalty0 6840--6851, 2020.
+
+\bibitem[Chen et~al.(2024)]{chen2024xtrimopglm}
+Bo~Chen et~al.
+\newblock {xTrimoPGLM}: Unified 100b-scale pre-trained transformer for
+  deciphering the language of protein.
+\newblock \emph{bioRxiv}, 2024.
+
+\bibitem[Zhao et~al.(2024)]{zhao2024goproteingnn}
+He~Zhao et~al.
+\newblock {GOProteinGNN}: Leveraging protein knowledge graphs for protein
+  representation learning.
+\newblock \emph{arXiv preprint arXiv:2405.14631}, 2024.
+
+\bibitem[Dallago et~al.(2024)]{dallago2024plmfinetune}
+Christian Dallago et~al.
+\newblock Fine-tuning protein language models boosts predictions across diverse
+  tasks.
+\newblock \emph{Nature Communications}, 15:\penalty0 7607, 2024.
+\newblock \doi{10.1038/s41467-024-51844-2}.
+
+\bibitem[Salwinski et~al.(2004)]{salwinski2004dip}
+Lukasz Salwinski et~al.
+\newblock {DIP}, the database of interacting proteins: 2004 update.
+\newblock \emph{Nucleic Acids Research}, 32:\penalty0 D449--D451, 2004.
+
+\bibitem[Chatr-aryamontri et~al.(2007)]{chatr2015mint}
+Andrew Chatr-aryamontri et~al.
+\newblock {MINT}: the molecular interaction database.
+\newblock \emph{Nucleic Acids Research}, 35:\penalty0 D572--D574, 2007.
+
+\bibitem[Goldenzweig et~al.(2016)]{goldenzweig2016protein}
+Adi Goldenzweig et~al.
+\newblock Principles of protein stability and their application in
+  computational design.
+\newblock \emph{Nature Methods}, 13:\penalty0 839--842, 2016.
+
+\bibitem[Tubiana et~al.(2022{\natexlab{b}})Tubiana, Schneidman-Duhovny, and
+  Wolfson]{tubiana2022scanet}
+Jonathan Tubiana, Dina Schneidman-Duhovny, and Haim~J Wolfson.
+\newblock {ScanNet}: An interpretable geometric deep learning model for
+  structure-based protein binding site prediction.
+\newblock \emph{Nature Methods}, 19\penalty0 (6):\penalty0 730--739,
+  2022{\natexlab{b}}.
+\newblock \doi{10.1038/s41592-022-01490-7}.
+
+\bibitem[{National Research Council}(2004)]{nrc2004biotechnology}
+{National Research Council}.
+\newblock \emph{Biotechnology Research in an Age of Terrorism}.
+\newblock National Academies Press, Washington, DC, 2004.
+
+\bibitem[Kenlay et~al.(2024)]{kenlay2024antibody}
+Henry Kenlay et~al.
+\newblock Towards the accurate modelling of antibody-antigen complexes.
+\newblock \emph{Bioinformatics}, 40:\penalty0 btae583, 2024.
+
+\bibitem[Huang et~al.(2024)]{huang2024antibody}
+Yun Huang et~al.
+\newblock Improved deep learning prediction of antigen-antibody interactions.
+\newblock \emph{PNAS}, 121:\penalty0 e2410529121, 2024.
+
+\bibitem[Silva et~al.(2020)]{silva2020il2}
+Daniel~A Silva et~al.
+\newblock Engineering potent cytokines for cancer immunotherapy.
+\newblock \emph{Nature}, 565:\penalty0 186--191, 2020.
+
+\bibitem[Fleming et~al.(2021)]{fleming2021computational}
+B~D Fleming et~al.
+\newblock Computational design of cytokine receptor agonists with enhanced
+  affinity and specificity.
+\newblock \emph{Nature Biotechnology}, 39:\penalty0 1546--1555, 2021.
+
+\bibitem[Chen et~al.(2019{\natexlab{b}})]{chen2019design}
+K~K~H Chen et~al.
+\newblock Design of protein-interaction specificity from sequence-to-sequence
+  learning.
+\newblock \emph{Nature}, 573:\penalty0 387--391, 2019{\natexlab{b}}.
+
+\bibitem[Morsut et~al.(2016)]{morsut2016synnotch}
+Leonardo Morsut et~al.
+\newblock Engineering customized cell sensing and response behaviors using
+  synthetic notch receptors.
+\newblock \emph{Cell}, 164:\penalty0 780--791, 2016.
+
+\end{thebibliography}

@@ -1,0 +1,41 @@
+% Section 3: Core Design Tasks (Target: 900 words)
+\section{Core Design Tasks}
+\label{sec:tasks}
+
+The design paradigm enables fundamentally new questions. Rather than asking ``what interactions exist?'', researchers can now ask ``how can we create interactions with desired properties?'' This section surveys major design tasks enabled by recent advances.
+
+\subsection{Protein Binder Design}
+
+Protein binder design---creating novel proteins that specifically bind target molecules---represents the most direct application of the design paradigm~\cite{watson2023rfdiffusion,zambaldi2024alphaproteo}. Given a target structure, the goal is to generate a binding partner with high affinity and specificity.
+
+The problem decomposes into subtasks: epitope selection (identifying the target region), scaffold generation (creating complementary backbone), sequence design (optimizing for stability and binding), and validation (predicting binding success). The challenge is that the design space is astronomically large---$20^{100}$ possible sequences for a 100-residue protein---yet only a tiny fraction fold stably and bind with high affinity.
+
+RFdiffusion~\cite{watson2023rfdiffusion} pioneered general-purpose binder design. Given a target structure, it generates complementary backbones via diffusion, which ProteinMPNN~\cite{dauparas2022proteinmpnn} then designs sequences for. Experimental validation demonstrated 10--50\% success rates across diverse targets. AlphaProteo~\cite{zambaldi2024alphaproteo} integrated generation and validation into a unified pipeline, achieving 3--300$\times$ better success rates with nanomolar affinities on multiple therapeutic targets including PD-L1 and VEGF-A. For SARS-CoV-2, designed minibinders achieved picomolar affinities (KD: 10--100 pM), demonstrating that designed proteins can compete with evolved antibodies~\cite{watson2023rfdiffusion}.
+
+\subsection{Antibody Design and Optimization}
+
+Antibodies present unique challenges due to their conserved framework regions and hypervariable complementarity-determining regions (CDRs). Unlike other CDRs which adopt canonical structures encoded by germline genes, CDR-H3 lacks reliable structural templates~\cite{alford2017rosettaantibody}. Its backbone conformation depends on the specific V(D)J recombination event, making prediction essentially a de novo folding problem. CDR-H3 length varies from 8 to 30+ residues (with longer loops increasingly common in therapeutic antibodies), and longer loops exhibit greater backbone conformational flexibility. Deep learning methods have made significant progress in antibody structure prediction~\cite{ruffolo2022deepab,ruffolo2023igfold,henry2024abodybuilder3,abanades2023immunebuilder}, and recent advances have improved antibody-antigen complex modeling~\cite{kenlay2024antibody,huang2024antibody}, but CDR-H3 modeling remains the primary bottleneck.
+
+Antibody design involves: (1) designing binders against target antigens; (2) humanizing non-human antibodies to reduce immunogenicity; and (3) optimizing developability properties (stability, solubility, expression)~\cite{raybould2019developability}. Recent methods combine structural modeling with developability prediction to screen candidates before experimental validation. AbAgIntPre~\cite{li2022abagintpre} introduced sequence-only interaction prediction, while recent work applied prompt-based language models to nanobody-antigen interactions~\cite{zhang2024nanobody}.
+
+\subsection{Interface Optimization}
+
+Rather than designing entirely new binding partners, interface optimization aims to improve existing interactions through targeted mutations~\cite{jankauskaite2019skempi2}.
+
+\textbf{Affinity Maturation.} Increasing binding strength is central to therapeutic optimization. Physics-based methods (FoldX~\cite{guerois2005foldx}, Rosetta Flex ddG~\cite{barlow2018flexddg}) estimate affinity changes from structural calculations but require accurate structures. Machine learning methods (mCSM-PPI2~\cite{rodrigues2019mcsm}, GeoPPI~\cite{liu2021geoppi}) learn statistical patterns from experimental data, achieving faster predictions. BeAtMuSiC~\cite{dehouck2013beatmusic} introduced coarse-grained statistical potentials for rapid screening. SSIPe~\cite{li2022ssipe} combines structural interface analysis with evolutionary information. DDAffinity~\cite{luo2024ddaffinity} uses geometric deep learning with attention for multiple simultaneous mutations, while recent work applied deep geometric representations to modeling mutation effects~\cite{qiu2024ipe}. SSIF-Affinity~\cite{liu2024ssifaffinity} integrates sequence, structure, and interaction features through multimodal learning.
+
+\textbf{Specificity Engineering.} Beyond affinity, specificity---binding the intended target without binding similar off-targets---is critical for therapeutic applications. Designing proteins that discriminate between closely related paralogues requires subtle manipulation of interface chemistry, addressed through multi-objective optimization~\cite{rodrigues2019mcsm}.
+
+\textbf{Stability-Developability Trade-offs.} Interface mutations that improve affinity can destabilize the overall fold. Methods like ProteinMPNN explicitly optimize for predicted stability during sequence design~\cite{dauparas2022proteinmpnn}, while developability optimization addresses aggregation propensity, immunogenicity, and expression yield~\cite{raybould2019developability}.
+
+\subsection{De Novo Interaction Networks}
+
+The most ambitious design task involves creating entire interaction networks---multiple proteins designed to interact in specific patterns~\cite{watson2023rfdiffusion}. This enables synthetic biology applications from engineered signaling pathways to self-assembling biomaterials.
+
+Symmetric oligomer design requires simultaneously optimizing interface geometry and overall assembly structure. RFdiffusion demonstrated successful design of cyclic oligomers~\cite{watson2023rfdiffusion}, with extensions enabling icosahedral cages~\cite{bennett2024symmetric}. Multi-component systems present additional challenges: each protein must fold independently while forming specific interactions with partners. Current approaches decompose the problem into pairwise interfaces, but this cannot capture global system constraints.
+
+Three fundamental challenges remain: orthogonality (ensuring proteins interact only with intended partners), kinetics (ensuring correct assembly order), and integration (functioning within cells without disrupting essential processes)~\cite{bennett2024symmetric}. These challenges are largely unaddressed by current methods.
+
+\vspace{0.5em}
+\noindent
+These tasks share a common theme: they require generative capabilities beyond prediction. The enabling technologies underlying these capabilities are detailed in Section~\ref{sec:technologies}.

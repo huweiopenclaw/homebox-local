@@ -1,0 +1,156 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.homebox.local'
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.homebox.local"
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // Enable multidex for large number of dependencies
+        multiDexEnabled true
+        
+        // Vector drawables support
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            // Enable code shrinking, obfuscation, and optimization
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // Signing config for release (configure in gradle.properties)
+            // signingConfig signingConfigs.release
+            
+            // Enable Crashlytics in release builds
+            // firebaseCrashlytics {
+            //     mappingFileUploadEnabled true
+            // }
+        }
+        
+        debug {
+            minifyEnabled false
+            debuggable true
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-DEBUG"
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'
+        // Enable Kotlin optimizations
+        freeCompilerArgs += [
+            "-opt-in=kotlin.RequiresOptIn",
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        ]
+    }
+    
+    buildFeatures {
+        viewBinding true
+        // dataBinding true  // Enable if using Data Binding
+        // buildConfig true  // Enable if you need BuildConfig fields
+    }
+    
+    packagingOptions {
+        resources {
+            excludes += ['/META-INF/{AL2.0,LGPL2.1}']
+            // Exclude duplicate files
+            pickFirst 'META-INF/atomicfu.kotlin_module'
+        }
+    }
+    
+    // Enable test coverage
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+    
+    // Lint options
+    lint {
+        abortOnError false
+        checkReleaseBuilds true
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.ext.kotlinVersion}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.ext.coroutinesVersion}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.coroutinesVersion}"
+    
+    // AndroidX Core
+    implementation "androidx.core:core-ktx:${rootProject.ext.coreKtxVersion}"
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompatVersion}"
+    implementation "com.google.android.material:material:${rootProject.ext.materialVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintLayoutVersion}"
+    
+    // Lifecycle & ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${rootProject.ext.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${rootProject.ext.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${rootProject.ext.lifecycleVersion}"
+    // implementation "androidx.lifecycle:lifecycle-common-java8:${rootProject.ext.lifecycleVersion}"
+    
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:${rootProject.ext.navigationVersion}"
+    implementation "androidx.navigation:navigation-ui-ktx:${rootProject.ext.navigationVersion}"
+    
+    // Room Database
+    implementation "androidx.room:room-runtime:${rootProject.ext.roomVersion}"
+    implementation "androidx.room:room-ktx:${rootProject.ext.roomVersion}"
+    kapt "androidx.room:room-compiler:${rootProject.ext.roomVersion}"
+    
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okHttpVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okHttpVersion}"
+    
+    // Image Loading
+    implementation "com.github.bumptech.glide:glide:${rootProject.ext.glideVersion}"
+    kapt "com.github.bumptech.glide:compiler:${rootProject.ext.glideVersion}"
+    
+    // Dependency Injection - Hilt
+    implementation "com.google.dagger:hilt-android:${rootProject.ext.hiltVersion}"
+    kapt "com.google.dagger:hilt-android-compiler:${rootProject.ext.hiltVersion}"
+    
+    // JSON
+    implementation "com.google.code.gson:gson:${rootProject.ext.gsonVersion}"
+    
+    // Testing
+    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${rootProject.ext.coroutinesVersion}"
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+    
+    // Android Testing
+    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.junitExtVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoVersion}"
+    androidTestImplementation "androidx.room:room-testing:${rootProject.ext.roomVersion}"
+}
+
+// Kapt configuration for Hilt
+kapt {
+    correctErrorTypes true
+}

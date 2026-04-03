@@ -1,0 +1,50 @@
+% Section 4: Enabling Technologies (Target: 800 words)
+\section{Enabling Technologies}
+\label{sec:technologies}
+
+The paradigm shift is enabled by three converging technological advances: generative models, structure-aware representations, and protein language models.
+
+\subsection{Generative Models for Protein Design}
+
+Generative models learn to sample from the distribution of valid protein structures, enabling creation rather than prediction. The key insight is that protein foldability and stability can be encoded in a learned energy landscape---the model implicitly captures biophysical constraints distinguishing natural proteins from random sequences~\cite{ho2020denoising}.
+
+\textbf{Diffusion Models.} The dominant paradigm treats protein structure generation as learning to reverse a noise-adding process~\cite{ho2020denoising}. The forward diffusion process gradually adds Gaussian noise:
+$$\mathbf{x}_t = \sqrt{\bar{\alpha}_t}\mathbf{x}_0 + \sqrt{1-\bar{\alpha}_t}\boldsymbol{\epsilon}$$
+where $\mathbf{x}_0$ is the original structure, $\mathbf{x}_t$ is the noisy version at timestep $t$, and $\bar{\alpha}_t$ is the noise schedule. The reverse process learns to denoise by predicting the added noise:
+$$\mathcal{L} = \mathbb{E}_{t,\mathbf{x}_0,\boldsymbol{\epsilon}}\left[\|\boldsymbol{\epsilon} - \boldsymbol{\epsilon}_\theta(\mathbf{x}_t, t)\|^2\right]$$
+
+RFdiffusion fine-tuned RoseTTAFold as a denoiser, exploiting transfer learning from pretrained representations~\cite{watson2023rfdiffusion}. Chroma incorporated physical constraints (bond lengths, angles, dihedral preferences) directly into the generative process~\cite{ingraham2023chroma}. SE(3) diffusion models operate on the manifold of rigid body frames, where each residue is represented by position $\mathbf{r} \in \mathbb{R}^3$ and orientation $\mathbf{R} \in SO(3)$~\cite{yim2023se3diffusion}.
+
+\textbf{Flow-Based Alternatives.} Flow matching learns deterministic trajectories through structure space rather than stochastic denoising. FoldFlow demonstrated comparable quality to diffusion with potentially better computational efficiency~\cite{bose2023foldflow}, though diffusion currently leads in practical applications.
+
+\textbf{Inverse Folding.} ProteinMPNN and ESM-IF1 address the complementary problem: given a backbone, what sequence will adopt it?~\cite{dauparas2022proteinmpnn,hsu2022esmif1}. These methods enable sequence design for generated backbones, completing the design pipeline.
+
+\subsection{Structure-Aware Representations}
+
+Effective protein modeling requires representations capturing both discrete chemical structure (sequence) and continuous geometry (3D coordinates). Protein function depends on 3D geometry, which must be represented in a coordinate-independent manner~\cite{fuchs2020se3transformer,jing2021gvp}.
+
+\textbf{Equivariant Neural Networks.} SE(3)-Transformers~\cite{fuchs2020se3transformer} and Geometric Vector Perceptrons (GVPs)~\cite{jing2021gvp} process geometric data while respecting rotational and translational symmetries. SE(3) equivariance requires that for any rotation $\mathbf{R} \in SO(3)$ and translation $\mathbf{t} \in \mathbb{R}^3$:
+$$f(\mathbf{R}\mathbf{x} + \mathbf{t}) = \mathbf{R} \cdot f(\mathbf{x}) + \mathbf{t}$$
+This ensures the same structure yields identical predictions regardless of orientation. GVPs achieve this through scalar-vector separation: each node maintains scalar features $\mathbf{s}$ and vector features $\mathbf{v}$, with message passing operating equivariantly on vectors while aggregating scalars invariantly. AlphaFold2's Invariant Point Attention (IPA) provided an alternative through learned reference frames~\cite{jumper2021alphafold}, projecting 3D coordinates onto local frames where attention becomes rotation-invariant. IPA has become a foundational architectural element in subsequent design systems.
+
+\textbf{Why Equivariance Matters for Protein Design.} The equivariance constraint is not merely a mathematical convenience---it reflects fundamental physical principles. Protein structures exist in 3D space independent of coordinate system orientation. A design method producing different outputs for rotated inputs violates this physical invariance. Critically, non-equivariant methods that work well for small molecules often fail for proteins: small molecule conformations can be enumerated densely, but protein conformational space is astronomically larger ($\sim 10^{130}$ for a 100-residue protein). Equivariance provides strong inductive bias that dramatically reduces effective search space. AlphaFold2's success relied heavily on this constraint: by ensuring equivariance, the model learns identical predictions regardless of input orientation, effectively multiplying training data by the symmetry group. The practical consequence for design is substantial: equivariant models require fewer training examples to achieve equivalent performance, critical given limited experimental validation data for designed proteins.
+
+\textbf{SE(3) Diffusion vs.\ Euclidean Diffusion.} Standard diffusion operates in Euclidean space, treating coordinates independently. However, protein backbones lie on the SE(3) manifold---each residue has position $\mathbf{r} \in \mathbb{R}^3$ and orientation $\mathbf{R} \in SO(3)$. SE(3) diffusion respects this structure, adding noise through geodesic random walks rather than independent Gaussian noise. This ensures the noising process stays on the manifold of physically valid protein structures.
+
+\textbf{Geometric Deep Learning.} MaSIF and PeSTo learn from molecular surfaces without relying on sequence information, demonstrating that interaction propensities are encoded in surface geometry and charge distribution~\cite{gainza2020masif,gao2023pestoppi}. dMaSIF replaced expensive mesh generation with point-cloud operators, achieving 10--100$\times$ speedups~\cite{sverrisson2021dmasif}. The biological implication is that physical determinants of protein interactions---shape complementarity, electrostatic compatibility, hydrogen bonding---can be learned from structural data and transferred to design novel interfaces.
+
+\subsection{Protein Language Models}
+
+Protein language models learn representations from evolutionary information encoded in sequence databases, providing complementary structural and functional knowledge~\cite{rives2021esm1b,lin2023esm2}.
+
+\textbf{Foundation Models.} ESM-1b demonstrated that large-scale pre-training on protein sequences---without explicit structural supervision---yields representations capturing folding patterns, functional sites, and evolutionary constraints~\cite{rives2021esm1b}. ESM-2 scaled to 15 billion parameters, achieving atomic-level structure prediction from single sequences and eliminating the need for multiple sequence alignments~\cite{lin2023esm2}. ESMFold runs 60$\times$ faster than AlphaFold2 while maintaining competitive accuracy. ProtTrans~\cite{elnaggar2021prottrans} established that encoder-only models outperform encoder-decoder architectures for protein understanding tasks. xTrimoPGLM scaled to 100 billion parameters for unified pre-training, representing a significant contribution from Chinese research groups to the foundation model landscape~\cite{chen2024xtrimopglm}. GOProteinGNN~\cite{zhao2024goproteingnn} integrated protein knowledge graphs with graph neural networks leveraging Gene Ontology annotations.
+
+\textbf{Structure-Aware Language Models.} SaProt introduced structure-aware tokenization where each token represents both sequence position and local structural state~\cite{su2024saprot}. MINT and PLM-interact extended PLMs for interaction modeling, operating on protein sets to capture interaction propensities contextually~\cite{ullanat2025mint,zhao2025plminteract}.
+
+\textbf{Transfer Learning.} The scale of PLMs enables effective fine-tuning for downstream tasks including binding site prediction, function annotation, and interaction prediction~\cite{dallago2024plmfinetune}. This reduces data requirements for specialized tasks while leveraging knowledge encoded in foundation models.
+
+\textbf{Computational Considerations.} Training large PLMs requires enormous investment (ESM-2 required hundreds of GPU-years). Inference costs vary dramatically: ProteinMPNN runs on CPU in milliseconds, while RFdiffusion requires 16--32GB GPU memory and minutes per design~\cite{watson2023rfdiffusion}. These requirements create accessibility concerns that the community must address through efficient architectures and shared infrastructure.
+
+\vspace{0.5em}
+\noindent
+These technologies provide the computational substrate for design tasks. Section~\ref{sec:challenges} examines the challenges limiting their practical applicability.

@@ -8,6 +8,42 @@
     "mcporter": {
       "version": "1.0.0",
       "installedAt": 1771235025409
+    },
+    "biology": {
+      "version": "1.0.0",
+      "installedAt": 1773301979299
+    },
+    "academic-deep-research": {
+      "version": "1.0.0",
+      "installedAt": 1773301982065
+    },
+    "deep-research-pro": {
+      "version": "1.0.2",
+      "installedAt": 1773301984766
+    },
+    "explain-code": {
+      "version": "1.0.0",
+      "installedAt": 1774967880644
+    },
+    "deep-research-strategy": {
+      "version": "0.1.0",
+      "installedAt": 1774967896492
+    },
+    "agent-browser-tool": {
+      "version": "1.0.0",
+      "installedAt": 1774967951744
+    },
+    "ai-engineer": {
+      "version": "1.0.0",
+      "installedAt": 1774967960629
+    },
+    "playwright": {
+      "version": "1.0.3",
+      "installedAt": 1774968247044
+    },
+    "browser-automation-stealth": {
+      "version": "1.0.0",
+      "installedAt": 1774968267587
     }
   }
 }

@@ -1,0 +1,23 @@
+% Section 1: Introduction (Target: 700 words)
+\section{Introduction}
+\label{sec:introduction}
+
+Protein-protein interactions (PPIs) form the molecular foundation of cellular life. The human interactome is estimated to contain 130,000--650,000 binary interactions~\cite{szklarczyk2021string}, with disease-associated mutations disproportionately affecting interaction interfaces~\cite{sahni2015edgotype}. Over the past two decades, computational approaches to PPI research have primarily focused on \textit{prediction}: given protein sequences or structures, infer whether and how they interact. This prediction paradigm has produced remarkable successes, including high-accuracy interaction prediction from sequence alone~\cite{chen2019pipr,sledzieski2021dscript} and unprecedented accuracy in complex structure prediction~\cite{evans2022alphafoldmultimer,abramson2024alphafold3}.
+
+Yet a fundamental limitation constrains prediction methods: they can only describe what might happen, not create what we want to happen. For drug discovery and synthetic biology, the relevant question is not ``will these proteins interact?'' but ``how can we design proteins that interact the way we need?'' This shift from passive observation to active creation defines the emerging \textit{design paradigm}.
+
+\subsection*{Defining the Paradigm Shift}
+
+We argue that the transition from prediction to design represents a qualitative transformation in computational PPI research. The prediction paradigm asks: ``What interactions exist in nature?'' The design paradigm asks: ``What interactions can we create?'' 
+
+This shift is characterized by three features. \textbf{First}, the design paradigm enables investigation of previously inaccessible regions of sequence-structure space---configurations that evolution never explored but that may contain superior therapeutic or industrial properties. \textbf{Second}, the design paradigm requires fundamentally different methodological approaches: generative models rather than discriminative classifiers, inverse problems rather than forward prediction, and iterative design-test cycles rather than one-shot inference. \textbf{Third}, prediction and design are complementary rather than incommensurable: every design system relies on prediction capabilities for validation~\cite{watson2023rfdiffusion}, and prediction methods benefit from novel test cases that design provides. This complementarity distinguishes our view from strong Kuhnian incommensurability~\cite{kuhn1962structure} while preserving the paradigm shift characterization.
+
+\subsection*{Technological Foundations and Controversies}
+
+This paradigm shift is enabled by converging technological advances: protein language models encoding evolutionary information at scale~\cite{rives2021esm1b,lin2023esm2}, diffusion models generating novel structures conditioned on functional constraints~\cite{watson2023rfdiffusion,ingraham2023chroma}, and equivariant neural networks preserving geometric symmetries~\cite{jing2021gvp,fuchs2020se3transformer}.
+
+The field is not without controversy. Critics note that success rates for de novo design remain modest (10--50\% depending on target) compared to natural protein engineering~\cite{bernett2024bias}. Questions persist about whether designed proteins will exhibit the stability, specificity, and lack of immunogenicity required for therapeutic use. A critical evaluation crisis has been identified: Tsishyn and Rooman~\cite{bernett2024bias} demonstrated that many reported high accuracies result from dataset-specific biases rather than genuine predictive capability, suggesting that methodological artifacts may inflate perceived progress.
+
+\subsection*{Article Structure}
+
+This review provides a comprehensive analysis of this paradigm transition. Section~\ref{sec:transition} examines the trajectory from prediction to design, including methodological evolution and key milestones. Section~\ref{sec:tasks} surveys core design tasks enabled by new capabilities. Section~\ref{sec:technologies} details enabling technologies. Section~\ref{sec:challenges} discusses open challenges including evaluation, validation, and interpretability. Section~\ref{sec:applications} examines therapeutic and industrial applications. Section~\ref{sec:future} offers perspectives on future directions, and Section~\ref{sec:conclusion} synthesizes key themes and outlines grand challenges for the field.

@@ -1,0 +1,160 @@
+% Section 6: Challenges and Open Problems
+% Word count target: ~1000 words
+
+\section{Challenges and Open Problems}
+\label{sec:challenges}
+
+Despite remarkable progress, the field faces significant challenges that limit the practical applicability of AI-driven PPI design. This section examines the major obstacles and identifies promising research directions.
+
+\subsection{Evaluation Challenges}
+\label{subsec:evaluation}
+
+The evaluation of both prediction and design methods suffers from fundamental limitations that undermine confidence in reported performance.
+
+\subsubsection{Benchmark Limitations}
+
+For prediction tasks, Bernett et al.~\cite{bernett2024bias} demonstrated that many reported high accuracies result from data leakage---train-test overlap at the sequence similarity level. When rigorous cross-validation protocols prevent such leakage, model performance drops substantially. This finding suggests that benchmarks like SKEMPI~\cite{jankauskaite2019skempi2} may overestimate method capabilities. Bryant et al.~\cite{bryant2022benchmarking} systematically benchmarked AlphaFold for protein complex modeling, revealing determinants of prediction accuracy that inform both evaluation protocol design and method development.
+
+The heterogeneity of evaluation protocols across studies further complicates comparison~\cite{feng2022frameworks}. Different studies use different metrics (AUC, precision-recall, F1), different train-test splits, and different baseline methods, making fair comparison nearly impossible. Standardized benchmarks with rigorous evaluation protocols remain an unmet need. Database incompleteness in DIP~\cite{salwinski2004dip}, MINT~\cite{chatr2015mint}, and similar resources further complicates evaluation, as negative samples may represent unknown interactions rather than true non-interactors.
+
+\subsubsection{Design Evaluation}
+
+Design tasks require entirely new evaluation frameworks. Unlike prediction, where ground truth exists, design success must be measured along multiple dimensions:
+
+\begin{itemize}
+    \item \textit{Success rate}: What fraction of designs express, fold, and bind?
+    \item \textit{Novelty}: Does the design replicate known interactions or create genuinely new ones?
+    \item \textit{Quality}: What are the binding affinities, specificities, and stabilities?
+    \item \textit{Practical utility}: Does the design function in the intended application context?
+\end{itemize}
+
+Reported success rates vary widely (5--50\%) across studies~\cite{watson2023rfdiffusion,zambaldi2024alphaproteo}, but direct comparison is difficult due to different experimental protocols and target difficulties. Negative results---designs that failed---are rarely reported, creating publication bias that overstates method capabilities.
+
+\subsection{The Experimental Validation Bottleneck}
+\label{subsec:validation}
+
+Computational design outpaces experimental validation capacity~\cite{watson2023rfdiffusion}. While computational methods can generate thousands of candidate designs per day, experimental validation remains time-consuming and expensive.
+
+\subsubsection{The Design-Test Gap}
+
+The gap between design and validation creates a feedback bottleneck. Without systematic experimental testing, computational methods cannot learn from failures~\cite{trepte2024ai}. Current practice typically validates only a small subset of top-ranked designs, leaving the vast majority untested. This approach may miss high-performing designs that rank poorly computationally but succeed experimentally.
+
+The cost structure also creates inequities: well-resourced labs can validate more designs, accelerating their method development, while resource-limited labs cannot compete. Democratizing access to experimental validation infrastructure would benefit the field.
+
+\subsubsection{High-Throughput Solutions}
+
+Emerging high-throughput platforms offer partial solutions. Deep mutational scanning can test thousands of variants in parallel~\cite{kewalramani2023state}. Yeast and phage display enable rapid screening of large design libraries. However, these systems introduce their own biases---interactions that work on the yeast surface may not function in mammalian cells.
+
+\subsection{Exploring the Designable Space}
+\label{subsec:designability}
+
+A fundamental question remains largely unanswered: what fraction of the theoretical sequence-structure space is actually designable?
+
+\subsubsection{The Designability Question}
+
+Not all amino acid sequences fold into stable structures, and not all stable structures can perform desired functions. The ``designable'' subset of sequence space---sequences that fold stably and bind specifically---is unknown and potentially small~\cite{ingraham2023chroma}. Goldenzweig et al.~\cite{goldenzweig2016protein} demonstrated that systematic computational design combined with large-scale experimental validation can dramatically improve protein stability, suggesting that designability boundaries can be expanded through careful engineering.
+
+Understanding designability boundaries has practical implications. If the designable space is limited, methods should focus on efficiently exploring this space rather than generating random candidates. If the space is large but current methods sample inefficiently, improved exploration strategies would yield better designs.
+
+\subsubsection{Sequence-Structure-Function Relationships}
+
+Current methods learn implicit relationships between sequence, structure, and function from data. However, these relationships may not generalize to novel regions of sequence space. A designed protein with a sequence unlike any in the training data may fail to fold or bind despite computational predictions suggesting otherwise~\cite{dauparas2022proteinmpnn}.
+
+\subsection{Dynamic and Conditional Interactions}
+\label{subsec:dynamic}
+
+Most computational methods assume static protein structures and binary interaction states. This assumption ignores biological reality: many PPIs are transient, condition-dependent, or allosterically regulated~\cite{mcgary2010dynamic}.
+
+\subsubsection{Conformational Flexibility}
+
+Proteins are not rigid bodies. Binding often involves conformational changes, induced fit, or conformational selection~\cite{barlow2018flexddg}. Methods that design for a single static structure may fail when the actual interaction involves flexible regions or multiple conformations.
+
+AlphaFold-based predictions capture some flexibility through ensemble predictions, but do not explicitly model binding kinetics or conformational dynamics~\cite{abramson2024alphafold3}. Incorporating molecular dynamics or ensemble approaches into design pipelines remains challenging.
+
+\subsubsection{Conditional Specificity}
+
+Some of the most therapeutically relevant interactions are conditional---activated only in specific cellular contexts, by post-translational modifications, or by the presence of cofactors~\cite{mcgary2010dynamic}. Designing proteins that bind only under specific conditions requires modeling these conditional dependencies, which current methods largely ignore.
+
+\subsection{Multi-Body Complex Design}
+\label{subsec:multibody}
+
+Most design methods focus on binary interactions (one protein binding one target). However, many biological processes involve multi-protein complexes, signaling cascades, or cooperative binding.
+
+\subsubsection{Beyond Pairwise Interactions}
+
+Designing for multi-body interactions requires simultaneously optimizing multiple interfaces while ensuring correct assembly order and stoichiometry~\cite{bennett2024symmetric}. Current methods typically address this by designing pairwise interactions independently, then hoping they combine correctly.
+
+This approach fails to capture global constraints. A design optimized for interface A-B may inadvertently disrupt interface A-C when A participates in both. Simultaneous optimization of multiple interfaces remains an unsolved problem.
+
+\subsubsection{Protein Machines}
+
+The ultimate design challenge involves creating functional protein machines---assemblies that perform coordinated functions such as molecular transport, signal transduction, or catalysis~\cite{krishna2024rfaa}. These require not just structural assembly but also functional coordination across multiple subunits.
+
+\subsection{Interpretability and Trust}
+\label{subsec:interpretability}
+
+Deep learning models underlying current design methods are largely black boxes. Understanding why a design succeeds or fails---and how to improve it---remains difficult~\cite{ruffolo2022deepab}.
+
+\subsubsection{The Explainability Gap}
+
+When a design fails experimentally, current methods provide limited guidance for troubleshooting. Did the failure result from misfolded backbone, poor sequence choice, or unpredicted interface geometry? Without interpretability, iterative design becomes trial-and-error rather than rational optimization.
+
+Attention visualization and feature attribution methods offer partial insights~\cite{tubiana2022scanet}. These can highlight which residues the model considers important, but correlating attention with biological mechanism remains imperfect.
+
+\subsubsection{Building Trust}
+
+For therapeutic applications, regulatory agencies require understanding of mechanism-of-action. Black-box designs that cannot be explained or validated mechanistically may face regulatory hurdles~\cite{raybould2019developability}. Developing interpretable design methods is not just an academic concern but a practical necessity for clinical translation.
+
+\vspace{1em}
+\noindent
+These challenges define the research frontier for AI-driven PPI design. Progress on any of these fronts---better evaluation, faster validation, deeper understanding of designability, modeling of dynamics, multi-body design, or interpretability---would substantially advance the field's practical capabilities.
+
+\subsection{Computational Resources and Accessibility}
+\label{subsec:computational}
+
+A challenge often overlooked in enthusiastic reports of AI-driven design is computational accessibility. The methods described in this review require substantial computational resources that may limit democratization.
+
+\subsubsection{Training and Inference Costs}
+
+Training protein language models at scale requires enormous computational investment. ESM-2 (15B parameters) required hundreds of GPU-years of training time~\cite{lin2023esm2}. While pretrained models are freely available, fine-tuning for specific applications may require additional substantial resources. Running RFdiffusion for binder design requires GPU memory of 16--32 GB, limiting deployment to research institutions with adequate infrastructure~\cite{watson2023rfdiffusion}.
+
+AlphaFold3 and similar proprietary systems are accessible only through web interfaces with usage limits, preventing large-scale design campaigns. This creates a computational divide: well-resourced institutions can run thousands of designs while resource-limited labs cannot compete.
+
+\subsubsection{Democratization Concerns}
+
+The field exhibits significant inequities in access. Researchers at major pharmaceutical companies and well-funded academic institutions can deploy proprietary or compute-intensive methods. Researchers in developing countries, at under-resourced institutions, or in small biotech companies may lack access to state-of-the-art tools.
+
+Open-source alternatives help---RFdiffusion, ProteinMPNN, and ESMFold are freely available---but require substantial expertise and computational infrastructure to deploy effectively. Cloud computing services provide partial solutions but introduce ongoing costs that may be prohibitive for sustained research programs.
+
+\subsubsection{Environmental Impact}
+
+Large-scale protein design has an environmental footprint. Training a single large PLM can emit as much carbon as several transatlantic flights. Running thousands of design iterations compounds this impact. As the field scales, sustainable practices---efficient architectures, shared pretrained models, optimized inference---become increasingly important.
+
+Addressing these accessibility challenges requires community investment in: (1) maintaining open-source implementations, (2) providing cloud-based access for resource-limited researchers, (3) developing more efficient architectures that reduce computational requirements, and (4) establishing shared computational infrastructure accessible to the broader research community.
+
+\subsection{Ethical Considerations and Dual-Use Potential}
+\label{subsec:ethics}
+
+The ability to design novel proteins that bind specific targets carries inherent dual-use potential that warrants careful consideration~\citep{nrc2004biotechnology}.
+
+\subsubsection{Beneficial Applications}
+
+The vast majority of PPI design research serves beneficial purposes: therapeutic development, research tools, industrial enzymes, and basic science. Designed proteins could provide treatments for diseases lacking effective therapies, enable rapid response to emerging pathogens, and accelerate biological discovery.
+
+\subsubsection{Dual-Use Concerns}
+
+However, the same technologies could potentially be misused to design proteins with harmful properties: toxins, virulence factors, or proteins that enhance pathogen transmissibility. The democratization of design tools---while essential for scientific progress---lowers barriers to such misuse.
+
+Several factors mitigate these risks: (1) \textit{Technical barriers}: Designing functional, harmful proteins remains technically challenging despite recent advances; (2) \textit{Experimental validation}: Computational designs require experimental testing, creating a bottleneck; (3) \textit{Screenability}: Protein synthesis services and DNA synthesis already implement screening for harmful sequences.
+
+\subsubsection{Responsible Development}
+
+The protein design community has generally embraced responsible development practices: publishing methods openly while emphasizing beneficial applications, engaging with biosecurity experts to assess emerging risks, and supporting screening frameworks for synthesis services. Continued vigilance and engagement with policy makers will be essential as design capabilities advance.
+
+\vspace{0.5em}
+\noindent
+\textbf{Governance Frameworks.} International and national structures provide oversight for dual-use research. The Biological Weapons Convention (BWC) prohibits development of biological weapons, though verification mechanisms remain limited~\citep{nrc2004biotechnology}. National bodies such as the US National Science Advisory Board for Biosecurity (NSABB) provide guidance on dual-use research of concern. The World Health Organization (WHO) has developed frameworks for responsible life sciences research. However, these frameworks were developed before AI-driven protein design emerged, and may require updating to address the democratization of design capabilities. The protein design community would benefit from proactive engagement with these governance structures, contributing technical expertise to policy discussions and helping develop updated guidelines that balance scientific openness with appropriate safeguards.
+
+\vspace{0.5em}
+\noindent
+The dual-use nature of protein design technology does not argue against its development---virtually all powerful technologies carry dual-use potential. Rather, it argues for thoughtful governance frameworks that enable beneficial applications while minimizing misuse risks.

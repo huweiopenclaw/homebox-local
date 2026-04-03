@@ -1,0 +1,77 @@
+% Section 5: Challenges and Limitations (Target: 1000 words)
+\section{Challenges and Limitations}
+\label{sec:challenges}
+
+Despite remarkable progress, significant challenges limit practical applicability of AI-driven PPI design. This section examines major obstacles and outlines research directions.
+
+\subsection{Evaluation and Benchmarking}
+
+The evaluation crisis identified by Bernett et al.~\cite{bernett2024bias} represents a fundamental challenge: many reported high accuracies result from data leakage---train-test overlap at the sequence similarity level. When rigorous cross-validation prevents such leakage, model performance drops substantially. This suggests that many ``successful'' methods primarily learn to recognize sequence similarity rather than genuine interaction features.
+
+\textbf{Proposed Evaluation Standards.} Based on this analysis, we propose standardized evaluation protocols:
+
+\begin{enumerate}
+    \item \textit{Rigorous Sequence Identity Thresholds}: Enforce maximum 25--30\% sequence identity between train and test sets, verified through all-vs-all BLAST. However, even 30\% thresholds may be insufficient: Tsishyn and Rooman~\cite{bernett2024bias} demonstrated that predictors show strong dataset dependence even with standard cross-validation, suggesting that sequence-level similarity alone does not capture all sources of bias. We recommend combining sequence thresholds with structural clustering (e.g., TM-score < 0.5) and ensuring no overlapping protein families between splits.
+    
+    \item \textit{Temporal Splits}: Evaluate on proteins discovered after training data cutoff date, preventing contamination through database annotations.
+    
+    \item \textit{Negative Sample Construction}: Use experimentally verified non-interactors (e.g., Negatome~\cite{blohm2014negatome2}) rather than random pairing, which introduces systematic bias.
+    
+    \item \textit{Multi-Dataset Validation}: Require consistent performance across independent benchmarks (SKEMPI~\cite{jankauskaite2019skempi2}, DIP~\cite{salwinski2004dip}, MINT~\cite{chatr2015mint}) to prevent overfitting to specific dataset characteristics.
+    
+    \item \textit{Negative Result Reporting}: Require reporting of failure rates and unsuccessful targets to combat publication bias. This faces implementation challenges: researchers have little incentive to publish negative results. We propose three mechanisms: (1) data repository requirements mandating deposition of all experimental results (successful and failed) as a publication condition; (2) journal policy changes accepting ``registered reports'' where methodology is peer-reviewed before experiments begin; and (3) community recognition metrics rewarding rigor rather than just success rates. Methods achieving 20\% success with complete transparency should be valued over methods claiming 50\% success with selective reporting.
+\end{enumerate}
+
+\textbf{Design Evaluation Challenges.} For design tasks, evaluation is more complex because ground truth does not exist. Success must be measured along multiple dimensions: success rate (fraction expressing, folding, binding), novelty (genuinely new vs. replicating known interactions), quality (affinities, specificities, stabilities), and practical utility (functioning in intended contexts). Reported success rates vary widely (5--50\%) across studies, but direct comparison is difficult due to different experimental protocols and target difficulties.
+
+\subsection{Experimental Validation Bottleneck}
+
+Computational design outpaces experimental validation capacity. While methods generate thousands of candidates daily, validation remains time-consuming and expensive, creating a feedback bottleneck. Without systematic testing, methods cannot learn from failures~\cite{trepte2024ai}. Current practice validates only top-ranked designs, potentially missing high-performing designs that rank poorly computationally.
+
+\textbf{High-Throughput Solutions.} Emerging platforms offer partial solutions: deep mutational scanning for parallel variant testing, yeast/phage display for library screening. However, these introduce biases---interactions functional on yeast surfaces may not work in mammalian cells. Cost structures create inequities: well-resourced labs validate more designs, accelerating their method development.
+
+\textbf{Infrastructure Needs.} Addressing this bottleneck requires investment in: (1) centralized validation facilities accessible to the research community; (2) standardized protocols enabling cross-study comparison; (3) automated pipelines reducing human effort; and (4) data sharing platforms capturing both successes and failures. Estimated investment: \$50--100M for shared infrastructure.
+
+\subsection{Exploring the Designable Space}
+
+A fundamental question remains unanswered: what fraction of theoretical sequence-structure space is actually designable? Not all sequences fold stably, and not all stable structures perform desired functions. The designable subset may be small~\cite{ingraham2023chroma}, and designed proteins with sequences unlike training data may fail despite computational predictions~\cite{dauparas2022proteinmpnn}.
+
+Understanding designability boundaries has practical implications. If the designable space is limited, methods should focus on efficient exploration rather than random generation. If large but inefficiently sampled, improved search strategies would yield better designs. Systematic experimental characterization---deep mutational scanning combined with design---could map these boundaries, transforming design from trial-and-error to principled exploration.
+
+\subsection{Dynamic and Conditional Interactions}
+
+Most methods assume static structures and binary interaction states, ignoring biological reality: many PPIs are transient, condition-dependent, or allosterically regulated~\cite{mcgary2010dynamic}. Binding often involves conformational changes, induced fit, or conformational selection. Methods designing for single static structures may fail when actual interactions involve flexible regions or multiple conformations.
+
+AlphaFold-based predictions capture some flexibility through ensembles but do not model binding kinetics or conformational dynamics~\cite{abramson2024alphafold3}. Incorporating molecular dynamics or ensemble approaches into design pipelines remains challenging. Designing proteins that bind only under specific conditions---activated by post-translational modifications or cofactors---requires modeling conditional dependencies that current methods largely ignore.
+
+\subsection{Current Approaches to Dynamic PPIs}
+
+Several computational approaches address dynamic PPIs, though none are yet integrated into generative design pipelines.
+
+\textbf{Molecular Dynamics-Enhanced Prediction.} Enhanced sampling methods (metadynamics~\cite{barducci2008metadynamics}, replica exchange~\cite{sugita1999replica}) can characterize conformational ensembles of protein interfaces. However, these simulations remain computationally expensive ($10^3$--$10^5$ GPU-hours per complex), limiting integration into iterative design workflows. Recent work combining AlphaFold with MD simulations~\cite{bezrodniy2024alphafoldmd} demonstrated improved handling of flexible regions but increased computational cost 10-fold.
+
+\textbf{NMR Ensemble Integration.} NMR structures capture conformational heterogeneity through ensemble refinement. Approaches like EnsembleDock~\cite{bolstad2003ensembledock} dock against multiple conformers, selecting poses consistent across the ensemble. However, NMR structures represent only $\sim$5\% of PDB entries, limiting applicability. For design, this suggests that generating multiple backbone conformations during diffusion and validating against all would improve robustness for flexible targets.
+
+\textbf{AlphaFold Confidence as Flexibility Indicators.} AlphaFold's per-residue pLDDT scores correlate with experimentally observed flexibility---regions with pLDDT $< 70$ often correspond to intrinsically disordered regions~\cite{tunyasuvunakool2021alphafold}. Predicted aligned error (PAE) matrices can identify flexible inter-domain linkers. For design, this suggests: (1) targeting high-confidence (rigid) regions reduces dynamic complexity; (2) designing for conformational ensembles requires multiple backbone generation.
+
+\textbf{Conformational Selection vs.\ Induced Fit.} The conformational selection model posits proteins sample multiple conformations, and binding partners select the most complementary one. Induced fit involves conformational change upon binding. Both operate in nature, but current design methods implicitly assume rigid-body recognition. A promising direction is multi-state design: generating binders against conformational ensembles and selecting candidates binding multiple states.
+
+\textbf{Limitations for Design.} Current dynamic modeling faces three barriers: (1) computational cost (MD scales as $O(N^2)$ per timestep); (2) limited training data (few proteins have characterized dynamics); (3) evaluation challenges (measuring designed protein flexibility requires specialized experiments like hydrogen-deuterium exchange or single-molecule FRET). Near-term solutions include targeting rigid interfaces, using AlphaFold ensembles as flexibility proxies, and developing coarse-grained dynamics models.
+
+\subsection{Interpretability and Trust}
+
+Deep learning models underlying design methods are largely black boxes. When designs fail experimentally, current methods provide limited guidance for troubleshooting. Did failure result from misfolded backbone, poor sequence choice, or unpredicted interface geometry? Without interpretability, iterative design becomes trial-and-error.
+
+For therapeutic applications, regulatory agencies require understanding mechanism-of-action. Black-box designs that cannot be explained or validated mechanistically may face regulatory hurdles~\cite{raybould2019developability}. Developing interpretable design methods---where decisions can be traced to physical principles---is essential for clinical translation. Near-term goal: design methods providing mechanistic explanations for interface affinity and specificity.
+
+\subsection{Ethical and Dual-Use Considerations}
+
+The ability to design novel proteins binding specific targets carries dual-use potential warranting careful consideration~\cite{nrc2004biotechnology}. The same technologies could potentially design proteins with harmful properties, though several factors mitigate risks: technical barriers remain substantial, experimental validation creates bottlenecks, and synthesis services implement sequence screening.
+
+The protein design community has embraced responsible practices: publishing methods openly while emphasizing beneficial applications, engaging with biosecurity experts, supporting screening frameworks. Continued vigilance and engagement with governance structures---including the Biological Weapons Convention, the National Science Advisory Board for Biosecurity (NSABB), and World Health Organization frameworks---will be essential as capabilities advance. Governance frameworks developed before AI-driven protein design may require updating to address democratization of design capabilities.
+
+\textbf{Governance Recommendations.} We propose: (1) extending DNA synthesis screening protocols to cover AI-designed sequences; (2) establishing community standards for responsible publication of design methods; (3) engaging with regulatory bodies to develop updated frameworks balancing scientific openness with appropriate safeguards; and (4) developing anomaly detection systems for identifying potentially harmful design requests.
+
+\vspace{0.5em}
+\noindent
+These challenges define the research frontier. Section~\ref{sec:applications} examines current applications despite these limitations.

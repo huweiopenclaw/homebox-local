@@ -1,0 +1,71 @@
+{
+  "name": "claude_code",
+  "version": "1.0.0",
+  "description": "Claude Code 兼容编程助手 - 使用智谱 GLM API",
+  "author": "openclaw",
+  "type": "tool",
+  "config": {
+    "baseUrl": "https://open.bigmodel.cn/api/coding/paas/v4",
+    "apiKey": "98b8c5a4c32b49c4a14d331daeebcec1.oMmhzzD3iYHjJQps",
+    "model": "glm-5",
+    "temperature": 0.7,
+    "max_tokens": 4096
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "type": "string",
+        "description": "编程任务或问题"
+      },
+      "code": {
+        "type": "string",
+        "description": "需要分析的代码（可选）"
+      },
+      "action": {
+        "type": "string",
+        "enum": ["generate", "explain", "debug", "refactor", "review"],
+        "default": "generate",
+        "description": "操作类型：generate(生成), explain(解释), debug(调试), refactor(重构), review(审查)"
+      },
+      "language": {
+        "type": "string",
+        "default": "javascript",
+        "description": "编程语言"
+      }
+    },
+    "required": ["prompt"]
+  },
+  "systemPrompts": {
+    "generate": "你是一个专业的编程助手。请根据用户需求生成高质量的代码。代码需要：\n1. 结构清晰，易于理解\n2. 包含必要的注释\n3. 遵循最佳实践\n4. 考虑错误处理\n\n请用中文回答。",
+    "explain": "你是一个代码解释专家。请清晰解释代码的功能、逻辑和关键点。包括：\n1. 代码整体功能\n2. 关键逻辑说明\n3. 使用的算法或设计模式\n4. 可能的改进建议\n\n请用中文回答。",
+    "debug": "你是一个调试专家。请分析代码问题并提供解决方案：\n1. 识别可能的错误原因\n2. 提供修复建议\n3. 给出修正后的代码\n4. 解释为什么会出现这个问题\n\n请用中文回答。",
+    "refactor": "你是一个代码重构专家。请优化代码：\n1. 提高代码可读性\n2. 优化性能\n3. 减少重复代码\n4. 遵循 DRY 原则\n\n请用中文回答。",
+    "review": "你是一个代码审查专家。请审查代码并提供反馈：\n1. 代码质量评估\n2. 潜在问题\n3. 安全隐患\n4. 改进建议\n\n请用中文回答。"
+  },
+  "execute": {
+    "type": "http",
+    "method": "POST",
+    "url": "{{config.baseUrl}}/chat/completions",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer {{config.apiKey}}"
+    },
+    "body": {
+      "model": "{{config.model}}",
+      "messages": [
+        {
+          "role": "system",
+          "content": "{{systemPrompts[action]}}"
+        },
+        {
+          "role": "user",
+          "content": "{{#if code}}代码：\n```{{language}}\n{{code}}\n```\n\n{{/if}}{{prompt}}"
+        }
+      ],
+      "temperature": "{{config.temperature}}",
+      "max_tokens": "{{config.max_tokens}}"
+    },
+    "responsePath": "$.choices[0].message.content"
+  }
+}

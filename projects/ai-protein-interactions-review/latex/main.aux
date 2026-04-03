@@ -1,0 +1,507 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\bibstyle{unsrtnat}
+\providecommand \oddpage@label [2]{}
+\citation{szklarczyk2021string}
+\citation{sahni2015edgotype}
+\citation{chen2019pipr}
+\citation{sledzieski2021dscript}
+\citation{evans2022alphafoldmultimer}
+\citation{abramson2024alphafold3}
+\citation{kuhn1962structure}
+\citation{wouters2020cost}
+\citation{watson2023rfdiffusion}
+\citation{rives2021esm1b,lin2023esm2}
+\citation{watson2023rfdiffusion,ingraham2023chroma}
+\citation{jing2021gvp,fuchs2020se3transformer}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{4}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{4}{Introduction}{section.1}{}}
+\citation{bernett2024bias}
+\citation{kewalramani2023state}
+\citation{chen2019pipr}
+\citation{sledzieski2021dscript}
+\citation{szklarczyk2021string}
+\citation{lv2021gnnppi}
+\citation{gainza2020masif}
+\citation{cao2022graphppis}
+\citation{guerois2005foldx}
+\citation{jankauskaite2019skempi2}
+\citation{evans2022alphafoldmultimer}
+\citation{ketata2023diffdockpp}
+\citation{ortegon2020binding}
+\@writefile{toc}{\contentsline {section}{\numberline {2}The Prediction Paradigm: Methods and Limitations}{5}{section.2}\protected@file@percent }
+\newlabel{sec:prediction}{{2}{5}{The Prediction Paradigm: Methods and Limitations}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Task Taxonomy and Methodological Overview}{5}{subsection.2.1}\protected@file@percent }
+\newlabel{subsec:tasks}{{2.1}{5}{Task Taxonomy and Methodological Overview}{subsection.2.1}{}}
+\citation{bock2001predicting}
+\citation{shen2007predicting}
+\citation{guo2008using}
+\citation{benhur2005kernel}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The paradigm shift from prediction to design in AI-driven PPI research. \textbf  {Left panel (Prediction Paradigm, 1980s--2020):} Traditional computational approaches analyze known protein sequences and structures to predict interaction likelihood (YES/NO). Blue color scheme indicates analytical methods including machine learning classification and structure comparison. \textbf  {Right panel (Design Paradigm, 2021--present):} Modern AI-driven approaches generate novel protein sequences with desired interaction properties through iterative design-test cycles. Green color scheme indicates generative methods including diffusion models and inverse folding. The validation loop (orange) reflects the critical role of experimental feedback in refining designs---computational predictions require physical validation to confirm binding affinity, specificity, and stability. \textbf  {Center:} Red arrow marks the paradigm transition, enabled by breakthroughs in protein language models, structure prediction (AlphaFold2, RoseTTAFold), and generative AI.}}{6}{figure.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:paradigm}{{1}{6}{The paradigm shift from prediction to design in AI-driven PPI research. \textbf {Left panel (Prediction Paradigm, 1980s--2020):} Traditional computational approaches analyze known protein sequences and structures to predict interaction likelihood (YES/NO). Blue color scheme indicates analytical methods including machine learning classification and structure comparison. \textbf {Right panel (Design Paradigm, 2021--present):} Modern AI-driven approaches generate novel protein sequences with desired interaction properties through iterative design-test cycles. Green color scheme indicates generative methods including diffusion models and inverse folding. The validation loop (orange) reflects the critical role of experimental feedback in refining designs---computational predictions require physical validation to confirm binding affinity, specificity, and stability. \textbf {Center:} Red arrow marks the paradigm transition, enabled by breakthroughs in protein language models, structure prediction (AlphaFold2, RoseTTAFold), and generative AI}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Sequence-Based Prediction Methods}{6}{subsection.2.2}\protected@file@percent }
+\newlabel{subsec:sequence}{{2.2}{6}{Sequence-Based Prediction Methods}{subsection.2.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}The Hand-Crafted Feature Era (2001--2015)}{6}{subsubsection.2.2.1}\protected@file@percent }
+\citation{you2017pssm}
+\citation{chen2017deepppi}
+\citation{hashemifar2018dppi}
+\citation{chen2019pipr}
+\citation{sledzieski2021dscript}
+\citation{rives2021esm1b}
+\citation{singh2022topsyturvy}
+\citation{lv2021gnnppi}
+\citation{tang2021high}
+\citation{bryant2022deeprank}
+\citation{xie2022tagppi}
+\citation{gehring2024tuna}
+\citation{zhao2025plminteract}
+\citation{ullanat2025mint}
+\citation{huttlin2021bioplex}
+\citation{orchard2014intact}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Taxonomy of PPI prediction tasks}}{7}{table.caption.6}\protected@file@percent }
+\newlabel{tab:ppi_tasks}{{1}{7}{Taxonomy of PPI prediction tasks}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}The Deep Learning Era (2016--2020)}{7}{subsubsection.2.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}The Pre-trained Model Era (2021--Present)}{7}{subsubsection.2.2.3}\protected@file@percent }
+\citation{dominguez2003haddock}
+\citation{pierce2014zdock}
+\citation{kozakov2017cluspro}
+\citation{yan2020hdock}
+\citation{baek2023galaxytongdock}
+\citation{yan2020hdock}
+\citation{baek2023galaxytongdock}
+\citation{gainza2020masif}
+\citation{cao2022graphppis}
+\citation{sverrisson2021dmasif}
+\citation{gao2023pestoppi}
+\citation{evans2022alphafoldmultimer}
+\citation{jumper2021alphafold}
+\citation{abramson2024alphafold3}
+\citation{ketata2023diffdockpp}
+\citation{kewalramani2023state}
+\citation{smialowski2010negatome}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Structure-Based Prediction Methods}{8}{subsection.2.3}\protected@file@percent }
+\newlabel{subsec:structure}{{2.3}{8}{Structure-Based Prediction Methods}{subsection.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Traditional Docking Approaches}{8}{subsubsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Interface Prediction from Structure}{8}{subsubsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}End-to-End Complex Prediction}{8}{subsubsection.2.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Fundamental Limitations of the Prediction Paradigm}{8}{subsection.2.4}\protected@file@percent }
+\newlabel{subsec:limitations}{{2.4}{8}{Fundamental Limitations of the Prediction Paradigm}{subsection.2.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Data Dependence}{8}{subsubsection.2.4.1}\protected@file@percent }
+\citation{blohm2014negatome2}
+\citation{park2015ppi}
+\citation{bernett2024bias}
+\citation{szklarczyk2021string}
+\citation{jankauskaite2019skempi2}
+\citation{bryant2022benchmarking}
+\citation{trepte2024ai}
+\citation{feng2022frameworks}
+\citation{kewalramani2023state}
+\citation{mcgary2010dynamic}
+\citation{abramson2024alphafold3,evans2022alphafoldmultimer}
+\citation{jumper2021alphafold}
+\citation{watson2023rfdiffusion}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}The Evaluation Crisis}{9}{subsubsection.2.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}Passive Discovery Mode}{9}{subsubsection.2.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.4}Static Assumptions}{9}{subsubsection.2.4.4}\protected@file@percent }
+\citation{jumper2021alphafold}
+\citation{baek2021rosettafold}
+\citation{evans2022alphafoldmultimer}
+\citation{baek2023rosettafold2}
+\citation{abramson2024alphafold3}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Timeline of major technical breakthroughs in AI-driven protein research (2018--2025). The paradigm shift from prediction to design occurred around 2021--2022, marked by the emergence of generative methods capable of creating novel proteins rather than merely analyzing existing ones. \textbf  {Milestones shown in bold} (AlphaFold2, RFdiffusion, AlphaProteo) represent transformative advances with extensive experimental validation. \textbf  {Color coding:} Blue dots indicate prediction-focused methods that analyze known proteins; green dots indicate design-focused methods that generate novel proteins; purple dots indicate methods spanning both paradigms. The shaded background regions delineate the Prediction Era (2018--2021, characterized by structure prediction breakthroughs) from the Design Era (2022--present, characterized by generative capabilities). The ``Future'' milestone (2025) reflects ongoing development of next-generation systems combining improved accuracy with enhanced computational efficiency.}}{10}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:timeline}{{2}{10}{Timeline of major technical breakthroughs in AI-driven protein research (2018--2025). The paradigm shift from prediction to design occurred around 2021--2022, marked by the emergence of generative methods capable of creating novel proteins rather than merely analyzing existing ones. \textbf {Milestones shown in bold} (AlphaFold2, RFdiffusion, AlphaProteo) represent transformative advances with extensive experimental validation. \textbf {Color coding:} Blue dots indicate prediction-focused methods that analyze known proteins; green dots indicate design-focused methods that generate novel proteins; purple dots indicate methods spanning both paradigms. The shaded background regions delineate the Prediction Era (2018--2021, characterized by structure prediction breakthroughs) from the Design Era (2022--present, characterized by generative capabilities). The ``Future'' milestone (2025) reflects ongoing development of next-generation systems combining improved accuracy with enhanced computational efficiency}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}The Emergence of Design Paradigm}{10}{section.3}\protected@file@percent }
+\newlabel{sec:design}{{3}{10}{The Emergence of Design Paradigm}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Technical Drivers of the Paradigm Shift}{10}{subsection.3.1}\protected@file@percent }
+\newlabel{subsec:drivers}{{3.1}{10}{Technical Drivers of the Paradigm Shift}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Breakthroughs in Structure Prediction}{10}{subsubsection.3.1.1}\protected@file@percent }
+\citation{yim2023se3diffusion}
+\citation{watson2023rfdiffusion}
+\citation{ingraham2023chroma}
+\citation{bose2023foldflow}
+\citation{ketata2023diffdockpp}
+\citation{rives2021esm1b}
+\citation{lin2023esm2}
+\citation{elnaggar2021prottrans}
+\citation{su2024saprot}
+\citation{ullanat2025mint}
+\citation{zhao2025plminteract}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Introduction of Generative Models}{11}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Scaling of Protein Language Models}{11}{subsubsection.3.1.3}\protected@file@percent }
+\citation{fuchs2020se3transformer}
+\citation{jing2021gvp}
+\citation{jumper2021alphafold}
+\citation{tubiana2022scannet}
+\citation{krapp2023pesto}
+\citation{zhang2023geoplm}
+\citation{watson2023rfdiffusion}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Development of Equivariant Neural Networks}{12}{subsubsection.3.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Milestone Works in the Design Era}{12}{subsection.3.2}\protected@file@percent }
+\newlabel{subsec:milestones}{{3.2}{12}{Milestone Works in the Design Era}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Backbone Generation: RFdiffusion and Chroma}{12}{subsubsection.3.2.1}\protected@file@percent }
+\citation{ingraham2023chroma}
+\citation{dauparas2022proteinmpnn}
+\citation{hsu2022esmif1}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Comparison of major AI-driven protein design tools (2022-2024)}}{13}{table.caption.8}\protected@file@percent }
+\newlabel{tab:design_tools}{{2}{13}{Comparison of major AI-driven protein design tools (2022-2024)}{table.caption.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Sequence Design: ProteinMPNN and ESM-IF1}{13}{subsubsection.3.2.2}\protected@file@percent }
+\citation{zambaldi2024alphaproteo}
+\citation{zeng2020binding}
+\citation{abramson2024alphafold3}
+\citation{krishna2024rfaa}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Binder Design: AlphaProteo}{14}{subsubsection.3.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Multi-Modal Prediction: AlphaFold 3 and RoseTTAFold All-Atom}{14}{subsubsection.3.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}The Relationship Between Prediction and Design}{14}{subsection.3.3}\protected@file@percent }
+\newlabel{subsec:relationship}{{3.3}{14}{The Relationship Between Prediction and Design}{subsection.3.3}{}}
+\citation{watson2023rfdiffusion}
+\citation{zambaldi2024alphaproteo}
+\citation{bennett2025low}
+\citation{rao2026adversarial}
+\citation{chu2025prediction}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Critical Assessment: Successes and Limitations}{15}{subsection.3.4}\protected@file@percent }
+\newlabel{subsec:critical}{{3.4}{15}{Critical Assessment: Successes and Limitations}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Success Rate Variability}{15}{subsubsection.3.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Failure Modes}{15}{subsubsection.3.4.2}\protected@file@percent }
+\citation{anishchenko2021hallucination}
+\citation{kleywegt2023validation}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}Comparison with Traditional Approaches}{16}{subsubsection.3.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.4}The Hallucination Problem}{16}{subsubsection.3.4.4}\protected@file@percent }
+\citation{watson2023rfdiffusion,zambaldi2024alphaproteo}
+\citation{watson2023rfdiffusion}
+\citation{watson2023rfdiffusion}
+\citation{dauparas2022proteinmpnn}
+\citation{zambaldi2024alphaproteo}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Core Tasks in the Design Era}{17}{section.4}\protected@file@percent }
+\newlabel{sec:design_tasks}{{4}{17}{Core Tasks in the Design Era}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Protein Binder Design}{17}{subsection.4.1}\protected@file@percent }
+\newlabel{subsec:binder}{{4.1}{17}{Protein Binder Design}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Task Definition and Challenges}{17}{subsubsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Current Methods and Performance}{17}{subsubsection.4.1.2}\protected@file@percent }
+\citation{krishna2024rfaa}
+\citation{watson2023rfdiffusion}
+\citation{ruffolo2022deepab}
+\citation{alford2017rosettaantibody}
+\citation{ruffolo2022deepab}
+\citation{ruffolo2023igfold}
+\citation{abanades2023immunebuilder}
+\citation{henry2024abodybuilder3}
+\citation{li2022abagintpre}
+\citation{zhang2024nanobody}
+\citation{abanades2023immunebuilder}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Applications}{18}{subsubsection.4.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Antibody Design}{18}{subsection.4.2}\protected@file@percent }
+\newlabel{subsec:antibody}{{4.2}{18}{Antibody Design}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Antibody Structure Prediction}{18}{subsubsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Antibody-Antigen Interaction Prediction}{18}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Antibody Design and Optimization}{18}{subsubsection.4.2.3}\protected@file@percent }
+\citation{raybould2019developability}
+\citation{jankauskaite2019skempi2}
+\citation{guerois2005foldx}
+\citation{barlow2018flexddg}
+\citation{rodrigues2019mcsm}
+\citation{liu2021geoppi}
+\citation{liu2024ssifaffinity}
+\citation{li2022ssipe}
+\citation{dehouck2013beatmusic}
+\citation{luo2024ddaffinity}
+\citation{qiu2024ipe}
+\citation{rodrigues2019mcsm}
+\citation{dauparas2022proteinmpnn}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Interface Optimization}{19}{subsection.4.3}\protected@file@percent }
+\newlabel{subsec:interface}{{4.3}{19}{Interface Optimization}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Affinity Maturation}{19}{subsubsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Specificity Engineering}{19}{subsubsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Stability and Developability}{19}{subsubsection.4.3.3}\protected@file@percent }
+\citation{watson2023rfdiffusion}
+\citation{watson2023rfdiffusion}
+\citation{bennett2024symmetric}
+\citation{krishna2024rfaa}
+\citation{bennett2024symmetric}
+\citation{watson2023rfdiffusion,ho2020denoising}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}De Novo Interaction Network Design}{20}{subsection.4.4}\protected@file@percent }
+\newlabel{subsec:network}{{4.4}{20}{De Novo Interaction Network Design}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Symmetric Oligomer Design}{20}{subsubsection.4.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Multi-Component Systems}{20}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Challenges in Network Design}{20}{subsubsection.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Key Enabling Technologies}{20}{section.5}\protected@file@percent }
+\newlabel{sec:technologies}{{5}{20}{Key Enabling Technologies}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Generative Models for Protein Design}{20}{subsection.5.1}\protected@file@percent }
+\newlabel{subsec:generative}{{5.1}{20}{Generative Models for Protein Design}{subsection.5.1}{}}
+\citation{ho2020denoising}
+\citation{watson2023rfdiffusion}
+\citation{dauparas2022proteinmpnn}
+\citation{hsu2022esmif1}
+\citation{fuchs2020se3transformer,jing2021gvp}
+\citation{fuchs2020se3transformer}
+\citation{jing2021gvp}
+\citation{jumper2021alphafold}
+\citation{gainza2020masif}
+\citation{gao2023pestoppi}
+\citation{rives2021esm1b,lin2023esm2}
+\citation{rives2021esm1b}
+\citation{lin2023esm2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Structure-Aware Representations}{21}{subsection.5.2}\protected@file@percent }
+\newlabel{subsec:structure}{{5.2}{21}{Structure-Aware Representations}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Protein Language Models}{21}{subsection.5.3}\protected@file@percent }
+\newlabel{subsec:plm}{{5.3}{21}{Protein Language Models}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Foundation Models}{21}{subsubsection.5.3.1}\protected@file@percent }
+\citation{elnaggar2021prottrans}
+\citation{chen2024xtrimopglm}
+\citation{zhao2024goproteingnn}
+\citation{su2024saprot}
+\citation{ullanat2025mint}
+\citation{zhao2025plminteract}
+\citation{dallago2024plmfinetune}
+\citation{bernett2024bias}
+\citation{jankauskaite2019skempi2}
+\citation{bryant2022benchmarking}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.2}Structure-Aware Language Models}{22}{subsubsection.5.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.3}Fine-Tuning for Downstream Tasks}{22}{subsubsection.5.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Challenges and Open Problems}{22}{section.6}\protected@file@percent }
+\newlabel{sec:challenges}{{6}{22}{Challenges and Open Problems}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Evaluation Challenges}{22}{subsection.6.1}\protected@file@percent }
+\newlabel{subsec:evaluation}{{6.1}{22}{Evaluation Challenges}{subsection.6.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}Benchmark Limitations}{22}{subsubsection.6.1.1}\protected@file@percent }
+\citation{feng2022frameworks}
+\citation{salwinski2004dip}
+\citation{chatr2015mint}
+\citation{watson2023rfdiffusion,zambaldi2024alphaproteo}
+\citation{watson2023rfdiffusion}
+\citation{trepte2024ai}
+\citation{kewalramani2023state}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.2}Design Evaluation}{23}{subsubsection.6.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The Experimental Validation Bottleneck}{23}{subsection.6.2}\protected@file@percent }
+\newlabel{subsec:validation}{{6.2}{23}{The Experimental Validation Bottleneck}{subsection.6.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}The Design-Test Gap}{23}{subsubsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}High-Throughput Solutions}{23}{subsubsection.6.2.2}\protected@file@percent }
+\citation{ingraham2023chroma}
+\citation{goldenzweig2016protein}
+\citation{dauparas2022proteinmpnn}
+\citation{mcgary2010dynamic}
+\citation{barlow2018flexddg}
+\citation{abramson2024alphafold3}
+\citation{mcgary2010dynamic}
+\citation{bennett2024symmetric}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Exploring the Designable Space}{24}{subsection.6.3}\protected@file@percent }
+\newlabel{subsec:designability}{{6.3}{24}{Exploring the Designable Space}{subsection.6.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1}The Designability Question}{24}{subsubsection.6.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.2}Sequence-Structure-Function Relationships}{24}{subsubsection.6.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Dynamic and Conditional Interactions}{24}{subsection.6.4}\protected@file@percent }
+\newlabel{subsec:dynamic}{{6.4}{24}{Dynamic and Conditional Interactions}{subsection.6.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.1}Conformational Flexibility}{24}{subsubsection.6.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.2}Conditional Specificity}{24}{subsubsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Multi-Body Complex Design}{24}{subsection.6.5}\protected@file@percent }
+\newlabel{subsec:multibody}{{6.5}{24}{Multi-Body Complex Design}{subsection.6.5}{}}
+\citation{krishna2024rfaa}
+\citation{ruffolo2022deepab}
+\citation{tubiana2022scanet}
+\citation{raybould2019developability}
+\citation{lin2023esm2}
+\citation{watson2023rfdiffusion}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}Beyond Pairwise Interactions}{25}{subsubsection.6.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.2}Protein Machines}{25}{subsubsection.6.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Interpretability and Trust}{25}{subsection.6.6}\protected@file@percent }
+\newlabel{subsec:interpretability}{{6.6}{25}{Interpretability and Trust}{subsection.6.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.6.1}The Explainability Gap}{25}{subsubsection.6.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.6.2}Building Trust}{25}{subsubsection.6.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Computational Resources and Accessibility}{25}{subsection.6.7}\protected@file@percent }
+\newlabel{subsec:computational}{{6.7}{25}{Computational Resources and Accessibility}{subsection.6.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.7.1}Training and Inference Costs}{25}{subsubsection.6.7.1}\protected@file@percent }
+\citation{nrc2004biotechnology}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.7.2}Democratization Concerns}{26}{subsubsection.6.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.7.3}Environmental Impact}{26}{subsubsection.6.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.8}Ethical Considerations and Dual-Use Potential}{26}{subsection.6.8}\protected@file@percent }
+\newlabel{subsec:ethics}{{6.8}{26}{Ethical Considerations and Dual-Use Potential}{subsection.6.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.8.1}Beneficial Applications}{26}{subsubsection.6.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.8.2}Dual-Use Concerns}{26}{subsubsection.6.8.2}\protected@file@percent }
+\citation{nrc2004biotechnology}
+\citation{trepte2024ai}
+\citation{raybould2019developability}
+\citation{kenlay2024antibody,huang2024antibody}
+\citation{watson2023rfdiffusion}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.8.3}Responsible Development}{27}{subsubsection.6.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Applications and Impact}{27}{section.7}\protected@file@percent }
+\newlabel{sec:applications}{{7}{27}{Applications and Impact}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Therapeutic Protein Design}{27}{subsection.7.1}\protected@file@percent }
+\newlabel{subsec:therapeutics}{{7.1}{27}{Therapeutic Protein Design}{subsection.7.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.1}Antibody and Binder Therapeutics}{27}{subsubsection.7.1.1}\protected@file@percent }
+\citation{zambaldi2024alphaproteo}
+\citation{silva2020il2}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Selected applications of AI-designed protein-protein interactions}}{28}{table.caption.9}\protected@file@percent }
+\newlabel{tab:applications}{{3}{28}{Selected applications of AI-designed protein-protein interactions}{table.caption.9}{}}
+\citation{fleming2021computational}
+\citation{trepte2024ai}
+\citation{krishna2024rfaa}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.2}Cytokine and Receptor Engineering}{29}{subsubsection.7.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.3}Emerging Modalities}{29}{subsubsection.7.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Industrial and Economic Impact}{29}{subsection.7.2}\protected@file@percent }
+\newlabel{subsec:economic}{{7.2}{29}{Industrial and Economic Impact}{subsection.7.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Cost and Timeline Reduction}{29}{subsubsection.7.2.1}\protected@file@percent }
+\citation{krishna2024rfaa}
+\citation{watson2023rfdiffusion}
+\citation{ruffolo2022deepab}
+\citation{zhang2024nanobody}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Enzyme Engineering}{30}{subsubsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.3}Agricultural and Environmental Applications}{30}{subsubsection.7.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Research Tools and Basic Science}{30}{subsection.7.3}\protected@file@percent }
+\newlabel{subsec:research}{{7.3}{30}{Research Tools and Basic Science}{subsection.7.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.3.1}Mechanism Validation}{30}{subsubsection.7.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.3.2}Imaging and Detection Tools}{30}{subsubsection.7.3.2}\protected@file@percent }
+\citation{bennett2024symmetric}
+\citation{chen2019design}
+\citation{morsut2016synnotch}
+\citation{watson2023rfdiffusion}
+\citation{watson2023rfdiffusion}
+\citation{dauparas2022proteinmpnn}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.3.3}Synthetic Biology and Circuit Design}{31}{subsubsection.7.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.3.4}Structure-Function Exploration}{31}{subsubsection.7.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Future Outlook}{31}{section.8}\protected@file@percent }
+\newlabel{sec:future}{{8}{31}{Future Outlook}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Prediction-Design Integration}{31}{subsection.8.1}\protected@file@percent }
+\newlabel{subsec:integration}{{8.1}{31}{Prediction-Design Integration}{subsection.8.1}{}}
+\citation{dallago2024plmfinetune}
+\citation{abramson2024alphafold3}
+\citation{watson2023rfdiffusion}
+\citation{rives2021esm1b}
+\citation{jumper2021alphafold}
+\citation{watson2023rfdiffusion}
+\citation{lin2023esm2}
+\citation{dallago2024plmfinetune}
+\citation{bennett2024symmetric}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.1.1}Iterative Design Cycles}{32}{subsubsection.8.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.1.2}Unified Prediction-Design Models}{32}{subsubsection.8.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Toward Protein Intelligence}{32}{subsection.8.2}\protected@file@percent }
+\newlabel{subsec:intelligence}{{8.2}{32}{Toward Protein Intelligence}{subsection.8.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}Capability Levels}{32}{subsubsection.8.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.2}Language Models as Design Engines}{32}{subsubsection.8.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Paradigm Shifts in Biological Research}{32}{subsection.8.3}\protected@file@percent }
+\newlabel{subsec:paradigm}{{8.3}{32}{Paradigm Shifts in Biological Research}{subsection.8.3}{}}
+\citation{zambaldi2024alphaproteo}
+\citation{ingraham2023chroma}
+\citation{bernett2024bias}
+\citation{ruffolo2022deepab}
+\citation{trepte2024ai}
+\citation{kewalramani2023state}
+\citation{rives2021esm1b,lin2023esm2}
+\citation{watson2023rfdiffusion,ingraham2023chroma}
+\citation{jing2021gvp,fuchs2020se3transformer}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.1}From Discovery to Engineering}{33}{subsubsection.8.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.2}From Trial-and-Error to Rational Design}{33}{subsubsection.8.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.3}From Observing to Creating Nature}{33}{subsubsection.8.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Remaining Challenges}{33}{subsection.8.4}\protected@file@percent }
+\newlabel{subsec:challenges_future}{{8.4}{33}{Remaining Challenges}{subsection.8.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{33}{section.9}\protected@file@percent }
+\newlabel{sec:conclusion}{{9}{33}{Conclusion}{section.9}{}}
+\citation{bernett2024bias}
+\citation{zambaldi2024alphaproteo,trepte2024ai}
+\citation{jumper2021alphafold,dauparas2022proteinmpnn}
+\bibdata{references}
+\bibcite{szklarczyk2021string}{{1}{2019}{{Szklarczyk et~al.}}{{Szklarczyk, Gable, Nastou, Lyon, Kirsch, Pyysalo, Doncheva, Legeay, Fang, Bork, et~al.}}}
+\bibcite{sahni2015edgotype}{{2}{2015}{{Sahni et~al.}}{{Sahni, Yi, Taipale, Bass, et~al.}}}
+\bibcite{chen2019pipr}{{3}{2019{a}}{{Chen et~al.}}{{Chen, Li, Liu, Xu, and Tang}}}
+\bibcite{sledzieski2021dscript}{{4}{2021}{{Sledzieski et~al.}}{{Sledzieski, Singh, Cowen, and Berger}}}
+\bibcite{evans2022alphafoldmultimer}{{5}{2022}{{Evans et~al.}}{{Evans, O'Neill, Pritzel, Antropova, Senior, Green, {\v {Z}}{\'\i }dek, Bates, Blackwell, Yim, et~al.}}}
+\bibcite{abramson2024alphafold3}{{6}{2024}{{Abramson et~al.}}{{Abramson, Adler, Dunger, Evans, Green, Pritzel, Ronneberger, Willmore, Ballard, Bambrick, et~al.}}}
+\bibcite{kuhn1962structure}{{7}{1962}{{Kuhn}}{{}}}
+\bibcite{wouters2020cost}{{8}{2020}{{Wouters et~al.}}{{Wouters, McKee, and Luyten}}}
+\bibcite{watson2023rfdiffusion}{{9}{2023}{{Watson et~al.}}{{Watson, Juergens, Bennett, Tighe, Yim, Eisenberg, Sankar, Bender, Halabiya, Wei, et~al.}}}
+\bibcite{rives2021esm1b}{{10}{2021}{{Rives et~al.}}{{Rives, Meier, Sercu, Goyal, Lin, Liu, Guo, Ott, Zitnick, Ma, and Fergus}}}
+\bibcite{lin2023esm2}{{11}{2023}{{Lin et~al.}}{{Lin, Akin, Rao, Hie, Zhu, Lu, Smetanin, Verkuil, Kabeli, Shmueli, et~al.}}}
+\bibcite{ingraham2023chroma}{{12}{2023}{{Ingraham et~al.}}{{Ingraham, Baranov, Costello, et~al.}}}
+\bibcite{jing2021gvp}{{13}{2021}{{Jing et~al.}}{{Jing, Eismann, Soni, and Dror}}}
+\bibcite{fuchs2020se3transformer}{{14}{2020}{{Fuchs et~al.}}{{Fuchs, Worrall, Fischer, and Welling}}}
+\bibcite{bernett2024bias}{{15}{2024}{{Tsishyn and Rooman}}{{}}}
+\bibcite{kewalramani2023state}{{16}{2023}{{Kewalramani and Emili}}{{}}}
+\bibcite{lv2021gnnppi}{{17}{2021}{{Lv et~al.}}{{Lv, Wu, Zhang, and Cui}}}
+\bibcite{gainza2020masif}{{18}{2020}{{Gainza et~al.}}{{Gainza, Sverrisson, Monti, Rodol{\`a}, Boscaini, Bronstein, and Correia}}}
+\bibcite{cao2022graphppis}{{19}{2022}{{Cao et~al.}}{{Cao, Pan, Yang, Huang, and Shen}}}
+\bibcite{guerois2005foldx}{{20}{2003}{{Guerois et~al.}}{{Guerois, Nielsen, and Serrano}}}
+\bibcite{jankauskaite2019skempi2}{{21}{2019}{{Jankauskaite et~al.}}{{Jankauskaite, Jim{\'e}nez-Garc{\'\i }a, Dapk{\=u}nas, Fern{\'a}ndez-Recio, and Moal}}}
+\bibcite{ketata2023diffdockpp}{{22}{2023}{{Ketata et~al.}}{{Ketata, Laue, Mousavian, et~al.}}}
+\bibcite{ortegon2020binding}{{23}{2022}{{García-Ortegón et~al.}}{{García-Ortegón, Simm, Tripp, Hernández-Lobato, Bender, et~al.}}}
+\bibcite{bock2001predicting}{{24}{2001}{{Bock and Gough}}{{}}}
+\bibcite{shen2007predicting}{{25}{2007}{{Shen et~al.}}{{Shen, Zhang, Luo, Zhu, Yu, Chen, Li, and Jiang}}}
+\bibcite{guo2008using}{{26}{2008}{{Guo et~al.}}{{Guo, Yu, Wen, and Li}}}
+\bibcite{benhur2005kernel}{{27}{2005}{{Ben-Hur and Noble}}{{}}}
+\bibcite{you2017pssm}{{28}{2017}{{You et~al.}}{{You, Chan, and Hu}}}
+\bibcite{chen2017deepppi}{{29}{2017}{{Chen et~al.}}{{}}}
+\bibcite{hashemifar2018dppi}{{30}{2018}{{Hashemifar et~al.}}{{Hashemifar, Neyshabur, Khan, and Xu}}}
+\bibcite{singh2022topsyturvy}{{31}{2022}{{Singh et~al.}}{{Singh, Sledzieski, Bryson, Cowen, and Berger}}}
+\bibcite{tang2021high}{{32}{2021}{{Tang et~al.}}{{}}}
+\bibcite{bryant2022deeprank}{{33}{2022{a}}{{Bryant et~al.}}{{Bryant, Pozzati, Zhu, et~al.}}}
+\bibcite{xie2022tagppi}{{34}{2022}{{Xie et~al.}}{{Xie, Li, Xiao, Wang, and Lu}}}
+\bibcite{gehring2024tuna}{{35}{2024}{{Gehring et~al.}}{{}}}
+\bibcite{zhao2025plminteract}{{36}{2025}{{Zhao et~al.}}{{}}}
+\bibcite{ullanat2025mint}{{37}{2025}{{Ullanat et~al.}}{{}}}
+\bibcite{huttlin2021bioplex}{{38}{2021}{{Huttlin et~al.}}{{Huttlin, Bruckner, et~al.}}}
+\bibcite{orchard2014intact}{{39}{2014}{{Orchard et~al.}}{{Orchard, Ammari, et~al.}}}
+\bibcite{dominguez2003haddock}{{40}{2003}{{Dominguez et~al.}}{{Dominguez, Boelens, and Bonvin}}}
+\bibcite{pierce2014zdock}{{41}{2014}{{Pierce et~al.}}{{Pierce, Wiehe, Hwang, Kim, Vreven, and Weng}}}
+\bibcite{kozakov2017cluspro}{{42}{2017}{{Kozakov et~al.}}{{Kozakov, Hall, Xia, Porter, Padhorny, Yueh, Beglov, and Vajda}}}
+\bibcite{yan2020hdock}{{43}{2017}{{Yan et~al.}}{{Yan, Zhang, Zhou, Li, and Huang}}}
+\bibcite{baek2023galaxytongdock}{{44}{2017}{{Baek et~al.}}{{Baek, Park, Heo, Park, and Seok}}}
+\bibcite{sverrisson2021dmasif}{{45}{2021}{{Sverrisson et~al.}}{{Sverrisson, Feydy, Correia, and Bronstein}}}
+\bibcite{gao2023pestoppi}{{46}{2023}{{Rodr{\'\i }guez et~al.}}{{}}}
+\bibcite{jumper2021alphafold}{{47}{2021}{{Jumper et~al.}}{{Jumper, Evans, Pritzel, Green, Figurnov, Ronneberger, Tunyasuvunakool, Bates, {\v {Z}}{\'\i }dek, Potapenko, Bridgland, et~al.}}}
+\bibcite{smialowski2010negatome}{{48}{2010}{{Smialowski et~al.}}{{Smialowski, Pagel, Wong, Brauner, Dunger, Fobo, Frishman, Montrone, Theis, et~al.}}}
+\bibcite{blohm2014negatome2}{{49}{2014}{{Blohm et~al.}}{{Blohm, Frishman, Smialowski, et~al.}}}
+\bibcite{park2015ppi}{{50}{2015}{{Park and Marcotte}}{{}}}
+\bibcite{bryant2022benchmarking}{{51}{2022{b}}{{Bryant et~al.}}{{Bryant, Pozzati, and Elofsson}}}
+\bibcite{trepte2024ai}{{52}{2024}{{Trepte et~al.}}{{}}}
+\bibcite{feng2022frameworks}{{53}{2022}{{Feng et~al.}}{{Feng, Zhang, and Hu}}}
+\bibcite{mcgary2010dynamic}{{54}{2010}{{McGary et~al.}}{{McGary, Lee, and Marcotte}}}
+\bibcite{baek2021rosettafold}{{55}{2021}{{Baek et~al.}}{{Baek, DiMaio, Anishchenko, Dauparas, Ovchinnikov, Lee, Wang, Cong, Kinch, Schaeffer, et~al.}}}
+\bibcite{baek2023rosettafold2}{{56}{2023}{{Baek and Baker}}{{}}}
+\bibcite{yim2023se3diffusion}{{57}{2023}{{Yim et~al.}}{{Yim, Trippe, De~Bortoli, Mathieu, Baranchuk, Russo, et~al.}}}
+\bibcite{bose2023foldflow}{{58}{2023}{{Bose et~al.}}{{}}}
+\bibcite{elnaggar2021prottrans}{{59}{2021}{{Elnaggar et~al.}}{{Elnaggar, Heinzinger, Dallago, Rehawi, Wang, Jones, Gibbs, Feher, Angerer, Steinegger, et~al.}}}
+\bibcite{su2024saprot}{{60}{2024}{{Su et~al.}}{{Su, Han, Zhou, Zhang, Huang, Lu, Zhang, and Yuan}}}
+\bibcite{tubiana2022scannet}{{61}{2022{a}}{{Tubiana et~al.}}{{Tubiana, Schneidman-Duhovny, and Wolfson}}}
+\bibcite{krapp2023pesto}{{62}{2023}{{Krapp et~al.}}{{}}}
+\bibcite{zhang2023geoplm}{{63}{2023}{{Zhang et~al.}}{{}}}
+\bibcite{dauparas2022proteinmpnn}{{64}{2022}{{Dauparas et~al.}}{{Dauparas, Anishchenko, Bennett, Bai, Ragotte, Milles, Wicky, Courbet, de~Haas, Bethel, et~al.}}}
+\bibcite{hsu2022esmif1}{{65}{2022}{{Hsu et~al.}}{{Hsu, Verkuil, Liu, Lin, Hie, Sercu, Lerer, and Rives}}}
+\bibcite{zambaldi2024alphaproteo}{{66}{2024}{{Zambaldi et~al.}}{{Zambaldi, La, Yim, Juergens, et~al.}}}
+\bibcite{zeng2020binding}{{67}{2020}{{Zeng et~al.}}{{Zeng, Wang, Li, Zhang, Li, Zhou, Hua, Cai, Peng, and Zhang}}}
+\bibcite{krishna2024rfaa}{{68}{2024}{{Krishna et~al.}}{{Krishna, Wang, Ahern, Sturmfels, et~al.}}}
+\bibcite{bennett2025low}{{69}{2025}{{Bennett et~al.}}{{}}}
+\bibcite{rao2026adversarial}{{70}{2026}{{Rao et~al.}}{{}}}
+\bibcite{chu2025prediction}{{71}{2025}{{Chu et~al.}}{{}}}
+\bibcite{anishchenko2021hallucination}{{72}{2021}{{Anishchenko et~al.}}{{Anishchenko, Pellock, Chidyausiku, et~al.}}}
+\bibcite{kleywegt2023validation}{{73}{2023}{{Kleywegt et~al.}}{{}}}
+\bibcite{ruffolo2022deepab}{{74}{2022}{{Ruffolo et~al.}}{{Ruffolo, Guerra, Mahajan, Sulam, and Gray}}}
+\bibcite{alford2017rosettaantibody}{{75}{2017}{{Alford et~al.}}{{}}}
+\bibcite{ruffolo2023igfold}{{76}{2023}{{Ruffolo et~al.}}{{Ruffolo, Mahajan, Sulam, and Gray}}}
+\bibcite{abanades2023immunebuilder}{{77}{2023}{{Abanades et~al.}}{{Abanades, Wong, Dinesh, George, Georges, Budzowski, and Deane}}}
+\bibcite{henry2024abodybuilder3}{{78}{2024}{{Henry et~al.}}{{}}}
+\bibcite{li2022abagintpre}{{79}{2022{a}}{{Li et~al.}}{{}}}
+\bibcite{zhang2024nanobody}{{80}{2024}{{Zhang et~al.}}{{}}}
+\bibcite{raybould2019developability}{{81}{2019}{{Raybould et~al.}}{{}}}
+\bibcite{barlow2018flexddg}{{82}{2018}{{Barlow et~al.}}{{Barlow, {\v {S}}o{\v {s}}i{\'c}, Thompson, Suresh, Lucas, Kuhlman, and Konerding}}}
+\bibcite{rodrigues2019mcsm}{{83}{2019}{{Rodrigues et~al.}}{{Rodrigues, Myung, Silk, Pires, and Ascher}}}
+\bibcite{liu2021geoppi}{{84}{2021}{{Liu et~al.}}{{Liu, Yang, Chen, Wang, Song, Li, Li, Chen, and Zhai}}}
+\bibcite{liu2024ssifaffinity}{{85}{2024}{{Liu et~al.}}{{}}}
+\bibcite{li2022ssipe}{{86}{2022{b}}{{Li et~al.}}{{Li, Yang, Huang, Sun, and Skolnick}}}
+\bibcite{dehouck2013beatmusic}{{87}{2013}{{Dehouck et~al.}}{{Dehouck, Kwasigroch, Rooman, and Gilis}}}
+\bibcite{luo2024ddaffinity}{{88}{2024}{{Luo et~al.}}{{}}}
+\bibcite{qiu2024ipe}{{89}{2024}{{Qiu et~al.}}{{}}}
+\bibcite{bennett2024symmetric}{{90}{2024}{{Bennett et~al.}}{{}}}
+\bibcite{ho2020denoising}{{91}{2020}{{Ho et~al.}}{{Ho, Jain, and Abbeel}}}
+\bibcite{chen2024xtrimopglm}{{92}{2024}{{Chen et~al.}}{{}}}
+\bibcite{zhao2024goproteingnn}{{93}{2024}{{Zhao et~al.}}{{}}}
+\bibcite{dallago2024plmfinetune}{{94}{2024}{{Dallago et~al.}}{{}}}
+\bibcite{salwinski2004dip}{{95}{2004}{{Salwinski et~al.}}{{}}}
+\bibcite{chatr2015mint}{{96}{2007}{{Chatr-aryamontri et~al.}}{{}}}
+\bibcite{goldenzweig2016protein}{{97}{2016}{{Goldenzweig et~al.}}{{}}}
+\bibcite{tubiana2022scanet}{{98}{2022{b}}{{Tubiana et~al.}}{{Tubiana, Schneidman-Duhovny, and Wolfson}}}
+\bibcite{nrc2004biotechnology}{{99}{2004}{{National Research Council}}{{}}}
+\bibcite{kenlay2024antibody}{{100}{2024}{{Kenlay et~al.}}{{}}}
+\bibcite{huang2024antibody}{{101}{2024}{{Huang et~al.}}{{}}}
+\bibcite{silva2020il2}{{102}{2020}{{Silva et~al.}}{{}}}
+\bibcite{fleming2021computational}{{103}{2021}{{Fleming et~al.}}{{}}}
+\bibcite{chen2019design}{{104}{2019{b}}{{Chen et~al.}}{{}}}
+\bibcite{morsut2016synnotch}{{105}{2016}{{Morsut et~al.}}{{}}}
+\gdef \@abspage@last{42}

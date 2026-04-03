@@ -1,0 +1,95 @@
+% Figure 1: Paradigm Shift Diagram
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    scale=0.85,
+    transform shape,
+    box/.style={
+        rectangle,
+        rounded corners=3pt,
+        draw=#1!70!black,
+        fill=#1!20,
+        thick,
+        text width=5.5cm,
+        minimum height=1.8cm,
+        align=center,
+        font=\small
+    },
+    arrow/.style={
+        ->,
+        >=stealth,
+        thick,
+        #1
+    }
+]
+
+% Left Panel: Prediction Paradigm
+\node[font=\large\bfseries, color=blue!70!black] at (-4, 6) {Prediction Paradigm};
+\node[font=\footnotesize, color=gray] at (-4, 5.5) {(1980s-2020)};
+
+\node[box=blue] (input1) at (-4, 4) {
+    \textbf{Input: Known Proteins}\\
+    Sequences/Structures
+};
+
+\node[box=blue!60] (analysis) at (-4, 1.5) {
+    \textbf{Computational Analysis}\\
+    Sequence similarity\\
+    Structure comparison\\
+    ML classification
+};
+
+\node[box=blue!40] (output1) at (-4, -1) {
+    \textbf{Output: Classification}\\
+    ``Will these interact?''\\
+    Answer: YES / NO
+};
+
+\draw[arrow=blue!70] (input1) -- (analysis);
+\draw[arrow=blue!70] (analysis) -- (output1);
+
+\node[font=\footnotesize\itshape, color=blue!60] at (-4, -2.5) {Mode: Discovery \& Understanding};
+
+% Right Panel: Design Paradigm
+\node[font=\large\bfseries, color=green!70!black] at (4, 6) {Design Paradigm};
+\node[font=\footnotesize, color=gray] at (4, 5.5) {(2021-Present)};
+
+\node[box=green] (input2) at (4, 4) {
+    \textbf{Input: Design Goal}\\
+    ``What interaction do we WANT?''
+};
+
+\node[box=green!60] (design) at (4, 1.5) {
+    \textbf{Generative AI Design}\\
+    Diffusion models\\
+    Inverse folding\\
+    Multi-objective optimization
+};
+
+\node[box=green!40] (output2) at (4, -1) {
+    \textbf{Output: Novel Proteins}\\
+    ``Proteins that WILL bind''\\
+    (Candidates: 100s-1000s)
+};
+
+\node[box=green!30] (validate) at (4, -3.5) {
+    \textbf{Validation \& Iteration}\\
+    Computational screening\\
+    Experimental testing
+};
+
+\draw[arrow=green!70] (input2) -- (design);
+\draw[arrow=green!70] (design) -- (output2);
+\draw[arrow=green!70] (output2) -- (validate);
+\draw[arrow=green!70, rounded corners=8pt] (validate.west) -- ++(-2,0) |- (input2.west);
+
+\node[font=\footnotesize\itshape, color=green!60] at (4, -5) {Mode: Creation \& Engineering};
+
+% Center Arrow
+\draw[->, ultra thick, red!70!black] (-0.3, 1.5) -- (0.3, 1.5);
+\node[font=\small\bfseries, color=red!70!black, rotate=90] at (0, 1.5) {SHIFT};
+
+\end{tikzpicture}
+\caption{The paradigm shift from prediction to design in AI-driven protein-protein interaction research. Left: The prediction paradigm (1980s-2020) focuses on analyzing existing proteins to predict interactions. Right: The design paradigm (2021-present) enables creation of novel proteins with desired interaction properties through iterative design-test cycles.}
+\label{fig:paradigm_shift}
+\end{figure}

@@ -1,0 +1,95 @@
+% Section 4: Core Tasks in the Design Era
+% Word count target: ~1200 words
+
+\section{Core Tasks in the Design Era}
+\label{sec:design_tasks}
+
+The shift from prediction to design fundamentally changes the questions that computational methods can address. Rather than asking ``what interactions exist?'' or ``how strong is this binding?'', the design paradigm asks ``how can we create a protein that binds this target?'' or ``how can we improve this interaction?'' This section surveys the major design tasks enabled by recent advances in generative protein modeling.
+
+\subsection{Protein Binder Design}
+\label{subsec:binder}
+
+\textit{Protein binder design}---creating novel proteins that specifically bind to target molecules---represents the most direct application of the design paradigm to PPI engineering~\cite{watson2023rfdiffusion,zambaldi2024alphaproteo}. Given a target protein structure or sequence, the goal is to generate a binding partner with high affinity and specificity.
+
+\subsubsection{Task Definition and Challenges}
+
+The binder design problem can be decomposed into several subtasks: (1) \textit{epitope selection}, identifying the target region to bind; (2) \textit{scaffold generation}, creating a backbone structure that complements the epitope; (3) \textit{sequence design}, optimizing the amino acid sequence for stability and binding; and (4) \textit{validation}, predicting whether the designed binder will actually bind.
+
+The fundamental challenge is that the design space is astronomically large---there are $20^{100}$ possible sequences for a 100-residue protein---yet only a tiny fraction fold stably and bind the target with high affinity. Classical approaches relied on expert knowledge and extensive experimental screening, but AI methods now enable more targeted exploration of this space~\cite{watson2023rfdiffusion}.
+
+\subsubsection{Current Methods and Performance}
+
+RFdiffusion~\cite{watson2023rfdiffusion} pioneered general-purpose protein backbone generation for binder design. Given a target structure and optional epitope specification, the method uses a diffusion model trained on RoseTTAFold representations to generate complementary backbone conformations. These backbones are then passed to ProteinMPNN~\cite{dauparas2022proteinmpnn} for sequence design. Experimental validation demonstrated success rates of 10--50\% across diverse targets, representing a dramatic improvement over previous approaches.
+
+AlphaProteo~\cite{zambaldi2024alphaproteo} further advanced the field by integrating structure prediction, generation, and validation into a unified pipeline. For multiple therapeutic targets, the system designed binders with nanomolar to picomolar affinities, with experimental success rates substantially exceeding earlier methods. A key innovation was the use of large-scale virtual screening combined with learned affinity predictors to prioritize candidates.
+
+The RFdiffusion-AA extension~\cite{krishna2024rfaa} generalized binder design to targets containing small molecules and other ligands, enabling the design of proteins that bind heme, bilin, and other prosthetic groups.
+
+\subsubsection{Applications}
+
+Designed protein binders have immediate applications in therapeutics, diagnostics, and basic research. Binders targeting disease-associated proteins can serve as alternative therapeutic modalities to small molecules or antibodies. For SARS-CoV-2, designed minibinders showed potent neutralization in preclinical models~\cite{watson2023rfdiffusion}. In diagnostics, designed binders enable highly specific detection of target proteins in complex biological samples.
+
+\subsection{Antibody Design}
+\label{subsec:antibody}
+
+Antibodies represent a special class of binding proteins with unique structural and functional properties. The complementarity-determining regions (CDRs), particularly CDR-H3, determine binding specificity, while the conserved framework regions maintain structural integrity~\cite{ruffolo2022deepab}. This duality creates distinct computational challenges and opportunities.
+
+The CDR-H3 loop presents particular difficulties due to its high sequence diversity, variable length, and conformational flexibility~\cite{alford2017rosettaantibody}. Unlike other CDRs that adopt canonical conformations, CDR-H3 requires specialized modeling approaches. Recent deep learning methods have made significant progress, but accurate CDR-H3 structure prediction and design remain active research areas.
+
+\subsubsection{Antibody Structure Prediction}
+
+Accurate structure prediction is a prerequisite for rational antibody design. DeepAb~\cite{ruffolo2022deepab} pioneered interpretable deep learning for antibody structure prediction, achieving sub-{\AA}ngstrom accuracy on benchmark datasets. IgFold~\cite{ruffolo2023igfold} extended this approach using pre-trained antibody language models, enabling prediction from single sequences without multiple sequence alignments.
+
+ImmuneBuilder~\cite{abanades2023immunebuilder} provided a unified framework for predicting structures of diverse immune proteins: antibodies (ABodyBuilder2), nanobodies (NanoBodyBuilder2), and T-cell receptors (TCRBuilder). ABodyBuilder3~\cite{henry2024abodybuilder3} further improved accuracy and scalability, approaching AlphaFold-level performance while being specifically optimized for the antibody domain.
+
+\subsubsection{Antibody-Antigen Interaction Prediction}
+
+Predicting whether an antibody will bind a specific antigen remains challenging due to the vast diversity of possible antibody-antigen pairs. AbAgIntPre~\cite{li2022abagintpre} introduced sequence-only deep learning for antibody-antigen interaction prediction, enabling screening without structural information. Recent work combined prompt-based protein language models with ensemble deep learning for nanobody-antigen interactions~\cite{zhang2024nanobody}, achieving improved accuracy through better representation learning.
+
+\subsubsection{Antibody Design and Optimization}
+
+The design pipeline for therapeutic antibodies involves: (1) identifying or designing binders against the target antigen; (2) humanizing non-human antibodies to reduce immunogenicity; and (3) optimizing for stability, solubility, and manufacturability (``developability'')~\cite{abanades2023immunebuilder}. Current AI methods primarily address steps (1) and (3), with humanization still relying heavily on expert curation.
+
+Developability assessment has become increasingly important as therapeutic antibodies advance through clinical pipelines~\cite{raybould2019developability}. Key developability metrics include aggregation propensity, chemical stability, expression yield, and immunogenicity risk. Computational tools now enable high-throughput screening of antibody candidates for developability issues before experimental validation, reducing attrition in drug development.
+
+\subsection{Interface Optimization}
+\label{subsec:interface}
+
+Rather than designing entirely new binding partners, \textit{interface optimization} aims to improve existing protein-protein interactions through targeted mutations~\cite{jankauskaite2019skempi2}. This task is central to understanding disease variants, engineering therapeutic proteins, and optimizing enzymes for industrial applications.
+
+\subsubsection{Affinity Maturation}
+
+\textit{Affinity maturation}---increasing binding strength---is perhaps the most common interface optimization task. Traditional approaches used directed evolution with random mutagenesis and screening, but computational prediction of binding affinity changes ($\Delta\Delta G$) enables more efficient exploration.
+
+Physics-based methods like FoldX~\cite{guerois2005foldx} and Rosetta's Flex ddG~\cite{barlow2018flexddg} estimate affinity changes from structural calculations, but require accurate structures and can be computationally expensive. Machine learning methods like mCSM-PPI2~\cite{rodrigues2019mcsm} and GeoPPI~\cite{liu2021geoppi} learn statistical patterns from experimental data, achieving faster predictions while maintaining reasonable accuracy. Recent methods like SSIF-Affinity~\cite{liu2024ssifaffinity} integrate sequence, structure, and interaction features through multimodal deep learning for improved binding affinity prediction. SSIPe~\cite{li2022ssipe} accurately estimates protein-protein binding affinity changes upon mutations by combining structural interface analysis with evolutionary information.
+
+BeAtMuSiC~\cite{dehouck2013beatmusic} introduced coarse-grained statistical potentials for $\Delta\Delta G$ prediction, enabling rapid screening of mutation libraries. More recent methods like DDAffinity~\cite{luo2024ddaffinity} combine geometric deep learning with attention mechanisms to predict effects of multiple simultaneous mutations, addressing the limitation of most methods that consider only single-point mutations. Deep geometric representations have also been applied to modeling mutation effects on protein-protein binding~\cite{qiu2024ipe}, achieving improved accuracy through better structural encoding.
+
+\subsubsection{Specificity Engineering}
+
+Beyond affinity, \textit{specificity}---binding the intended target without binding similar off-targets---is critical for therapeutic applications. Designing proteins that discriminate between closely related paralogues (e.g., isoforms of an enzyme) requires subtle manipulation of interface chemistry~\cite{rodrigues2019mcsm}. Current methods address this through multi-objective optimization, simultaneously maximizing affinity for the target while minimizing predicted affinity for off-targets.
+
+\subsubsection{Stability and Developability}
+
+Interface mutations that improve affinity can destabilize the overall protein fold. \textit{Stability optimization} ensures that designed proteins remain folded under physiological conditions. Methods like ProteinMPNN explicitly optimize for predicted stability during sequence design~\cite{dauparas2022proteinmpnn}. \textit{Developability optimization} addresses additional properties relevant to therapeutic proteins: aggregation propensity, immunogenicity, and expression yield.
+
+\subsection{De Novo Interaction Network Design}
+\label{subsec:network}
+
+The most ambitious design task involves creating \textit{entire interaction networks}---multiple proteins designed to interact in specific patterns~\cite{watson2023rfdiffusion}. This capability would enable synthetic biology applications ranging from engineered signaling pathways to self-assembling biomaterials.
+
+\subsubsection{Symmetric Oligomer Design}
+
+Designing symmetric protein assemblies---rings, cages, and filaments---requires simultaneously optimizing the interface between subunits and the overall assembly geometry. RFdiffusion~\cite{watson2023rfdiffusion} demonstrated successful design of cyclic oligomers, with experimental validation confirming formation of the intended symmetric structures. Extensions enabled design of more complex architectures including icosahedral cages~\cite{bennett2024symmetric}.
+
+\subsubsection{Multi-Component Systems}
+
+Beyond symmetric assemblies, designing systems with multiple distinct interacting components presents additional challenges~\cite{krishna2024rfaa}. Each protein must fold independently while also forming specific interactions with its partners. Current approaches decompose the problem: first designing individual components, then optimizing interfaces between them. However, this sequential approach cannot capture global constraints on the system as a whole.
+
+\subsubsection{Challenges in Network Design}
+
+De novo network design faces three fundamental challenges~\cite{bennett2024symmetric}: (1) \textit{orthogonality}, ensuring that designed proteins interact only with intended partners and not with each other or endogenous proteins; (2) \textit{kinetics}, ensuring that interactions form in the correct order and at appropriate rates; and (3) \textit{integration}, ensuring designed networks function within living cells without disrupting essential processes. These challenges remain largely unaddressed by current methods.
+
+\vspace{1em}
+\noindent
+The tasks described in this section share a common theme: they require generative capabilities that go beyond prediction. The enabling technologies underlying these capabilities---generative models, structure-aware representations, and protein language models---are the subject of Section~\ref{sec:technologies}.

@@ -1,0 +1,112 @@
+<!--pages/ai-search/ai-search.wxml-->
+<view class="container">
+  <!-- 对话区域 -->
+  <scroll-view class="chat-area" scroll-y scroll-into-view="{{scrollToView}}">
+    <!-- 欢迎消息 -->
+    <view wx:if="{{messages.length === 0 && aiEnabled}}" class="welcome">
+      <view class="welcome-icon">🤖</view>
+      <view class="welcome-title">AI 对话搜索</view>
+      <view class="welcome-desc">用自然语言问我关于物品的问题</view>
+      
+      <!-- 建议问题 -->
+      <view class="suggestions">
+        <view class="suggestions-title">试试这些问题：</view>
+        <view 
+          wx:for="{{suggestions}}" 
+          wx:key="*this" 
+          class="suggestion-item"
+          data-text="{{item}}"
+          bindtap="onSuggestionTap">
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 消息列表 -->
+    <view wx:for="{{messages}}" wx:key="index" class="message {{item.type}}">
+      <view class="message-time">{{item.time}}</view>
+      <view class="message-bubble">
+        <!-- 用户消息 -->
+        <text wx:if="{{item.type === 'user'}}">{{item.content}}</text>
+        
+        <!-- 系统消息 -->
+        <text wx:elif="{{item.type === 'system'}}">{{item.content}}</text>
+        
+        <!-- 错误消息 -->
+        <text wx:elif="{{item.type === 'error'}}" class="error-text">{{item.content}}</text>
+        
+        <!-- AI 消息 -->
+        <view wx:elif="{{item.type === 'ai'}}" class="ai-response">
+          <!-- 摘要 -->
+          <view class="response-summary">{{item.content.summary}}</view>
+          
+          <!-- 列表类型 -->
+          <view wx:if="{{item.content.type === 'list' && item.content.items}}" class="response-items">
+            <view 
+              wx:for="{{item.content.items}}" 
+              wx:for-item="resultItem"
+              wx:key="id" 
+              class="result-item"
+              data-id="{{resultItem.id}}"
+              bindtap="onItemClick">
+              <view class="result-name">{{resultItem.name}}</view>
+              <view class="result-location">📍 {{resultItem.location}}</view>
+              <view wx:if="{{resultItem.relevance}}" class="result-relevance">{{resultItem.relevance}}</view>
+            </view>
+          </view>
+          
+          <!-- 统计类型 -->
+          <view wx:if="{{item.content.type === 'stats'}}" class="response-stats">
+            <view class="stats-count">{{item.content.count}}</view>
+            <view class="stats-details">{{item.content.details}}</view>
+          </view>
+          
+          <!-- 普通回答 -->
+          <view wx:if="{{item.content.type === 'answer'}}" class="response-answer">
+            {{item.content.details || item.content.summary}}
+          </view>
+          
+          <!-- 空结果 -->
+          <view wx:if="{{item.content.type === 'empty'}}" class="response-empty">
+            {{item.content.message}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载中 -->
+    <view wx:if="{{loading}}" class="message ai">
+      <view class="message-bubble loading-bubble">
+        <view class="loading-dots">
+          <text>.</text><text>.</text><text>.</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <view wx:if="{{!aiEnabled}}" class="ai-disabled">
+      <text>AI 功能未启用</text>
+      <button class="settings-btn" bindtap="onGoSettings">去设置</button>
+    </view>
+    
+    <view wx:else class="input-row">
+      <input 
+        class="chat-input" 
+        placeholder="问我任何关于物品的问题..." 
+        value="{{inputText}}"
+        bindinput="onInputChange"
+        confirm-type="send"
+        bindconfirm="onSend"
+      />
+      <button class="send-btn" bindtap="onSend" disabled="{{loading || !inputText}}">
+        发送
+      </button>
+    </view>
+    
+    <view class="input-actions">
+      <text class="action-btn" bindtap="onClearChat">清空对话</text>
+    </view>
+  </view>
+</view>

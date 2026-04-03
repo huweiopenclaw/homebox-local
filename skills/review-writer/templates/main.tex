@@ -1,0 +1,92 @@
+% Review Article Template
+% For Nature Reviews journals and similar
+% Created by HOC Review Writer Skill
+
+\documentclass[12pt]{article}
+
+% ===== 基础包 =====
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{lineno}
+
+% ===== 表格包 =====
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+
+% ===== 字体设置 =====
+\usepackage{times}
+
+% ===== 超链接设置 =====
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=blue
+}
+
+% ===== 行号（投稿用）=====
+% \linenumbers
+
+% ===== 双倍行距（投稿用）=====
+% \doublespacing
+
+% ===== 标题信息 =====
+\title{\textbf{[论文标题]}}
+
+\author{
+[作者1]$^{1}$, 
+[作者2]$^{2}$, 
+[作者3]$^{1,*}$ \\
+\\
+$^{1}$[机构1] \\
+$^{2}$[机构2] \\
+\\
+$^{*}$Corresponding author: [邮箱]
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% ===== Abstract =====
+\begin{abstract}
+[摘要内容: 通常150-250词]
+
+\noindent
+\textbf{Keywords:} [关键词1]; [关键词2]; [关键词3]
+\end{abstract}
+
+% ===== 各章节 =====
+\input{sections/section1_introduction}
+\input{sections/section2_[name]}
+\input{sections/section3_[name]}
+\input{sections/section4_[name]}
+\input{sections/section5_[name]}
+\input{sections/sectionN_conclusion}
+
+% ===== Acknowledgements =====
+\section*{Acknowledgements}
+[致谢内容]
+
+% ===== Competing Interests =====
+\section*{Competing Interests}
+The authors declare no competing interests.
+
+% ===== Author Contributions =====
+\section*{Author Contributions}
+[作者贡献说明]
+
+% ===== References =====
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

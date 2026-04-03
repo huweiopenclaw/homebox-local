@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: unsrtnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+I was expecting a `,' or a `}'---line 3519 of file references.bib
+ : 
+ : @article{sahni2015edgotype,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 105 entries,
+            2481 wiz_defined-function locations,
+            1147 strings with 26466 characters,
+and the built_in function-call counts, 46411 in all, are:
+= -- 3743
+> -- 3029
+< -- 48
++ -- 1120
+- -- 906
+* -- 3978
+:= -- 7662
+add.period$ -- 361
+call.type$ -- 105
+change.case$ -- 208
+chr.to.int$ -- 101
+cite$ -- 105
+duplicate$ -- 2043
+empty$ -- 3896
+format.name$ -- 1058
+if$ -- 9635
+int.to.chr$ -- 5
+int.to.str$ -- 106
+missing$ -- 107
+newline$ -- 578
+num.names$ -- 315
+pop$ -- 756
+preamble$ -- 1
+purify$ -- 105
+quote$ -- 0
+skip$ -- 1190
+stack$ -- 0
+substring$ -- 2435
+swap$ -- 271
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 729
+warning$ -- 0
+while$ -- 362
+width$ -- 0
+write$ -- 1448
+(There was 1 error message)

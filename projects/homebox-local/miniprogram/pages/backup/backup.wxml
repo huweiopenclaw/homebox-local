@@ -1,0 +1,62 @@
+<!--pages/backup/backup.wxml-->
+<view class="container">
+  <!-- 数据统计 -->
+  <view class="stats-card">
+    <view class="stat-item">
+      <text class="stat-value">{{itemCount}}</text>
+      <text class="stat-label">物品数量</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-value">{{locationCount}}</text>
+      <text class="stat-label">位置数量</text>
+    </view>
+  </view>
+
+  <!-- 备份信息 -->
+  <view class="info-card">
+    <view class="info-row">
+      <text class="info-label">上次备份</text>
+      <text class="info-value">{{lastBackupTime}}</text>
+    </view>
+  </view>
+
+  <!-- 导出 -->
+  <view class="action-card">
+    <view class="action-header">
+      <text class="action-icon">📤</text>
+      <text class="action-title">导出数据</text>
+    </view>
+    <text class="action-desc">将物品和位置数据导出为 JSON 文件</text>
+    <button class="action-btn export-btn" bindtap="onExport" loading="{{exporting}}">
+      {{exporting ? '导出中...' : '导出到文件'}}
+    </button>
+  </view>
+
+  <!-- 导入 -->
+  <view class="action-card">
+    <view class="action-header">
+      <text class="action-icon">📥</text>
+      <text class="action-title">导入数据</text>
+    </view>
+    <text class="action-desc">从 JSON 文件恢复数据（会覆盖现有数据）</text>
+    <button class="action-btn import-btn" bindtap="onImport" loading="{{importing}}">
+      {{importing ? '导入中...' : '从文件导入'}}
+    </button>
+  </view>
+
+  <!-- 其他选项 -->
+  <view class="other-card">
+    <view class="other-item" bindtap="onCopyToClipboard">
+      <text class="other-icon">📋</text>
+      <text class="other-text">复制数据到剪贴板</text>
+      <text class="other-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 危险区域 -->
+  <view class="danger-card">
+    <view class="danger-header">⚠️ 危险区域</view>
+    <button class="danger-btn" bindtap="onClearData">清空所有数据</button>
+  </view>
+</view>

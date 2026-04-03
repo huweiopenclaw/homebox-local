@@ -1,0 +1,54 @@
+% Section 5: Key Enabling Technologies
+% Word count target: ~800 words (精简版)
+
+\section{Key Enabling Technologies}
+\label{sec:technologies}
+
+The paradigm shift from prediction to design is enabled by three converging technological advances: generative models capable of creating novel protein structures, structure-aware representations that capture geometric and chemical constraints, and protein language models that encode evolutionary and functional information. Unlike the methodological focus of Section~\ref{sec:design}, this section emphasizes the conceptual foundations that make these approaches possible and their implications for understanding protein-protein interactions.
+
+\subsection{Generative Models for Protein Design}
+\label{subsec:generative}
+
+Generative models learn to sample from the distribution of valid protein structures, enabling the creation of novel designs rather than merely predicting properties of existing proteins~\cite{watson2023rfdiffusion,ho2020denoising}. The biological insight underlying these approaches is that the space of functional proteins, while vast, is constrained by physical and evolutionary principles that can be learned from data.
+
+Diffusion models have emerged as the dominant paradigm~\cite{ho2020denoising}, treating protein structure generation as learning to reverse a noise-adding process. The key biological implication is that protein foldability and stability can be encoded in a learned energy landscape---the model implicitly captures the biophysical constraints that distinguish natural proteins from random sequences. RFdiffusion~\cite{watson2023rfdiffusion} and related methods exploit this for conditional generation: specifying a target protein elicits complementary binders, effectively learning the ``grammar'' of protein interfaces.
+
+Inverse folding methods address a complementary problem: given a desired structure, what sequence will adopt it? ProteinMPNN~\cite{dauparas2022proteinmpnn} and ESM-IF1~\cite{hsu2022esmif1} learn this mapping, enabling sequence design for generated backbones. The biological significance is that the mapping from sequence to structure, while many-to-one (multiple sequences fold similarly), is learnable and can be inverted for design purposes.
+
+\subsection{Structure-Aware Representations}
+\label{subsec:structure}
+
+Effective protein modeling requires representations that capture both discrete chemical structure (sequence) and continuous geometric structure (3D coordinates)~\cite{fuchs2020se3transformer,jing2021gvp}. The biological insight is that protein function depends on 3D geometry, which must be represented in a coordinate-independent manner.
+
+Equivariant neural networks achieve this by construction: SE(3)-Transformers~\cite{fuchs2020se3transformer} and Geometric Vector Perceptrons~\cite{jing2021gvp} process geometric data while respecting rotational and translational symmetries. This means the same protein structure yields identical predictions regardless of orientation---a necessity for learning from finite data. AlphaFold2's Invariant Point Attention~\cite{jumper2021alphafold} provided an alternative through learned reference frames.
+
+Geometric deep learning extends these ideas to irregular domains. MaSIF~\cite{gainza2020masif} and PeSTo~\cite{gao2023pestoppi} learn from molecular surfaces---the interface where protein interactions occur---without relying on sequence information. This demonstrated that interaction propensities are encoded in surface geometry and charge distribution, independent of evolutionary information.
+
+The biological implication is profound: the physical determinants of protein interactions---shape complementarity, electrostatic compatibility, hydrogen bonding patterns---can be learned from structural data and transferred to design novel interfaces.
+
+\subsection{Protein Language Models}
+\label{subsec:plm}
+
+Protein language models learn representations from evolutionary information encoded in sequence databases, providing a complementary source of structural and functional knowledge~\cite{rives2021esm1b,lin2023esm2}.
+
+\subsubsection{Foundation Models}
+
+ESM-1b~\cite{rives2021esm1b} established that large-scale pre-training on protein sequences---without explicit structural supervision---yields representations capturing folding patterns, functional sites, and evolutionary constraints. With 650 million parameters trained on 250 million sequences, ESM-1b demonstrated that language models learn protein ``grammar'' sufficient for structure prediction.
+
+ESM-2/ESMFold~\cite{lin2023esm2} scaled to 15 billion parameters and achieved atomic-level structure prediction from single sequences, eliminating the need for multiple sequence alignments. This capability enables structure prediction for orphan proteins lacking homologs.
+
+ProtTrans~\cite{elnaggar2021prottrans} explored transformer architectures optimized for protein sequences, demonstrating that alternative training objectives (masked language modeling vs. autoregressive generation) yield complementary representations. xTrimoPGLM~\cite{chen2024xtrimopglm} scaled this approach to 100 billion parameters, creating a unified pre-trained transformer for deciphering the language of proteins across diverse downstream tasks. GOProteinGNN~\cite{zhao2024goproteingnn} integrated protein knowledge graphs with graph neural networks, leveraging Gene Ontology annotations to enhance representation learning.
+
+\subsubsection{Structure-Aware Language Models}
+
+Recent work integrates structural information into language model representations. SaProt~\cite{su2024saprot} introduced structure-aware tokenization, where each token represents both sequence position and local structural state (e.g., $\alpha$-helix, $\beta$-sheet, loop). This unified vocabulary enables the model to reason about sequence-structure relationships directly, achieving superior performance on structure-related tasks compared to sequence-only models.
+
+MINT~\cite{ullanat2025mint} and PLM-interact~\cite{zhao2025plminteract} extended PLMs specifically for interaction modeling. Rather than processing individual proteins, these models operate on protein sets, learning contextual representations that capture interaction propensities. MINT was trained unsupervised on STRING-derived PPI datasets, learning to predict masked interaction partners. PLM-interact fine-tunes ESM-2 embeddings with interaction-specific objectives. Both models capture the ``language of protein interactions''---patterns of residue co-evolution and interface complementarity that govern binding.
+
+\subsubsection{Fine-Tuning for Downstream Tasks}
+
+The scale of PLMs enables effective transfer learning. Dallago et al.~\cite{dallago2024plmfinetune} demonstrated that fine-tuning PLMs substantially improves predictions across diverse tasks including binding site prediction, function annotation, and interaction prediction. This transfer learning paradigm reduces data requirements for specialized tasks while leveraging knowledge encoded in foundation models.
+
+\vspace{1em}
+\noindent
+These enabling technologies---generative models, structure-aware representations, and protein language models---provide the computational substrate for design tasks. Their integration into coherent design pipelines, as discussed in Section~\ref{sec:design_tasks}, enables the practical realization of the prediction-to-design paradigm shift.

@@ -1,0 +1,188 @@
+<!--pages/add-item/add-item.wxml-->
+<view class="container">
+  <!-- 物品名称 -->
+  <view class="form-section">
+    <view class="form-label">
+      <text class="label-text">物品名称</text>
+      <text class="required">*</text>
+    </view>
+    <input 
+      class="form-input" 
+      placeholder="请输入物品名称" 
+      value="{{name}}"
+      bindinput="onNameInput"
+      maxlength="50"
+    />
+  </view>
+
+  <!-- 分类选择 -->
+  <view class="form-section">
+    <view class="form-label">
+      <text class="label-text">分类</text>
+      <text class="required">*</text>
+    </view>
+    <picker 
+      mode="selector" 
+      range="{{categories}}" 
+      range-key="name"
+      value="{{categoryIndex}}"
+      bindchange="onCategoryChange">
+      <view class="form-picker">
+        <text class="{{categoryIndex >= 0 ? 'picker-value' : 'picker-placeholder'}}">
+          {{categoryIndex >= 0 ? categories[categoryIndex].name : '请选择分类'}}
+        </text>
+        <text class="picker-arrow">›</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 数量输入 -->
+  <view class="form-section">
+    <view class="form-label">
+      <text class="label-text">数量</text>
+    </view>
+    <view class="quantity-row">
+      <view class="quantity-btn" bindtap="onQuantityMinus">
+        <text>−</text>
+      </view>
+      <input 
+        class="quantity-input" 
+        type="number"
+        value="{{quantity}}"
+        bindinput="onQuantityInput"
+      />
+      <view class="quantity-btn" bindtap="onQuantityPlus">
+        <text>+</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 位置选择 -->
+  <view class="form-section">
+    <view class="form-label">
+      <text class="label-text">存放位置</text>
+    </view>
+    
+    <!-- 无位置数据提示 -->
+    <view wx:if="{{!hasCustomLocations}}" class="no-location-tip">
+      <text class="tip-text">暂无位置数据，请先添加位置</text>
+      <button class="add-location-btn" bindtap="onGoToLocation">去添加位置</button>
+    </view>
+    
+    <!-- 位置选择器 -->
+    <view wx:else class="location-selectors">
+      <!-- 房间选择 -->
+      <picker 
+        mode="selector" 
+        range="{{rooms}}" 
+        range-key="name"
+        value="{{roomIndex}}"
+        bindchange="onRoomChange">
+        <view class="form-picker location-picker">
+          <text class="{{roomIndex >= 0 ? 'picker-value' : 'picker-placeholder'}}">
+            {{roomIndex >= 0 ? rooms[roomIndex].name : '选择房间'}}
+          </text>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+      
+      <!-- 家具选择 -->
+      <picker 
+        mode="selector" 
+        range="{{furnitures}}" 
+        range-key="name"
+        value="{{furnitureIndex}}"
+        bindchange="onFurnitureChange"
+        disabled="{{roomIndex < 0}}">
+        <view class="form-picker location-picker {{roomIndex < 0 ? 'picker-disabled' : ''}}">
+          <text class="{{furnitureIndex >= 0 ? 'picker-value' : 'picker-placeholder'}}">
+            {{furnitureIndex >= 0 ? furnitures[furnitureIndex].name : '选择家具'}}
+          </text>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+      
+      <!-- 箱子选择 -->
+      <picker 
+        mode="selector" 
+        range="{{boxes}}" 
+        range-key="name"
+        value="{{boxIndex}}"
+        bindchange="onBoxChange"
+        disabled="{{furnitureIndex < 0}}">
+        <view class="form-picker location-picker {{furnitureIndex < 0 ? 'picker-disabled' : ''}}">
+          <text class="{{boxIndex >= 0 ? 'picker-value' : 'picker-placeholder'}}">
+            {{boxIndex >= 0 ? boxes[boxIndex].name : '选择箱子(可选)'}}
+          </text>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+    
+    <!-- 已选位置显示 -->
+    <view wx:if="{{locationText}}" class="location-display">
+      <text class="location-icon">📍</text>
+      <text class="location-text">{{locationText}}</text>
+    </view>
+    
+    <!-- 快捷添加位置 -->
+    <view wx:if="{{hasCustomLocations}}" class="add-location-link" bindtap="onGoToLocation">
+      <text>+ 添加新位置</text>
+    </view>
+  </view>
+
+  <!-- 拍照 -->
+  <view class="form-section">
+    <view class="form-label">
+      <text class="label-text">物品照片</text>
+    </view>
+    <view class="photo-section">
+      <!-- 已拍照片 -->
+      <view class="photo-list">
+        <view 
+          wx:for="{{photos}}" 
+          wx:key="*this" 
+          class="photo-item">
+          <image class="photo-preview" src="{{item}}" mode="aspectFill" bindtap="onPreviewPhoto" data-index="{{index}}" />
+          <view class="photo-delete" data-index="{{index}}" catchtap="onDeletePhoto">
+            <text>×</text>
+          </view>
+        </view>
+      </view>
+      <!-- 拍照按钮 -->
+      <view 
+        wx:if="{{photos.length < 9}}" 
+        class="photo-btn"
+        bindtap="onTakePhoto">
+        <text class="photo-icon">📷</text>
+        <text class="photo-text">拍照</text>
+      </view>
+    </view>
+    <text class="photo-tip">点击图片可预览，最多可添加9张照片</text>
+  </view>
+
+  <!-- 备注 -->
+  <view class="form-section">
+    <view class="form-label">
+      <text class="label-text">备注</text>
+    </view>
+    <textarea 
+      class="form-textarea" 
+      placeholder="添加备注信息（可选）" 
+      value="{{remark}}"
+      bindinput="onRemarkInput"
+      maxlength="200"
+    />
+    <text class="char-count">{{remark.length}}/200</text>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="form-actions">
+    <button class="btn-save" bindtap="onSave" loading="{{saving}}">
+      保存物品
+    </button>
+    <button class="btn-cancel" bindtap="onCancel">
+      取消
+    </button>
+  </view>
+</view>

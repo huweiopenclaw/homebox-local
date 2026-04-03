@@ -1,0 +1,17 @@
+/* pages/index/index.wxss */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #07C160;
+}
+
+.loading-screen {
+  text-align: center;
+}
+
+.loading-text {
+  color: white;
+  font-size: 36rpx;
+}

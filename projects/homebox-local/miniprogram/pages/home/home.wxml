@@ -1,0 +1,166 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <!-- 空状态引导 -->
+  <view wx:if="{{showGuide && isEmpty}}" class="guide-overlay">
+    <view class="guide-content">
+      <view class="guide-icon">📦</view>
+      <view class="guide-title">欢迎使用 HomeBox</view>
+      <view class="guide-desc">开始管理你的家庭物品</view>
+      <view class="guide-steps">
+        <view class="step">1️⃣ 先添加位置（房间/家具/箱子）</view>
+        <view class="step">2️⃣ 再添加物品并关联位置</view>
+        <view class="step">3️⃣ 随时搜索查找物品</view>
+      </view>
+      <button class="guide-btn" bindtap="closeGuide">开始使用</button>
+    </view>
+  </view>
+
+  <!-- 顶部快捷入口 -->
+  <view class="quick-actions">
+    <view class="action-item" bindtap="onAddTap">
+      <view class="action-icon add">+</view>
+      <text class="action-text">添加物品</text>
+    </view>
+    <view class="action-item" bindtap="onAIScanTap">
+      <view class="action-icon ai">🤖</view>
+      <text class="action-text">AI识别</text>
+    </view>
+    <view class="action-item" bindtap="onSearchTap">
+      <view class="action-icon search">🔍</view>
+      <text class="action-text">搜索</text>
+    </view>
+    <view class="action-item" bindtap="onLocationTap">
+      <view class="action-icon location">📍</view>
+      <text class="action-text">位置</text>
+    </view>
+  </view>
+
+  <!-- 视图切换 + 排序 -->
+  <view class="control-bar">
+    <view class="view-toggle">
+      <view 
+        class="toggle-item {{viewMode === 'category' ? 'active' : ''}}" 
+        data-mode="category"
+        bindtap="onToggleView">
+        分类
+      </view>
+      <view 
+        class="toggle-item {{viewMode === 'location' ? 'active' : ''}}" 
+        data-mode="location"
+        bindtap="onToggleView">
+        位置
+      </view>
+    </view>
+    <view class="sort-btn" bindtap="onShowSortPicker">
+      <text class="sort-icon">↕️</text>
+      <text class="sort-text">{{currentSortLabel}}</text>
+    </view>
+  </view>
+
+  <!-- 分类筛选 -->
+  <view wx:if="{{viewMode === 'category'}}" class="category-filter">
+    <scroll-view class="category-scroll" scroll-x>
+      <view 
+        wx:for="{{categories}}" 
+        wx:key="id" 
+        class="category-item {{currentCategory === item.name ? 'active' : ''}}"
+        data-category="{{item.name}}"
+        bindtap="onCategoryTap">
+        {{item.icon}} {{item.name}}
+        <text class="count" wx:if="{{item.count > 0}}">{{item.count}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 位置筛选 -->
+  <view wx:if="{{viewMode === 'location'}}" class="location-filter">
+    <scroll-view class="location-scroll" scroll-x>
+      <view 
+        wx:for="{{rooms}}" 
+        wx:key="*this" 
+        class="location-item {{currentRoom === item ? 'active' : ''}}"
+        data-room="{{item}}"
+        bindtap="onRoomTap">
+        {{item === '全部' ? '🏠' : '📍'}} {{item}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 物品列表 -->
+  <view class="items-list">
+    <view wx:if="{{loading}}" class="loading">
+      <text>加载中...</text>
+    </view>
+    
+    <!-- 空状态 -->
+    <view wx:elif="{{isEmpty}}" class="empty-state">
+      <view class="empty-icon">📦</view>
+      <view class="empty-title">还没有物品</view>
+      <view class="empty-desc">点击上方"添加物品"开始记录</view>
+      <view class="empty-actions">
+        <button class="empty-btn primary" bindtap="onAddTap">添加物品</button>
+        <button class="empty-btn" bindtap="onLocationTap">先添加位置</button>
+      </view>
+    </view>
+
+    <!-- 无匹配 -->
+    <view wx:elif="{{filteredItems.length === 0 && !isEmpty}}" class="empty-state">
+      <view class="empty-icon">🔍</view>
+      <view class="empty-title">没有找到物品</view>
+      <view class="empty-desc">当前筛选条件下没有物品</view>
+    </view>
+
+    <!-- 物品列表 -->
+    <view wx:else>
+      <view class="result-count">
+        显示 {{filteredItems.length}} 件物品
+        <text wx:if="{{currentCategory !== '全部'}}"> · {{currentCategory}}</text>
+        <text wx:if="{{currentRoom !== '全部'}}"> · {{currentRoom}}</text>
+      </view>
+      
+      <view 
+        wx:for="{{filteredItems}}" 
+        wx:key="id" 
+        class="item-card"
+        data-id="{{item.id}}"
+        bindtap="onItemTap">
+        <view class="item-main">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-quantity">×{{item.quantity || 1}}</view>
+        </view>
+        <view class="item-meta">
+          <text class="item-category">{{item.category}}</text>
+          <text class="item-location" wx:if="{{item.location}}">📍 {{item.location}}</text>
+        </view>
+        <view class="item-footer">
+          <text class="item-date">{{item.date || item.createdAt}}</text>
+          <view class="item-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+            <text wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag" class="tag">{{tag}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 排序选择器 -->
+  <view wx:if="{{showSortPicker}}" class="picker-mask" bindtap="hideSortPicker">
+    <view class="picker-content" catchtap="">
+      <view class="picker-title">选择排序方式</view>
+      <radio-group bindchange="onSortChange">
+        <label 
+          wx:for="{{sortOptions}}" 
+          wx:key="value" 
+          class="picker-item {{currentSort === item.value ? 'selected' : ''}}">
+          <radio value="{{item.value}}" checked="{{currentSort === item.value}}" color="#FF6B35" />
+          <text class="picker-label">{{item.label}}</text>
+        </label>
+      </radio-group>
+      <button class="picker-close" bindtap="hideSortPicker">关闭</button>
+    </view>
+  </view>
+
+  <!-- 悬浮添加按钮 -->
+  <view class="fab" bindtap="onAddTap">
+    <text class="fab-icon">+</text>
+  </view>
+</view>

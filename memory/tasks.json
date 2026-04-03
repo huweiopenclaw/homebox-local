@@ -1,118 +1,141 @@
 {
   "tasks": [
     {
-      "id": "task-001",
-      "title": "设计 HomeBox Local 项目",
+      "id": "task-201",
+      "title": "小程序 - 本地数据存储层",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-202",
+      "title": "小程序 - 位置管理页面",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-203",
+      "title": "小程序 - 添加物品页面",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-204",
+      "title": "小程序 - 编辑物品功能",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-205",
+      "title": "小程序 - 搜索页面",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-206",
+      "title": "小程序 - AI 识别集成",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-207",
+      "title": "小程序 - 首页优化",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-208",
+      "title": "小程序 - 分类筛选逻辑",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-209",
+      "title": "小程序 - 详情页优化",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-210",
+      "title": "小程序 - 我的页面优化",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-211",
+      "title": "小程序 - AI 设置页面",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-212",
+      "title": "小程序 - AI 扫描识别页面",
+      "status": "已完成",
+      "assignee": "HOC"
+    },
+    {
+      "id": "task-301",
+      "title": "优化 - 添加物品页位置数据同步",
       "status": "已完成",
       "assignee": "HOC",
-      "priority": "高",
-      "project": "homebox-local",
-      "createdAt": 1739971200000,
-      "completedAt": 1740056400000
+      "priority": "高"
     },
     {
-      "id": "task-002",
-      "title": "编写 PRD 文档",
+      "id": "task-302",
+      "title": "优化 - 分类页面真实数据",
       "status": "已完成",
       "assignee": "HOC",
-      "priority": "高",
-      "project": "homebox-local",
-      "createdAt": 1739971200000,
-      "completedAt": 1740054600000
+      "priority": "高"
     },
     {
-      "id": "task-003",
-      "title": "编写技术设计文档",
+      "id": "task-303",
+      "title": "优化 - 新手引导",
       "status": "已完成",
       "assignee": "HOC",
-      "priority": "高",
-      "project": "homebox-local",
-      "createdAt": 1740054600000,
-      "completedAt": 1740058200000
+      "priority": "高"
     },
     {
-      "id": "task-004",
-      "title": "创建 GitHub 仓库",
+      "id": "task-304",
+      "title": "优化 - 照片预览功能",
       "status": "已完成",
       "assignee": "HOC",
-      "priority": "中",
-      "project": "homebox-local",
-      "createdAt": 1740051000000,
-      "completedAt": 1740052800000
+      "priority": "中"
     },
     {
-      "id": "task-005",
-      "title": "实现任务看板双向同步",
+      "id": "task-305",
+      "title": "优化 - 位置筛选",
       "status": "已完成",
       "assignee": "HOC",
-      "priority": "高",
-      "project": "task-board",
-      "createdAt": 1740060000000,
-      "completedAt": 1740065000000
+      "priority": "中"
     },
     {
-      "id": "task-006",
-      "title": "开发 Android 版 - 项目初始化",
+      "id": "task-306",
+      "title": "优化 - 数据备份导出",
       "status": "已完成",
       "assignee": "HOC",
-      "priority": "高",
-      "project": "homebox-local-android",
-      "createdAt": 1740062000000,
-      "completedAt": 1740065000000
+      "priority": "中"
     },
     {
-      "id": "task-007",
-      "title": "开发微信小程序版 - 项目初始化",
+      "id": "task-307",
+      "title": "优化 - 批量操作",
       "status": "已完成",
       "assignee": "HOC",
-      "priority": "高",
-      "project": "homebox-local-miniprogram",
-      "createdAt": 1740062000000,
-      "completedAt": 1740065000000
+      "priority": "中"
     },
     {
-      "id": "task-008",
-      "title": "开发 Android 版 - 数据层",
+      "id": "task-308",
+      "title": "优化 - 物品排序",
       "status": "已完成",
-      "assignee": "CodeDev",
-      "priority": "高",
-      "project": "homebox-local-android",
-      "createdAt": 1740065000000,
-      "completedAt": 1740072000000
-    },
-    {
-      "id": "task-009",
-      "title": "开发微信小程序版 - 数据层",
-      "status": "已完成",
-      "assignee": "CodeDev + HOC",
-      "priority": "高",
-      "project": "homebox-local-miniprogram",
-      "createdAt": 1740065000000,
-      "completedAt": 1740073000000
-    },
-    {
-      "id": "task-010",
-      "title": "开发 Android 版 - UI 层",
-      "status": "进行中",
       "assignee": "HOC",
-      "priority": "高",
-      "project": "homebox-local-android",
-      "createdAt": 1740065000000,
-      "updatedAt": 1740073000000
-    },
-    {
-      "id": "task-011",
-      "title": "开发微信小程序版 - UI 层",
-      "status": "进行中",
-      "assignee": "HOC",
-      "priority": "高",
-      "project": "homebox-local-miniprogram",
-      "createdAt": 1740065000000,
-      "updatedAt": 1740073000000
+      "priority": "低"
     }
   ],
   "metadata": {
-    "lastUpdated": 1740073000000,
-    "version": 1
+    "lastUpdated": 1771822200000,
+    "version": 11,
+    "autoExecuteMode": true,
+    "phase": "optimization-complete",
+    "completedTasks": 20,
+    "totalTasks": 20,
+    "status": "COMPLETE"
   }
 }

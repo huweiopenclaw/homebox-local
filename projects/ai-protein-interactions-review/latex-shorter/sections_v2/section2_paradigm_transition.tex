@@ -1,0 +1,116 @@
+% Section 2: The Paradigm Transition (Target: 1800 words)
+% Merged from original Sections 2 and 3
+\section{The Paradigm Transition: From Prediction to Design}
+\label{sec:transition}
+
+The field of computational PPI research has evolved through distinct methodological eras, culminating in the current design-oriented approaches. This section traces this evolution, examining how prediction capabilities laid the foundation for design.
+
+\subsection{The Prediction Paradigm: Achievements and Limitations}
+
+Before the emergence of generative design, PPI research was dominated by the prediction paradigm---inferring whether, where, and how strongly proteins interact based on their sequences or structures.
+
+\textbf{Sequence-Based Prediction.} Methods evolved through three generations: (1) hand-crafted feature approaches using SVMs with physicochemical properties~\cite{bock2001predicting,shen2007predicting,benhur2005kernel}; auto-covariance descriptors captured interactions between residues at varying sequence distances~\cite{guo2008using,you2017pssm}; (2) deep learning methods enabling automatic feature learning~\cite{chen2017deepppi,hashemifar2018dppi,chen2019pipr}; and (3) pre-trained protein language models leveraging evolutionary information~\cite{rives2021esm1b,sledzieski2021dscript}. Chinese research groups contributed substantially to sequence-based PPI prediction~\cite{lv2021gnnppi,tang2021high}. Graph neural networks emerged as powerful approaches, with DeepRank-GNN~\cite{bryant2022deeprank} learning patterns directly from structural graphs. TUnA introduced uncertainty quantification~\cite{gehring2024tuna}, while TAGPPI incorporated predicted structural information~\cite{xie2022tagppi}. D-SCRIPT demonstrated that structure-aware representations improve cross-species generalizability~\cite{sledzieski2021dscript}, and Topsy-Turvy~\cite{singh2022topsyturvy} integrated sequence-based predictions with network topology.
+
+\textbf{Structure-Based Prediction.} Classical protein-protein docking methods predict bound complex structures from individual proteins. HADDOCK~\cite{dominguez2003haddock} introduced information-driven docking with biochemical constraints, ZDOCK~\cite{pierce2014zdock} uses fast Fourier transforms for shape complementarity, ClusPro~\cite{kozakov2017cluspro} provides automated docking through clustering, HDOCK~\cite{yan2020hdock} combines template-based and free docking, and GalaxyTongDock~\cite{baek2023galaxytongdock} enables symmetric and asymmetric docking with improved energy parameters. Surface-based deep learning methods predict binding interfaces directly from molecular structures: MaSIF~\cite{gainza2020masif} applied geometric deep learning to surfaces, GraphPPIS~\cite{cao2022graphppis} used graph convolutional networks, dMaSIF~\cite{sverrisson2021dmasif} achieved 10--100$\times$ speedups with point-cloud operators, and ScanNet~\cite{tubiana2022scanet} combined geometric deep learning with spatial attention for interpretable binding site prediction. Beyond binary interaction prediction, binding site prediction identifies which residues mediate interactions---critical information for drug design and mutagenesis studies~\cite{ortegon2020binding}. Systematic benchmarking of AlphaFold for protein complexes revealed important determinants of prediction accuracy~\cite{bryant2022benchmarking}. The most dramatic advance is end-to-end complex prediction: AlphaFold-Multimer~\cite{evans2022alphafoldmultimer} and AlphaFold 3~\cite{abramson2024alphafold3} predict complex structures from sequences alone with unprecedented accuracy.
+
+\begin{table}[h]
+\centering
+\caption{Taxonomy of PPI prediction tasks}
+\label{tab:ppi_tasks}
+\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Task} & \textbf{Input} & \textbf{Output} & \textbf{Representative Methods} \\
+\midrule
+Binary classification & Sequence pairs & Interaction (yes/no) & PIPR~\cite{chen2019pipr}, D-SCRIPT~\cite{sledzieski2021dscript} \\
+Network inference & Protein set & Interaction network & STRING~\cite{szklarczyk2021string}, GNN-PPI~\cite{lv2021gnnppi} \\
+Binding site prediction & Single protein & Interface residues & MaSIF~\cite{gainza2020masif}, GraphPPIS~\cite{cao2022graphppis} \\
+Affinity prediction & Complex + mutation & $\Delta\Delta G$ & FoldX~\cite{guerois2005foldx}, SKEMPI~\cite{jankauskaite2019skempi2} \\
+Complex structure & Sequence pairs & 3D coordinates & AlphaFold-Multimer~\cite{evans2022alphafoldmultimer}, DiffDock-PP~\cite{ketata2023diffdockpp} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\textbf{Fundamental Limitations.} Despite progress, the prediction paradigm faces inherent constraints:
+
+\begin{enumerate}
+    \item \textit{Data Dependence}: Models learn statistical patterns from known interactions and struggle to extrapolate to novel types~\cite{kewalramani2023state}. Training data is heavily biased toward model organisms (human, yeast, mouse). Negative sample construction introduces systematic bias---randomly paired proteins may not represent true non-interactors~\cite{smialowski2010negatome}. The Negatome database addressed this by curating experimentally verified non-interacting pairs~\cite{blohm2014negatome2}. Prediction accuracy degrades significantly for proteins dissimilar from training examples, as demonstrated by the C1/C2/C3 difficulty classification framework~\cite{park2015ppi}.
+    
+    \item \textit{Evaluation Crisis}: A systematic analysis of binding affinity prediction methods by Tsishyn and Rooman~\cite{bernett2024bias} revealed that many reported accuracies are inflated by dataset-specific biases rather than genuine predictive capability. Eight widely-used predictors showed strong dependence on training datasets, with performance degrading substantially when evaluated on proteins from different families. Benchmark datasets suffer from incompleteness and bias, with STRING~\cite{szklarczyk2021string}, BioPlex~\cite{huttlin2021bioplex}, and IntAct~\cite{orchard2014intact} each having different coverage and confidence scoring schemes~\cite{feng2022frameworks}. This suggests that current train-test splitting protocols may be fundamentally inadequate for evaluating generalization to novel protein interactions.
+    
+    \item \textit{Passive Discovery Mode}: Prediction methods answer ``will these proteins interact?'' rather than ``how can we make them interact?'' For therapeutic applications, this provides no direct pathway from prediction to intervention.
+    
+    \item \textit{Static Assumptions}: Most methods treat interactions as binary states, ignoring tissue-specificity, condition-dependence, and conformational dynamics~\cite{mcgary2010dynamic}.
+\end{enumerate}
+
+These limitations motivated the emergence of design-oriented approaches.
+
+\subsection{Technical Drivers of the Design Paradigm}
+
+The transition to design was enabled by converging breakthroughs occurring between 2021 and 2024.
+
+\textbf{Structure Prediction Advances.} AlphaFold2~\cite{jumper2021alphafold} and RoseTTAFold~\cite{baek2021rosettafold} achieved near-experimental accuracy in structure prediction. Extensions to multimeric complexes~\cite{evans2022alphafoldmultimer,baek2023rosettafold2} expanded scope to PPIs. These advances provide both validation mechanisms for designed proteins and learned representations repurposed for generation.
+
+\textbf{Generative Models.} Diffusion models achieved breakthrough performance by treating protein generation as learning to reverse a noise-adding process~\cite{ho2020denoising}. RFdiffusion~\cite{watson2023rfdiffusion} fine-tuned RoseTTAFold as a denoising model, enabling conditional generation on partial structures or target proteins. Chroma~\cite{ingraham2023chroma} incorporated physical constraints directly into the generative process, enabling generation of proteins up to 4,000 amino acids. Flow-based alternatives like FoldFlow~\cite{bose2023foldflow} offer potentially better computational efficiency.
+
+\textbf{Protein Language Models at Scale.} ESM-2~\cite{lin2023esm2}, scaled to 15 billion parameters, achieved atomic-level structure prediction directly from sequence. These models provide learned priors over protein sequences---encoding what sequences are likely to fold into stable, functional proteins. Recent extensions like MINT~\cite{ullanat2025mint} and PLM-interact~\cite{zhao2025plminteract} train specifically on PPI datasets.
+
+\textbf{Equivariant Neural Networks.} SE(3)-Transformers~\cite{fuchs2020se3transformer} and Geometric Vector Perceptrons~\cite{jing2021gvp} process geometric data while respecting rotational and translational symmetries---critical for ensuring that generated proteins' validity does not depend on arbitrary coordinate systems. AlphaFold2's Invariant Point Attention~\cite{jumper2021alphafold} provided an influential alternative approach.
+
+\subsection{Milestone Works in the Design Era}
+
+The convergence of these technologies produced breakthrough systems organized by primary function (Table~\ref{tab:design_tools}).
+
+\begin{table}[h]
+\centering
+\caption{Comparison of major AI-driven protein design tools (2022--2024)}
+\label{tab:design_tools}
+\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{Method} & \textbf{Year} & \textbf{Input/Output} & \textbf{Performance} & \textbf{Validation} \\
+\midrule
+RFdiffusion~\cite{watson2023rfdiffusion} & 2023 & Target → Binder & 10--50\% binding$^\dagger$ & Cryo-EM (100s) \\
+AlphaProteo~\cite{zambaldi2024alphaproteo} & 2024 & Target → Binder & 3--300$\times$ vs baseline$^\ddagger$ & SPR/BLI (nM) \\
+ProteinMPNN~\cite{dauparas2022proteinmpnn} & 2022 & Backbone → Sequence & 52.4\% native recovery$^\S$ & X-ray validation \\
+ESM-IF1~\cite{hsu2022esmif1} & 2022 & Backbone → Sequence & 51\% native recovery$^\S$ & 12M structures \\
+Chroma~\cite{ingraham2023chroma} & 2023 & Constraints → Full protein & 70--90\% designability$^\|$ & MD simulation \\
+DiffDock-PP~\cite{ketata2023diffdockpp} & 2023 & Structures → Docked poses & 44\% top-10 pose$^\P$ & Benchmark \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\begin{flushleft}
+\footnotesize{$^\dagger$Binding success rate varies by target difficulty; data from Watson et al.~\cite{watson2023rfdiffusion}.}\\
+\footnotesize{$^\ddagger$Improvement over RFdiffusion baseline on 7 targets; KD: 1--100 nM~\cite{zambaldi2024alphaproteo}.}\\
+\footnotesize{$^\S$Native sequence recovery on CATH 4.2 test set~\cite{dauparas2022proteinmpnn,hsu2022esmif1}.}\\
+\footnotesize{$^\|$Designability: fraction with pLDDT $> 80$; 70--90\% depending on length~\cite{ingraham2023chroma}.}\\
+\footnotesize{$^\P$Top-10 success on DBD5 benchmark with pose RMSD $< 2$\AA~\cite{ketata2023diffdockpp}.}
+\end{flushleft}
+\end{table}
+
+\textbf{Backbone Generation.} RFdiffusion demonstrated successful binder design with experimental validation: cryo-EM structures confirmed atomic-level agreement with computational models (backbone RMSD: 0.5--1.5 \AA). Chroma enabled generation of large proteins with explicit physical constraints.
+
+\textbf{Sequence Design.} ProteinMPNN and ESM-IF1 address the inverse folding problem---given a backbone, predicting sequences that fold into it. Both achieve ~50\% native sequence recovery, enabling high-throughput sequence design for generated backbones.
+
+\textbf{Binder Design.} AlphaProteo represents the most advanced demonstration to date, achieving binding success rates 3--300$\times$ higher than RFdiffusion-based approaches across seven diverse targets, with multiple binders achieving nanomolar affinities without experimental optimization.
+
+\textbf{Multi-Modal Systems.} AlphaFold 3~\cite{abramson2024alphafold3} and RoseTTAFold All-Atom~\cite{krishna2024rfaa} extend to complexes containing proteins, nucleic acids, and small molecules, with RFdiffusionAA enabling de novo design of protein binding pockets around cofactors.
+
+\subsection{The Complementarity of Prediction and Design}
+
+Prediction and design are not opposing paradigms but complementary capabilities. Every design system relies on prediction: RFdiffusion was initialized from RoseTTAFold's pretrained weights; ProteinMPNN is trained to predict foldable sequences; AlphaProteo uses structure prediction for validation. The design process can be viewed as iterative prediction: structure prediction of targets, interface prediction for binding sites, backbone generation as inverse structure prediction, and complex prediction for validation.
+
+However, the complementarity does not negate the paradigm shift characterization. Design enables qualitatively new capabilities---exploring sequence-structure space that evolution never accessed---while prediction provides the foundation upon which design builds. The relationship is bidirectional: design also advances prediction by providing test cases that reveal limitations in current understanding.
+
+\subsection{Critical Assessment: The Hallucination Problem}
+
+A fundamental challenge in generative protein design is distinguishing genuine design from ``hallucination''---structures that appear protein-like to computational metrics but lack physical plausibility~\cite{anishchenko2021hallucination}. This manifests as backbone incoherence (violating Ramachandran constraints), sequence-structure mismatch (generated sequences not folding into designed structures), and energy landscape pathology (high-energy barriers preventing folding).
+
+Current approaches mitigate hallucination through iterative validation: structure prediction on generated sequences, molecular dynamics simulation, and experimental characterization. However, this underscores that computational metrics cannot fully substitute for physical reality. A systematic study by Chu et al.~\cite{chu2025prediction} found that roughly half of designed proteins failed at various experimental stages, with many failed designs having better computational confidence metrics than successful designs, highlighting the limitations of current predictive metrics.
+
+Even experimental validation by cryo-EM and X-ray crystallography has caveats: these methods capture static snapshots that may not reflect dynamic behavior in solution. Comprehensive validation requires multiple complementary approaches: biophysical characterization for affinity, solution scattering for oligomeric state, and NMR for dynamics.
+
+The paradigm shift is therefore not a complete replacement of traditional methods but a fundamental expansion of what is tractable. Design targets previously infeasible---novel scaffolds, de novo interfaces, challenging targets---are now accessible, while established methods excel in their domains of strength.

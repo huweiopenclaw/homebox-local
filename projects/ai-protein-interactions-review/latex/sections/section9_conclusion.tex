@@ -1,0 +1,67 @@
+% Section 9: Conclusion
+% Word count target: ~400 words
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The field of computational protein-protein interaction research is undergoing a fundamental transformation. This review has traced the trajectory from prediction---inferring whether, where, and how proteins interact---to design---creating proteins with desired interaction properties. This paradigm shift represents more than incremental progress; it marks a qualitative change in how AI interfaces with biological discovery.
+
+The technological foundations of this shift are now well established. Protein language models encode evolutionary and structural information at unprecedented scale~\cite{rives2021esm1b,lin2023esm2}. Diffusion models generate novel protein structures conditioned on functional constraints~\cite{watson2023rfdiffusion,ingraham2023chroma}. Equivariant neural networks preserve geometric symmetries essential for accurate structure modeling~\cite{jing2021gvp,fuchs2020se3transformer}. Together, these advances enable design capabilities that would have seemed implausible just five years ago.
+
+Yet significant challenges remain. The evaluation crisis identified by Bernett et al.~\cite{bernett2024bias} suggests that reported prediction accuracies may be inflated by methodological artifacts. For design tasks, success rates vary widely (5--50\%) across targets and methods, and negative results are systematically underreported. The experimental validation bottleneck limits the pace of iterative improvement. Dynamic interactions, conditional specificity, and multi-protein complexes remain largely beyond current design capabilities.
+
+The implications of this paradigm shift extend beyond technical advances. Drug discovery is transitioning from high-throughput screening of natural compounds to targeted generation of therapeutic proteins~\cite{zambaldi2024alphaproteo,trepte2024ai}. Synthetic biology can now design interaction networks rather than merely repurposing natural components. Basic research gains tools for hypothesis-driven experiments rather than observation-driven discovery.
+
+Perhaps most significantly, the prediction-to-design transition reflects an emerging philosophical shift: from AI as a tool for understanding what nature has produced to AI as a partner in creating what nature has not. This does not diminish the importance of prediction---prediction remains the foundation upon which design builds~\cite{jumper2021alphafold,dauparas2022proteinmpnn}. Rather, it positions prediction as a capability to be leveraged rather than an endpoint in itself.
+
+The coming years will determine whether current design successes represent the leading edge of a sustained revolution or the peak of an incremental advance. The answer depends on progress along the dimensions outlined in this review: better evaluation, faster validation, deeper understanding of designability, modeling of dynamics, and development of interpretable methods. If these challenges are addressed, the prediction-to-design transition---whether characterized as a paradigm shift or an evolutionary expansion---will likely be remembered as a pivotal moment when computational biology substantially expanded its creative capabilities.
+
+\vspace{1em}
+\noindent
+\textbf{Key Points:}
+\begin{enumerate}
+    \item AI-driven PPI research is transitioning from prediction to design---a qualitative expansion of capabilities, though whether this constitutes a full paradigm shift remains debated
+    \item This transition is enabled by three technological pillars: protein language models, generative diffusion models, and equivariant neural networks
+    \item Design capabilities are transforming drug discovery, synthetic biology, and basic research, but success rates vary dramatically by target
+    \item Critical challenges---evaluation bias, validation bottlenecks, and interpretability gaps---must be addressed to realize the paradigm's full potential
+    \item The future lies in prediction-design integration: AI systems that iteratively create, validate, and refine in closed-loop workflows
+\end{enumerate}
+
+\vspace{1em}
+\noindent
+\textbf{Implications for Different Stakeholders:}
+
+\noindent
+\textit{For Researchers:} Focus on developing rigorous evaluation protocols, publishing negative results, and building computational-experimental feedback loops. The highest-impact work will address challenges where current methods fail: dynamic interactions, conditional specificity, and multi-component assemblies.
+
+\noindent
+\textit{For Industry:} Prepare for accelerated discovery timelines and expanded druggable target space. Investment in experimental infrastructure for high-throughput validation will increasingly differentiate successful programs. The economic advantage will shift from those with the largest compound libraries to those with the most efficient design-test cycles.
+
+\noindent
+\textit{For Funders:} Support long-term research addressing fundamental challenges---better energy functions, dynamics modeling, interpretable design---rather than incremental improvements on existing benchmarks. Infrastructure for systematic validation and data sharing will amplify the impact of methodological advances.
+
+\vspace{1em}
+\noindent
+\textbf{Grand Challenges for the Next Five Years:}
+
+\noindent
+To fully realize the prediction-to-design paradigm shift, the field must address five critical challenges:
+
+\noindent
+\textbf{1. The Designability Question:} What fraction of sequence-structure space is truly designable? Current methods explore this space blindly. Systematic mapping of designability boundaries---through large-scale experimental characterization and computational analysis---would transform design from trial-and-error to principled exploration. Estimated timeline: 3--5 years with coordinated community effort.
+
+\noindent
+\textbf{2. Dynamic Interaction Design:} Current methods design static interfaces, but many functional PPIs involve conformational changes, allosteric regulation, and induced fit. Integrating molecular dynamics with generative design could enable creation of proteins with dynamic binding behavior. Key milestone: Design of an allosterically regulated binder that switches affinity in response to a small molecule or phosphorylation state.
+
+\noindent
+\textbf{3. Multi-Component Assembly Design:} Extending from pairwise interactions to complexes of 3+ proteins would enable design of signaling pathways, metabolic channels, and synthetic cellular machines. This requires solving the combinatorial explosion of possible interface configurations while maintaining overall assembly stability. Target capability: Design of a 5-protein complex with specified architecture and function.
+
+\noindent
+\textbf{4. Experimental Validation at Scale:} Computational design currently outpaces experimental validation by 100--1000$\times$. Development of high-throughput platforms capable of testing thousands of designs per week with standardized protocols would close this gap. Required investment: \$50--100 million in shared infrastructure accessible to the research community.
+
+\noindent
+\textbf{5. Interpretability and Trust:} For therapeutic applications, regulatory approval requires understanding \textit{why} a design works, not just \textit{that} it works. Development of interpretable design methods---where design decisions can be traced to physical principles---is essential for clinical translation. Near-term goal: Design methods that provide mechanistic explanations for interface affinity and specificity.
+
+\vspace{1em}
+\noindent
+The prediction-to-design paradigm shift marks a transition from AI as a passive observer of biology to AI as an active creator of biological function. Whether this transition fulfills its transformative promise will be determined by the collective efforts of researchers, developers, and practitioners in the coming years. The technical foundations are in place; the challenges are known; the opportunity is unprecedented.

@@ -1,0 +1,127 @@
+{
+  "name": "glm_code",
+  "version": "1.0.0",
+  "description": "GLM 编程助手 - 代码生成、重构、调试、解释",
+  "author": "openclaw",
+  "type": "mcp-server",
+  "config": {
+    "baseUrl": "https://open.bigmodel.cn/api/coding/paas/v4",
+    "apiKey": "98b8c5a4c32b49c4a14d331daeebcec1.oMmhzzD3iYHjJQps",
+    "model": "glm-5"
+  },
+  "tools": [
+    {
+      "name": "code_generate",
+      "description": "生成代码 - 根据描述生成代码",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "代码需求描述"
+          },
+          "language": {
+            "type": "string",
+            "description": "编程语言",
+            "default": "javascript"
+          },
+          "context": {
+            "type": "string",
+            "description": "上下文代码（可选）"
+          }
+        },
+        "required": ["prompt"]
+      }
+    },
+    {
+      "name": "code_explain",
+      "description": "解释代码 - 分析并解释代码功能",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "需要解释的代码"
+          },
+          "language": {
+            "type": "string",
+            "description": "编程语言",
+            "default": "javascript"
+          }
+        },
+        "required": ["code"]
+      }
+    },
+    {
+      "name": "code_debug",
+      "description": "调试代码 - 查找并修复代码问题",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "有问题的代码"
+          },
+          "error": {
+            "type": "string",
+            "description": "错误信息（可选）"
+          },
+          "language": {
+            "type": "string",
+            "description": "编程语言",
+            "default": "javascript"
+          }
+        },
+        "required": ["code"]
+      }
+    },
+    {
+      "name": "code_refactor",
+      "description": "重构代码 - 优化代码结构和质量",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "需要重构的代码"
+          },
+          "goals": {
+            "type": "string",
+            "description": "重构目标（如：提高性能、增强可读性）"
+          },
+          "language": {
+            "type": "string",
+            "description": "编程语言",
+            "default": "javascript"
+          }
+        },
+        "required": ["code"]
+      }
+    }
+  ],
+  "execute": {
+    "type": "http",
+    "method": "POST",
+    "url": "${config.baseUrl}/chat/completions",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${config.apiKey}"
+    },
+    "bodyTemplate": {
+      "model": "${config.model}",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是一个专业的编程助手。请用中文回答，提供高质量、可运行的代码。代码需要包含必要的注释。"
+        },
+        {
+          "role": "user",
+          "content": "{{prompt}}"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 4096
+    },
+    "responsePath": "$.choices[0].message.content"
+  }
+}

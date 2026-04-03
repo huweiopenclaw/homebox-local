@@ -1,0 +1,148 @@
+<!--pages/batch-edit/batch-edit.wxml-->
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="top-bar">
+    <view class="left">
+      <text class="title">批量管理</text>
+      <text class="count" wx:if="{{isEditMode}}">已选 {{selectedItems.length}} 项</text>
+    </view>
+    <view class="right">
+      <text class="mode-btn {{isEditMode ? 'active' : ''}}" bindtap="toggleEditMode">
+        {{isEditMode ? '完成' : '编辑'}}
+      </text>
+    </view>
+  </view>
+
+  <!-- 全选栏 -->
+  <view wx:if="{{isEditMode}}" class="select-bar">
+    <view class="select-all" bindtap="toggleSelectAll">
+      <text class="checkbox">{{selectAll ? '✅' : '⬜'}}</text>
+      <text class="select-text">全选</text>
+    </view>
+    <text class="total-count">共 {{items.length}} 个物品</text>
+  </view>
+
+  <!-- 物品列表 -->
+  <view class="items-list">
+    <view wx:if="{{loading}}" class="loading">
+      <text>加载中...</text>
+    </view>
+    
+    <view wx:elif="{{items.length === 0}}" class="empty">
+      <text>暂无物品</text>
+    </view>
+
+    <view wx:else>
+      <view 
+        wx:for="{{items}}" 
+        wx:key="id" 
+        class="item-card {{selectedItems.indexOf(item.id) >= 0 ? 'selected' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="isEditMode ? toggleItem : onItemTap">
+        
+        <view wx:if="{{isEditMode}}" class="item-checkbox">
+          <text>{{selectedItems.indexOf(item.id) >= 0 ? '✅' : '⬜'}}</text>
+        </view>
+        
+        <view class="item-content">
+          <view class="item-main">
+            <text class="item-name">{{item.name}}</text>
+            <text class="item-quantity">×{{item.quantity || 1}}</text>
+          </view>
+          <view class="item-meta">
+            <text class="item-category">{{item.category}}</text>
+            <text class="item-location" wx:if="{{item.location}}">📍 {{item.location}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view wx:if="{{isEditMode && selectedItems.length > 0}}" class="bottom-bar">
+    <button class="action-btn" bindtap="showActions">
+      批量操作 ({{selectedItems.length}})
+    </button>
+  </view>
+
+  <!-- 操作菜单 -->
+  <view wx:if="{{showActionSheet}}" class="action-sheet-mask" bindtap="hideActions">
+    <view class="action-sheet" catchtap="">
+      <view class="sheet-title">选择操作</view>
+      <view 
+        wx:for="{{actions}}" 
+        wx:key="action" 
+        class="sheet-item {{item.action === 'delete' ? 'danger' : ''}}"
+        data-action="{{item.action}}"
+        bindtap="onActionTap">
+        <text class="sheet-icon">{{item.icon}}</text>
+        <text class="sheet-text">{{item.name}}</text>
+      </view>
+      <view class="sheet-cancel" bindtap="hideActions">取消</view>
+    </view>
+  </view>
+
+  <!-- 位置选择器 -->
+  <view wx:if="{{showMovePicker}}" class="picker-mask" bindtap="hideMovePicker">
+    <view class="picker-content" catchtap="">
+      <view class="picker-title">选择位置</view>
+      
+      <view class="picker-row">
+        <text class="picker-label">房间</text>
+        <picker mode="selector" range="{{rooms}}" range-key="name" value="{{selectedRoomIndex}}" bindchange="onRoomChange">
+          <view class="picker-value">
+            {{selectedRoomIndex >= 0 ? rooms[selectedRoomIndex].name : '请选择'}}
+            <text class="arrow">›</text>
+          </view>
+        </picker>
+      </view>
+      
+      <view class="picker-row" wx:if="{{furnitures.length > 0}}">
+        <text class="picker-label">家具</text>
+        <picker mode="selector" range="{{furnitures}}" range-key="name" value="{{selectedFurnitureIndex}}" bindchange="onFurnitureChange">
+          <view class="picker-value">
+            {{selectedFurnitureIndex >= 0 ? furnitures[selectedFurnitureIndex].name : '请选择'}}
+            <text class="arrow">›</text>
+          </view>
+        </picker>
+      </view>
+      
+      <view class="picker-row" wx:if="{{boxes.length > 0}}">
+        <text class="picker-label">箱子</text>
+        <picker mode="selector" range="{{boxes}}" range-key="name" value="{{selectedBoxIndex}}" bindchange="onBoxChange">
+          <view class="picker-value">
+            {{selectedBoxIndex >= 0 ? boxes[selectedBoxIndex].name : '请选择'}}
+            <text class="arrow">›</text>
+          </view>
+        </picker>
+      </view>
+      
+      <view class="picker-actions">
+        <button class="picker-btn cancel" bindtap="hideMovePicker">取消</button>
+        <button class="picker-btn confirm" bindtap="confirmMove">确认移动</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类选择器 -->
+  <view wx:if="{{showCategoryPicker}}" class="picker-mask" bindtap="hideCategoryPicker">
+    <view class="picker-content" catchtap="">
+      <view class="picker-title">选择分类</view>
+      
+      <view class="picker-row">
+        <text class="picker-label">分类</text>
+        <picker mode="selector" range="{{categories}}" range-key="name" value="{{selectedCategoryIndex}}" bindchange="onCategoryChange">
+          <view class="picker-value">
+            {{selectedCategoryIndex >= 0 ? categories[selectedCategoryIndex].name : '请选择'}}
+            <text class="arrow">›</text>
+          </view>
+        </picker>
+      </view>
+      
+      <view class="picker-actions">
+        <button class="picker-btn cancel" bindtap="hideCategoryPicker">取消</button>
+        <button class="picker-btn confirm" bindtap="confirmCategory">确认修改</button>
+      </view>
+    </view>
+  </view>
+</view>

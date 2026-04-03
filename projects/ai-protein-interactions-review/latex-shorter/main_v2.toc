@@ -1,0 +1,39 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}The Paradigm Transition: From Prediction to Design}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The Prediction Paradigm: Achievements and Limitations}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Technical Drivers of the Design Paradigm}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Milestone Works in the Design Era}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}The Complementarity of Prediction and Design}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Critical Assessment: The Hallucination Problem}{8}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Core Design Tasks}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Protein Binder Design}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Antibody Design and Optimization}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Interface Optimization}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}De Novo Interaction Networks}{9}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Enabling Technologies}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Generative Models for Protein Design}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Structure-Aware Representations}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Protein Language Models}{11}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Challenges and Limitations}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Evaluation and Benchmarking}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Experimental Validation Bottleneck}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Exploring the Designable Space}{13}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Dynamic and Conditional Interactions}{13}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Current Approaches to Dynamic PPIs}{14}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Interpretability and Trust}{14}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Ethical and Dual-Use Considerations}{15}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Applications and Impact}{15}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Therapeutic Protein Design}{15}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Industrial and Economic Impact}{16}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Research Tools and Basic Science}{16}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Economic and Accessibility Considerations}{17}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Future Perspectives}{17}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Prediction-Design Integration}{17}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Toward Protein Intelligence}{17}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Methodological Advances}{17}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Experimental Infrastructure}{18}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Interpretability and Clinical Translation}{18}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Paradigm Shifts in Research Practice}{18}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Accessibility and Equity}{18}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Grand Challenges for the Next Five Years}{19}{subsection.7.8}%
+\contentsline {section}{\numberline {8}Conclusion}{19}{section.8}%

@@ -1,0 +1,66 @@
+<!--pages/location/location.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">位置管理</text>
+    <button class="add-btn" bindtap="onAddRoom">+ 添加房间</button>
+  </view>
+
+  <view class="location-list">
+    <view wx:if="{{locations.length === 0}}" class="empty">
+      <text>暂无位置，请先添加房间</text>
+    </view>
+
+    <!-- 房间列表 -->
+    <view wx:for="{{locations}}" wx:key="id" class="room-card">
+      <view class="room-header" bindtap="onToggle" data-id="{{item.id}}">
+        <text class="room-icon">🏠</text>
+        <text class="room-name">{{item.name}}</text>
+        <text class="expand-icon">{{item.expanded ? '▼' : '▶'}}</text>
+      </view>
+      
+      <view wx:if="{{item.expanded}}" class="room-content">
+        <view class="action-row">
+          <button class="mini-btn" data-id="{{item.id}}" bindtap="onAddFurniture">+ 添加家具</button>
+          <text class="delete-btn" data-id="{{item.id}}" data-type="room" bindtap="onDelete">删除</text>
+        </view>
+
+        <!-- 家具列表 -->
+        <view wx:for="{{item.furniture}}" wx:for-item="furniture" wx:key="id" class="furniture-item">
+          <view class="furniture-header" bindtap="onToggle" data-id="{{furniture.id}}">
+            <text class="furniture-icon">🪑</text>
+            <text class="furniture-name">{{furniture.name}}</text>
+            <text class="expand-icon">{{furniture.expanded ? '▼' : '▶'}}</text>
+          </view>
+
+          <view wx:if="{{furniture.expanded}}" class="furniture-content">
+            <view class="action-row">
+              <button class="mini-btn" data-id="{{furniture.id}}" bindtap="onAddBox">+ 添加箱子</button>
+              <text class="delete-btn" data-id="{{furniture.id}}" data-type="furniture" bindtap="onDelete">删除</text>
+            </view>
+
+            <!-- 箱子列表 -->
+            <view wx:for="{{furniture.boxes}}" wx:for-item="box" wx:key="id" class="box-item">
+              <text class="box-icon">📦</text>
+              <text class="box-name">{{box.name}}</text>
+              <text class="delete-btn" data-id="{{box.id}}" data-type="box" bindtap="onDelete">删除</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加弹窗 -->
+  <view wx:if="{{showAddModal}}" class="modal-mask" bindtap="onCancelAdd">
+    <view class="modal-content" catchtap>
+      <view class="modal-title">
+        {{addType === 'room' ? '添加房间' : addType === 'furniture' ? '添加家具' : '添加箱子'}}
+      </view>
+      <input class="modal-input" placeholder="请输入名称" value="{{inputValue}}" bindinput="onInputChange" />
+      <view class="modal-btns">
+        <button class="modal-btn cancel" bindtap="onCancelAdd">取消</button>
+        <button class="modal-btn confirm" bindtap="onConfirmAdd">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

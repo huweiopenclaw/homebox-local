@@ -1,0 +1,78 @@
+% Section 8: Future Outlook
+% Word count target: ~600 words
+
+\section{Future Outlook}
+\label{sec:future}
+
+The paradigm shift from prediction to design represents not an endpoint but a transition toward deeper integration of AI with biological research. This section outlines emerging directions and their implications for the field.
+
+\subsection{Prediction-Design Integration}
+\label{subsec:integration}
+
+The dichotomy between prediction and design is artificial. In practice, these capabilities form a tight loop: prediction validates designs, and design challenges reveal prediction limitations~\cite{watson2023rfdiffusion}.
+
+\subsubsection{Iterative Design Cycles}
+
+Current design workflows are already iterative. RFdiffusion generates backbone candidates, ProteinMPNN designs sequences, and AlphaFold validates structures~\cite{dauparas2022proteinmpnn}. This cycle repeats until designs pass computational filters. The integration is currently serial and manual; future systems will optimize this loop end-to-end.
+
+Active learning approaches could accelerate this integration~\cite{dallago2024plmfinetune}. Rather than exhaustively testing all designs, systems could prioritize experiments that maximally reduce uncertainty about design rules. Each experimental result would update the design model, improving subsequent iterations.
+
+\subsubsection{Unified Prediction-Design Models}
+
+Current methods treat prediction and design as separate tasks with different architectures. AlphaFold excels at prediction but cannot directly generate new structures~\cite{abramson2024alphafold3}. RFdiffusion generates structures but cannot predict whether designs will succeed~\cite{watson2023rfdiffusion}.
+
+Future models may unify these capabilities. A single system could predict interaction properties, generate new designs, and evaluate design quality within a consistent framework. Such integration would enable more efficient exploration of design space by leveraging prediction capabilities to guide generation.
+
+\subsection{Toward Protein Intelligence}
+\label{subsec:intelligence}
+
+The progression from prediction to design suggests a trajectory toward what might be called ``protein intelligence''---AI systems with comprehensive understanding of protein behavior.
+
+\subsubsection{Capability Levels}
+
+Current systems operate at different levels of this capability hierarchy:
+
+\begin{itemize}
+    \item \textbf{Understanding}: Parsing sequences, structures, and functions~\cite{rives2021esm1b}
+    \item \textbf{Prediction}: Inferring interactions, structures, and properties~\cite{jumper2021alphafold}
+    \item \textbf{Design}: Creating new proteins with desired functions~\cite{watson2023rfdiffusion}
+\end{itemize}
+
+The emerging fourth level---\textbf{creation}---would generate biological systems that solve problems evolution has never addressed. This capability requires not just design but reasoning about how multiple proteins interact within functional systems.
+
+\subsubsection{Language Models as Design Engines}
+
+Protein language models encode implicit knowledge about sequence-structure-function relationships~\cite{lin2023esm2}. Fine-tuning these models for specific design tasks has shown promising results~\cite{dallago2024plmfinetune}. As language models scale, their capacity for few-shot and zero-shot design may expand, enabling rapid adaptation to new design challenges without task-specific training.
+
+\subsection{Paradigm Shifts in Biological Research}
+\label{subsec:paradigm}
+
+The transition from prediction to design reflects deeper changes in how biology is practiced.
+
+\subsubsection{From Discovery to Engineering}
+
+Traditional biology is discovery-driven: observe natural systems, formulate hypotheses, test predictions. Design-driven biology inverts this: define desired functions, generate designs, validate experimentally~\cite{bennett2024symmetric}. This engineering mindset treats biology as a design space to be explored rather than merely a phenomenon to be observed.
+
+\subsubsection{From Trial-and-Error to Rational Design}
+
+Drug discovery historically relied on high-throughput screening of compound libraries. AI-driven design enables targeted generation of candidates with desired properties~\cite{zambaldi2024alphaproteo}. This shift reduces the scale of experimental screening while increasing the quality of candidates entering the pipeline.
+
+\subsubsection{From Observing to Creating Nature}
+
+Perhaps most fundamentally, the design paradigm represents a philosophical shift. Rather than studying what evolution has produced, researchers can now create what evolution has not. Designed proteins with sequences unlike any natural protein challenge the assumption that biology is limited to what we observe~\cite{ingraham2023chroma}.
+
+\subsection{Remaining Challenges}
+\label{subsec:challenges_future}
+
+Several challenges must be addressed to realize this vision:
+
+\begin{itemize}
+    \item \textbf{Evaluation}: Standardized benchmarks for design success remain lacking~\cite{bernett2024bias}
+    \item \textbf{Interpretability}: Understanding why designs succeed or fail is essential for iteration~\cite{ruffolo2022deepab}
+    \item \textbf{Validation}: Closing the computational-experimental loop requires faster, cheaper validation~\cite{trepte2024ai}
+    \item \textbf{Generalization}: Designs for targets unlike training data remain challenging~\cite{kewalramani2023state}
+\end{itemize}
+
+\vspace{1em}
+\noindent
+The prediction-to-design paradigm shift marks a transition from AI as a tool for understanding biology to AI as a partner in creating biology. This transition will unfold over the coming years as methods mature, validation infrastructure scales, and researchers develop intuition for what can be designed and what cannot. The conclusion (Section~\ref{sec:conclusion}) synthesizes these themes and offers final perspectives on this transformation.

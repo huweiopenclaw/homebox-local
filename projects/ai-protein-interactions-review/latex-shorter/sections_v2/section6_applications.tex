@@ -1,0 +1,67 @@
+% Section 6: Applications and Impact (Target: 1000 words)
+\section{Applications and Impact}
+\label{sec:applications}
+
+The paradigm shift opens possibilities across therapeutic development, industrial biotechnology, and basic research (Table~\ref{tab:applications}). This section examines major application areas.
+
+\begin{table}[h]
+\centering
+\caption{Selected applications of AI-designed PPIs}
+\label{tab:applications}
+\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Domain} & \textbf{Application} & \textbf{Representative Results} & \textbf{Status} \\
+\midrule
+Therapeutics & SARS-CoV-2 binders & KD: 10--100 pM; 1000$\times$ potency~\cite{watson2023rfdiffusion} & Preclinical \\
+Therapeutics & PD-L1/VEGF-A binders & KD: 1--50 nM; 3--300$\times$ success~\cite{zambaldi2024alphaproteo} & Early-stage \\
+Immunotherapy & IL-2 selectivity & 10--100$\times$ selectivity improvement~\cite{fleming2021computational,silva2020il2} & Preclinical \\
+Enzymes & Cofactor binding pockets & Native-like geometry; catalytic activity~\cite{krishna2024rfaa} & Proof-of-concept \\
+Research & Imaging probes & High-specificity intracellular labeling~\cite{zhang2024nanobody} & Established \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\subsection{Therapeutic Protein Design}
+
+Designed proteins can serve as therapeutics, drug components, or research tools. The global biologics market exceeded \$350 billion in 2023, with AI-driven design offering reduced timelines and expanded target space~\cite{trepte2024ai}.
+
+\textbf{Antibody and Binder Therapeutics.} Traditional antibody development requires 12--18 months. AI-driven design accelerates this by enabling rapid candidate generation against new targets. For SARS-CoV-2, designed minibinders achieved picomolar affinities (KD: 10--100 pM) with improved stability---retaining function after weeks at 37$^\circ$C versus days for many antibodies~\cite{watson2023rfdiffusion}. The LCB1 minibinder showed neutralization potency (IC50: 15--50 pM) exceeding clinical-stage antibodies (IC50: 100--1000 pM). Unlike antibodies, minibinders are smaller (50--100 vs. 150 residues), more stable, and manufacturable in bacterial systems (\$10--100/g vs. \$100--1000/g in mammalian cells).
+
+AlphaProteo designed binders against cancer targets (PD-L1, VEGF-A) with nanomolar affinities without experimental optimization~\cite{zambaldi2024alphaproteo}. Multiple companies (Generate Biomedicines, Insitro, Charm Bio) are developing AI-designed therapeutics, with clinical trials expected 2025--2026.
+
+\textbf{Cytokine Engineering.} Natural cytokines often activate multiple receptor subtypes, causing off-target effects. Designed variants with improved selectivity could provide safer therapeutics. IL-2 variants demonstrating 10--100-fold improved selectivity between effector T cells and regulatory T cells could improve cancer immunotherapy while reducing toxicity~\cite{fleming2021computational,silva2020il2}. Similar approaches apply to IL-4, IL-6, and interferon families.
+
+\textbf{Emerging Modalities.} PROTACs (proteolysis-targeting chimeras) bring together target proteins and E3 ubiquitin ligases to trigger degradation. Over 20 PROTACs have entered clinical trials since 2019. Designing PPI interfaces between these components could improve efficiency. Bispecific antibodies---proteins binding two targets---offer immune cell redirection to tumors, with 10+ approved for oncology. Designing both interfaces while maintaining stability presents complex multi-objective optimization challenges.
+
+\subsection{Industrial and Economic Impact}
+
+\textbf{Cost and Timeline Reduction.} Traditional drug development costs exceed \$2.6 billion per approved drug, with biologics development requiring 12--18 months for lead identification~\cite{wouters2020cost}. AI-driven design reduces requirements by 10--100$\times$: generating hundreds of high-quality candidates narrows experimental search dramatically. Traditional directed evolution screens 10$^5$--10$^9$ variants at \$1--5 million per optimized protein over 6--18 months. Faster development enables rapid response to emerging threats---demonstrated during COVID-19 when designed binders were generated within weeks of target availability.
+
+\textbf{Enzyme Engineering.} Industrial biotechnology uses enzymes to produce chemicals, pharmaceuticals, and materials (market: \$10+ billion annually). Many transformations require multi-enzyme complexes channeling intermediates between active sites. RFdiffusionAA designed protein binding pockets for cofactors (heme, bilin) with native-like geometry and catalytic activity~\cite{krishna2024rfaa}. Extensions to multi-enzyme assemblies could enable metabolic pathway design for sustainable chemical production, biosynthesis of complex natural products, and bioremediation.
+
+\textbf{Agricultural Applications.} Designed binding proteins could protect crops from pathogens by interfering with virulence factors, improve nitrogen fixation by engineering Rhizobium-plant symbiosis, or enable biosensing of environmental contaminants.
+
+\subsection{Research Tools and Basic Science}
+
+\textbf{Mechanism Validation.} Computational predictions can be tested through designed proteins. If a model predicts specific interface residues mediate binding, mutation in a designed binder should disrupt interaction. This enables systematic dissection of interaction mechanisms beyond natural variation~\cite{watson2023rfdiffusion}.
+
+\textbf{Imaging and Detection.} Fluorescent binders enable live-cell visualization of protein localization and dynamics~\cite{zhang2024nanobody}. Designed nanobodies fused to fluorescent proteins provide intracellular imaging capabilities impossible with traditional antibodies. This combination enables powerful imaging applications.
+
+\textbf{Synthetic Biology.} Engineered signaling pathways could reprogram cellular behavior. The synNotch system combines sensing domains with transcriptional responses~\cite{morsut2016synnotch}. Chen et al. demonstrated design of protein-interaction specificity from sequence-to-sequence learning, enabling precise control over which proteins interact~\cite{chen2019design}. Applications include therapeutic cells sensing disease markers, industrial microbes optimizing metabolism, and biosensors detecting environmental conditions.
+
+\textbf{Structure-Function Exploration.} Systematic exploration requires large variant sets. High-throughput characterization of hundreds of designs builds datasets revealing design principles. Deep mutational scanning combined with design maps fitness landscapes, identifying prediction-experiment discrepancies that point to understanding gaps~\cite{goldenzweig2016protein}.
+
+\subsection{Economic and Accessibility Considerations}
+
+\textbf{Computational Divide.} Training large PLMs requires hundreds of GPU-years. Inference costs vary: ProteinMPNN runs CPU-capable in milliseconds; RFdiffusion requires 16--32GB GPU for minutes per design~\cite{watson2023rfdiffusion}. AlphaFold3 access is limited to web interfaces with usage caps. This creates inequities: well-resourced institutions can run thousands of designs while resource-limited labs cannot compete.
+
+\textbf{Democratization Strategies.} Open-source alternatives (RFdiffusion, ProteinMPNN, ESMFold) help but require expertise and infrastructure. Cloud computing provides partial solutions but introduces ongoing costs. Addressing accessibility requires: (1) maintaining open implementations; (2) providing cloud access for resource-limited researchers; (3) developing efficient architectures reducing computational requirements; and (4) establishing shared infrastructure.
+
+\textbf{Environmental Impact.} Training large models emits substantial carbon. As the field scales, sustainable practices---efficient architectures, shared pretrained models, optimized inference---become increasingly important. Estimated carbon footprint: single large PLM training equals several transatlantic flights; thousands of design iterations compounds this impact.
+
+\vspace{0.5em}
+\noindent
+These applications leverage the ability to create proteins rather than search for natural variants. As methods mature, scope will expand from individual binders to multi-protein systems and programmable biological functions. Realizing this potential requires addressing challenges outlined in Section~\ref{sec:challenges}.

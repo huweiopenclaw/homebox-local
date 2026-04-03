@@ -1,0 +1,95 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+  <!-- AI 对话搜索入口 -->
+  <view class="ai-entry" bindtap="onAISearchTap">
+    <view class="ai-icon">🤖</view>
+    <view class="ai-text">
+      <view class="ai-title">AI 对话搜索</view>
+      <view class="ai-desc">用自然语言问我</view>
+    </view>
+    <text class="arrow">›</text>
+  </view>
+
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <view class="search-input-wrap">
+      <text class="search-icon">🔍</text>
+      <input 
+        class="search-input" 
+        placeholder="搜索物品名称、位置、标签" 
+        value="{{keyword}}"
+        bindinput="onInputChange"
+      />
+      <text wx:if="{{keyword}}" class="clear-icon" bindtap="onClearInput">✕</text>
+    </view>
+  </view>
+
+  <!-- 搜索历史 -->
+  <view wx:if="{{!keyword && searchHistory.length > 0}}" class="history-section">
+    <view class="history-header">
+      <text class="history-title">搜索历史</text>
+      <text class="history-clear" bindtap="onClearHistory">清空</text>
+    </view>
+    <view class="history-list">
+      <view 
+        wx:for="{{searchHistory}}" 
+        wx:key="*this" 
+        class="history-item"
+        data-keyword="{{item}}"
+        bindtap="onHistoryTap">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类筛选 -->
+  <view class="category-filter">
+    <text class="filter-label">分类筛选：</text>
+    <scroll-view class="category-scroll" scroll-x>
+      <view 
+        wx:for="{{categories}}" 
+        wx:key="id" 
+        class="category-tag {{selectedCategory === item.name ? 'active' : ''}}"
+        data-category="{{item.name}}"
+        bindtap="onCategoryTap">
+        {{item.icon}} {{item.name}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view class="results">
+    <view wx:if="{{loading}}" class="loading">
+      <text>搜索中...</text>
+    </view>
+
+    <view wx:elif="{{items.length === 0 && (keyword || selectedCategory)}}" class="empty">
+      <text>未找到相关物品</text>
+      <text class="empty-hint" bindtap="onAISearchTap">试试 AI 对话搜索？</text>
+    </view>
+
+    <view wx:elif="{{items.length === 0 && !keyword}}" class="empty">
+      <text>输入关键词或选择分类进行搜索</text>
+    </view>
+
+    <view wx:else>
+      <view class="result-count">找到 {{items.length}} 个物品</view>
+      <view 
+        wx:for="{{items}}" 
+        wx:key="id" 
+        class="item-card"
+        data-id="{{item.id}}"
+        bindtap="onItemTap">
+        <view class="item-main">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-quantity">×{{item.quantity || 1}}</view>
+        </view>
+        <view class="item-info">
+          <text class="item-category">{{item.category}}</text>
+          <text class="item-location" wx:if="{{item.location}}">📍 {{item.location}}</text>
+        </view>
+        <view class="item-desc" wx:if="{{item.description}}">{{item.description}}</view>
+      </view>
+    </view>
+  </view>
+</view>

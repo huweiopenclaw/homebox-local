@@ -1,0 +1,59 @@
+% Section 7: Future Perspectives (Target: 800 words)
+\section{Future Perspectives}
+\label{sec:future}
+
+The paradigm shift represents not an endpoint but a transition toward deeper AI-biology integration. This section outlines emerging directions.
+
+\subsection{Prediction-Design Integration}
+
+Current workflows treat prediction and design as separate stages. Future systems will optimize this loop end-to-end through active learning---prioritizing experiments that maximally reduce uncertainty about design rules, with each result updating the model~\cite{dallago2024plmfinetune}. Unified models could predict interaction properties, generate designs, and evaluate quality within consistent frameworks, enabling more efficient design space exploration.
+
+\subsection{Toward Protein Intelligence}
+
+Systems operate at different capability levels: understanding (parsing structures and functions), prediction (inferring interactions), and design (creating proteins with desired functions). The emerging fourth level---\textbf{creation}---would generate biological systems solving problems evolution never addressed, requiring reasoning about multiple proteins within functional systems. As language models scale, few-shot and zero-shot design capabilities may expand, enabling rapid adaptation to new challenges without task-specific training~\cite{lin2023esm2}.
+
+\subsection{Methodological Advances}
+
+\textbf{Dynamic Modeling.} Current methods design static interfaces, but many functional PPIs involve conformational changes and allosteric regulation. Integrating molecular dynamics with generative design could enable proteins with dynamic binding behavior. Key milestone: designing an allosterically regulated binder switching affinity in response to a small molecule or post-translational modification.
+
+\textbf{Multi-Component Systems.} Extending from pairwise interactions to 3+ protein complexes would enable signaling pathways, metabolic channels, and synthetic cellular machines. This requires solving combinatorial explosion of interface configurations while maintaining assembly stability. Target capability: designing a 5-protein complex with specified architecture and function.
+
+\textbf{Enhanced Evaluation.} Addressing the evaluation crisis requires: (1) community-agreed benchmark datasets with standardized splits; (2) negative result repositories capturing failures; (3) prospective evaluation requirements for published claims; and (4) computational validation standards (multiple prediction methods, confidence thresholds, structural quality metrics).
+
+\subsection{Experimental Infrastructure}
+
+Computational design outpaces validation by 100--1000$\times$. High-throughput platforms testing thousands of designs weekly with standardized protocols would close this gap. Required investment: \$50--100M for shared infrastructure. Emerging solutions include deep mutational scanning for parallel variant testing, and yeast/phage display for library screening, though these introduce system-specific biases.
+
+\subsection{Interpretability and Clinical Translation}
+
+For therapeutic applications, regulatory approval requires understanding \textit{why} a design works. Black-box methods face hurdles without mechanistic explanations~\cite{raybould2019developability}. Interpretable design methods---where decisions trace to physical principles---are essential. Near-term goal: methods providing mechanistic explanations for interface affinity and specificity.
+
+Regulatory frameworks are evolving to address AI-designed therapeutics. The U.S. FDA's guidance on AI/ML-enabled medical devices emphasizes ``predetermined change control plans'' for continuously learning systems. For AI-designed proteins, this suggests three requirements: (1) mechanistic models explaining binding predictions; (2) validated surrogates for clinical endpoints; and (3) robust uncertainty quantification. The European Medicines Agency (EMA) has similarly highlighted the need for explainable AI in drug development. These regulatory expectations will shape methodological priorities for the field.
+
+\subsection{Paradigm Shifts in Research Practice}
+
+\textbf{From Discovery to Engineering.} Traditional biology is discovery-driven; design-driven biology inverts this---defining desired functions, generating designs, validating experimentally~\cite{bennett2024symmetric}. This engineering mindset treats biology as design space to be explored.
+
+\textbf{From Trial-and-Error to Rational Design.} Drug discovery historically relied on high-throughput screening. AI-driven design enables targeted generation, reducing screening scale while improving candidate quality~\cite{zambaldi2024alphaproteo}.
+
+\textbf{From Observing to Creating.} Most fundamentally, the design paradigm enables creating what evolution has not. Designed proteins with sequences unlike any natural protein test whether understanding generalizes beyond evolutionary constraints~\cite{ingraham2023chroma}.
+
+\subsection{Accessibility and Equity}
+
+Current computational requirements create inequities. Addressing these requires: (1) efficient architectures reducing GPU requirements; (2) cloud-based access for resource-limited researchers; (3) shared computational infrastructure; and (4) open-source implementations maintained long-term. Environmental sustainability concerns also grow with scale---efficient methods and shared infrastructure reduce collective carbon footprint.
+
+\subsection{Grand Challenges for the Next Five Years}
+
+\textbf{Challenge 1: Designability Mapping.} What fraction of sequence-structure space is designable? Systematic experimental characterization through large-scale design and testing would transform design from trial-and-error to principled exploration. Timeline: 3--5 years with coordinated community effort.
+
+\textbf{Challenge 2: Dynamic Interaction Design.} Designing proteins with conformational flexibility or conditional binding requires integrating dynamics with generation. Milestone: designing a switchable binder with 10$\times$ affinity change upon ligand binding.
+
+\textbf{Challenge 3: Validation Infrastructure.} Closing the computational-experimental gap requires shared high-throughput facilities. Investment: \$50--100M for infrastructure accessible to the research community.
+
+\textbf{Challenge 4: Interpretability.} Clinical translation requires explainable designs. Goal: methods providing atomic-level explanations linking design decisions to predicted properties.
+
+\textbf{Challenge 5: Standards and Governance.} Updated frameworks for responsible development, including synthesis screening protocols and publication standards.
+
+\vspace{0.5em}
+\noindent
+The prediction-to-design transition marks a shift from AI as passive observer to AI as active creator. Whether this transition fulfills its promise will be determined by collective efforts in the coming years. The technical foundations are in place; the challenges are known; the opportunity is unprecedented. The conclusion synthesizes these themes and offers final perspectives.

@@ -1,0 +1,241 @@
+/* pages/ai-scan/ai-scan.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  padding-bottom: 140rpx;
+}
+
+/* 拍照区域 */
+.photo-section {
+  margin-bottom: 20rpx;
+}
+
+.photo-placeholder {
+  background: white;
+  border-radius: 16rpx;
+  padding: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2rpx dashed #ddd;
+}
+
+.photo-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.photo-text {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.photo-hint {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.photo-preview {
+  background: white;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.preview-image {
+  width: 100%;
+  height: 400rpx;
+}
+
+.photo-actions {
+  display: flex;
+  padding: 20rpx;
+  gap: 20rpx;
+}
+
+.retake-btn, .recognize-btn {
+  flex: 1;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.retake-btn {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.recognize-btn {
+  background: #FF6B35;
+  color: white;
+}
+
+/* 错误提示 */
+.error-section {
+  background: #fff5f5;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.error-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+}
+
+.error-text {
+  font-size: 28rpx;
+  color: #ff4d4f;
+  margin-bottom: 16rpx;
+}
+
+.settings-link {
+  font-size: 26rpx;
+  color: #FF6B35;
+  text-decoration: underline;
+}
+
+/* 识别结果 */
+.result-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.result-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.select-all {
+  font-size: 26rpx;
+  color: #FF6B35;
+}
+
+.items-list {
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.item-row.selected {
+  background: #fff9f5;
+  margin: 0 -20rpx;
+  padding: 20rpx;
+}
+
+.item-checkbox {
+  margin-right: 16rpx;
+  font-size: 36rpx;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-name {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.item-meta {
+  display: flex;
+  gap: 16rpx;
+}
+
+.item-category {
+  font-size: 24rpx;
+  color: #07C160;
+  background: #e8f5e9;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+}
+
+.item-quantity {
+  font-size: 24rpx;
+  color: #FF6B35;
+}
+
+.item-edit {
+  padding: 16rpx;
+  font-size: 28rpx;
+}
+
+/* 位置选择 */
+.location-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.location-picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+}
+
+.location-placeholder {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.location-value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow {
+  color: #ccc;
+  font-size: 32rpx;
+}
+
+/* 底部按钮 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background: white;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.save-btn {
+  background: #FF6B35;
+  color: white;
+  font-size: 32rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border: none;
+}

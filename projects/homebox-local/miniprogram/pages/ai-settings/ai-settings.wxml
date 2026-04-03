@@ -1,0 +1,125 @@
+<!--pages/ai-settings/ai-settings.wxml-->
+<view class="container">
+  <!-- 功能开关 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">🤖 AI 识别功能</text>
+      <switch checked="{{config.enabled}}" bindchange="onEnableChange" color="#FF6B35" />
+    </view>
+    <text class="section-desc">启用后可拍照识别箱子中的物品，自动创建记录</text>
+  </view>
+
+  <view wx:if="{{config.enabled}}" class="config-form">
+    <!-- 预设模板 -->
+    <view class="form-item">
+      <text class="form-label">预设模板</text>
+      <picker mode="selector" range="{{presets}}" range-key="name" value="{{presetIndex}}" bindchange="onPresetChange">
+        <view class="form-picker">
+          <text>{{presets[presetIndex].name}}</text>
+          <text class="arrow">›</text>
+        </view>
+      </picker>
+      <text class="form-hint">选择预设后可自由修改各项配置</text>
+    </view>
+
+    <!-- API URL - 可自由编辑 -->
+    <view class="form-item">
+      <view class="form-label-row">
+        <text class="form-label">API URL</text>
+        <text class="required">*</text>
+      </view>
+      <textarea 
+        class="form-textarea url-input" 
+        placeholder="输入 API 接口地址，如: https://api.openai.com/v1/chat/completions" 
+        value="{{config.apiUrl}}" 
+        bindinput="onApiUrlInput"
+        bindblur="onApiUrlBlur"
+        auto-height
+      />
+      <text class="form-hint">支持任何 OpenAI 兼容格式的 API</text>
+    </view>
+
+    <!-- API Key - 可自由编辑 -->
+    <view class="form-item">
+      <view class="form-label-row">
+        <text class="form-label">API Key</text>
+        <text class="required">*</text>
+      </view>
+      <view class="api-key-row">
+        <input class="form-input flex-1" 
+               placeholder="输入 API 密钥" 
+               password="{{!showApiKey}}" 
+               value="{{config.apiKey}}" 
+               bindinput="onApiKeyInput" 
+               bindblur="onApiKeyBlur" />
+        <text class="toggle-btn" bindtap="toggleShowApiKey">{{showApiKey ? '🙈' : '👁️'}}</text>
+      </view>
+    </view>
+
+    <!-- 模型名称 - 可自由编辑 -->
+    <view class="form-item">
+      <view class="form-label-row">
+        <text class="form-label">模型名称</text>
+        <text class="required">*</text>
+      </view>
+      <input 
+        class="form-input" 
+        placeholder="如: gpt-4o, glm-4v, qwen-vl-max" 
+        value="{{config.model}}" 
+        bindinput="onModelInput"
+        bindblur="onModelBlur" 
+      />
+      <text class="form-hint">根据服务商文档填写正确的模型名称</text>
+    </view>
+
+    <!-- 测试连接 -->
+    <view class="test-section">
+      <button class="test-btn" bindtap="onTestConnection" loading="{{testing}}">
+        {{testing ? '测试中...' : '🔗 测试连接'}}
+      </button>
+      <text wx:if="{{testResult}}" class="test-result {{testResult.startsWith('✅') ? 'success' : 'error'}}">
+        {{testResult}}
+      </text>
+    </view>
+  </view>
+
+  <!-- 帮助信息 -->
+  <view class="help-section">
+    <view class="help-card">
+      <view class="help-title">📝 配置示例</view>
+      <view class="help-examples">
+        <view class="example-item">
+          <text class="example-name">OpenAI:</text>
+          <text class="example-url">api.openai.com/v1/chat/completions</text>
+          <text class="example-model">gpt-4o</text>
+        </view>
+        <view class="example-item">
+          <text class="example-name">智谱 GLM:</text>
+          <text class="example-url">open.bigmodel.cn/api/paas/v4/chat/completions</text>
+          <text class="example-model">glm-4v</text>
+        </view>
+        <view class="example-item">
+          <text class="example-name">阿里千问:</text>
+          <text class="example-url">dashscope.aliyuncs.com/compatible-mode/v1/chat/completions</text>
+          <text class="example-model">qwen-vl-max</text>
+        </view>
+        <view class="example-item">
+          <text class="example-name">DeepSeek:</text>
+          <text class="example-url">api.deepseek.com/v1/chat/completions</text>
+          <text class="example-model">deepseek-vision</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="help-item" bindtap="onHelp">
+      <text class="help-icon">❓</text>
+      <text class="help-text">详细配置说明</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="bottom-bar">
+    <button class="save-btn" bindtap="onSave">保存配置</button>
+  </view>
+</view>

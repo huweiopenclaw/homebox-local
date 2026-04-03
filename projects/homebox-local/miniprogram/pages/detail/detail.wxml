@@ -1,0 +1,118 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 列表模式 -->
+  <view wx:elif="{{mode === 'list'}}" class="list-mode">
+    <view class="list-header">
+      <text class="list-title">{{category}}</text>
+      <text class="list-count">共 {{items.length}} 件</text>
+    </view>
+
+    <view wx:if="{{items.length === 0}}" class="empty">
+      <text>该分类下暂无物品</text>
+    </view>
+
+    <view wx:else class="items-list">
+      <view 
+        wx:for="{{items}}" 
+        wx:key="id" 
+        class="item-card"
+        data-id="{{item.id}}"
+        bindtap="onItemTap">
+        <view class="item-main">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-quantity">×{{item.quantity || 1}}</view>
+        </view>
+        <view class="item-location" wx:if="{{item.location}}">📍 {{item.location}}</view>
+        <view class="item-date">{{item.date}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 详情模式 -->
+  <view wx:elif="{{mode === 'item' && item}}" class="detail-mode">
+    <!-- 物品图片 -->
+    <view wx:if="{{item.photos && item.photos.length > 0}}" class="photos">
+      <swiper class="photo-swiper" indicator-dots="{{item.photos.length > 1}}">
+        <swiper-item wx:for="{{item.photos}}" wx:key="*this">
+          <image 
+            class="photo" 
+            src="{{item}}" 
+            mode="aspectFill" 
+            bindtap="onPreviewPhoto" 
+            data-index="{{index}}" />
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <!-- 物品信息 -->
+    <view class="info-section">
+      <view class="detail-header">
+        <text class="detail-name">{{item.name}}</text>
+        <text class="detail-quantity">×{{item.quantity || 1}}</text>
+      </view>
+      
+      <view class="info-row">
+        <text class="info-label">📦 分类</text>
+        <text class="info-value category-tag">{{item.category}}</text>
+      </view>
+      
+      <view class="info-row" wx:if="{{item.location}}">
+        <text class="info-label">📍 位置</text>
+        <text class="info-value">{{item.location}}</text>
+      </view>
+
+      <view class="info-row" wx:if="{{item.room}}">
+        <text class="info-label">🏠 房间</text>
+        <text class="info-value">{{item.room}}</text>
+      </view>
+
+      <view class="info-row" wx:if="{{item.furniture}}">
+        <text class="info-label">🪑 家具</text>
+        <text class="info-value">{{item.furniture}}</text>
+      </view>
+
+      <view class="info-row" wx:if="{{item.box}}">
+        <text class="info-label">📦 箱子</text>
+        <text class="info-value">{{item.box}}</text>
+      </view>
+
+      <view class="info-row">
+        <text class="info-label">📅 添加日期</text>
+        <text class="info-value">{{item.date || item.createdAt}}</text>
+      </view>
+
+      <view class="info-row" wx:if="{{item.remark || item.description}}">
+        <text class="info-label">📝 备注</text>
+        <text class="info-value desc">{{item.remark || item.description}}</text>
+      </view>
+
+      <view class="info-row" wx:if="{{item.tags && item.tags.length > 0}}">
+        <text class="info-label">🏷️ 标签</text>
+        <view class="tags">
+          <text wx:for="{{item.tags}}" wx:key="*this" class="tag">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="detail-actions">
+      <button class="btn-edit" bindtap="onEditTap">
+        <text class="btn-icon">✏️</text>
+        <text>编辑</text>
+      </button>
+      <button class="btn-delete" bindtap="onDeleteTap">
+        <text class="btn-icon">🗑️</text>
+        <text>删除</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty">
+    <text>物品不存在</text>
+  </view>
+</view>

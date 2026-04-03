@@ -1,0 +1,31 @@
+{
+  "skills": {
+    "claude_code": {
+      "enabled": true,
+      "description": "Claude Code 编程助手",
+      "api": {
+        "baseUrl": "https://open.bigmodel.cn/api/coding/paas/v4",
+        "apiKey": "98b8c5a4c32b49c4a14d331daeebcec1.oMmhzzD3iYHjJQps",
+        "model": "glm-5"
+      },
+      "actions": {
+        "generate": {
+          "description": "生成代码",
+          "systemPrompt": "你是专业的编程助手，请生成高质量代码。用中文回答。"
+        },
+        "explain": {
+          "description": "解释代码",
+          "systemPrompt": "你是代码解释专家，请清晰解释代码功能。用中文回答。"
+        },
+        "debug": {
+          "description": "调试代码",
+          "systemPrompt": "你是调试专家，请分析并修复代码问题。用中文回答。"
+        },
+        "refactor": {
+          "description": "重构代码",
+          "systemPrompt": "你是重构专家，请优化代码结构和质量。用中文回答。"
+        }
+      }
+    }
+  }
+}
